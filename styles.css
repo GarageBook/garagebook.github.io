@@ -1,7 +1,3 @@
-/* =========================
-   RESET
-========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -13,16 +9,11 @@ html {
 body {
     margin: 0;
     font-family: 'ZalandoSansLight', sans-serif;
-
     background:
         radial-gradient(circle at 20% 20%, rgba(255,210,0,0.06), transparent 40%),
         radial-gradient(circle at 80% 10%, rgba(255,210,0,0.05), transparent 45%),
         #ffffff;
 }
-
-/* =========================
-   FONTS
-========================= */
 
 @font-face {
     font-family: 'ZalandoSansBold';
@@ -38,10 +29,6 @@ body {
     font-family: 'QuantixExtraBold';
     src: url('assets/fonts/quantix/QuantixExtrabold.woff2') format('woff2');
 }
-
-/* =========================
-   TYPOGRAPHY
-========================= */
 
 h1, h2, h3 {
     margin: 0;
@@ -66,15 +53,11 @@ h2 {
     color: #181818;
 }
 
-/* 🔥 JOUW H3 */
-h3 {
-    font-family: 'QuantixExtraBold', sans-serif;
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    line-height: 1.2;
-    color: #181818;
-    margin: 0 0 40px 0;
+.featureCard h3 {
+    font-family: 'ZalandoSansLight', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #333;
 }
 
 p {
@@ -83,64 +66,36 @@ p {
     color: #555;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
-
 .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 30px 50px;
     background: #181818;
-
     position: sticky;
     top: 0;
     z-index: 999;
-
-    transition: all 0.3s ease;
-}
-
-.navigation.scrolled {
-    padding: 15px 50px;
-    background: rgba(24,24,24,0.85);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 .logo img {
     width: 200px;
-    transition: 0.3s;
-}
-
-.navigation.scrolled .logo img {
-    width: 160px;
 }
 
 .navItems {
     display: flex;
-    gap: 20px;
     align-items: center;
+    gap: 20px;
 }
-
-/* =========================
-   BUTTON
-========================= */
 
 button {
     background: #ffd200;
     color: #181818;
-
     padding: 14px 20px;
     border-radius: 10px;
     border: none;
-
     font-weight: 800;
     cursor: pointer;
-
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-
     transition: all 0.2s ease;
 }
 
@@ -149,29 +104,21 @@ button:hover {
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* =========================
-   HERO
-========================= */
-
 .hero {
     padding: 100px 0 0 170px;
     width: 100%;
     min-height: 100vh;
-
     background-image: url('assets/garagebook-motorcyle-owner.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     position: relative;
 }
 
-/* overlay */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-
     background: radial-gradient(
         circle at 20% 40%,
         rgba(0,0,0,0.65) 0%,
@@ -179,27 +126,51 @@ button:hover {
         rgba(0,0,0,0.15) 50%,
         rgba(0,0,0,0) 70%
     );
-
     z-index: 1;
 }
 
-/* fix layering */
 .hero > * {
     position: relative;
     z-index: 2;
 }
 
-/* hero subtitle */
-.hero h2 {
+.heroSubtitle {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 30px;
     color: rgba(255,255,255,0.9);
-    font-size: 20px;
-    font-family: 'ZalandoSansLight', sans-serif;
+    margin: 30px 0 20px;
     text-transform: none;
 }
 
-/* =========================
-   FEATURES (3-3 GRID)
-========================= */
+.heroPoints {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.heroPoints li {
+    font-family: 'ZalandoSansLight', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    padding-left: 18px;
+}
+
+.heroPoints li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    background: #ffd200;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255,210,0,0.8);
+}
 
 .features {
     max-width: 1200px;
@@ -207,56 +178,37 @@ button:hover {
     padding: 140px 20px 80px;
 }
 
-.features h2 {
-    margin-bottom: 50px;
-}
-
-/* 🔥 FORCED 3-3 GRID */
 .featureGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
 
-/* cards */
 .featureCard {
     background: white;
     padding: 30px 30px 30px 40px;
     border-radius: 20px;
-
-    font-size: 16px;
-    color: #181818;
-
     position: relative;
-
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: all 0.25s ease;
 }
 
-/* accent dot */
 .featureCard::before {
     content: "";
     position: absolute;
     top: 22px;
     left: 20px;
-
     width: 8px;
     height: 8px;
     background: #ffd200;
     border-radius: 50%;
-
     box-shadow: 0 0 10px rgba(255,210,0,0.7);
 }
 
-/* hover */
 .featureCard:hover {
     transform: translateY(-6px);
     box-shadow: 0 25px 60px rgba(0,0,0,0.15);
 }
-
-/* =========================
-   TEXT SECTION
-========================= */
 
 .section {
     padding: 80px 20px 140px;
@@ -274,10 +226,6 @@ button:hover {
     margin-bottom: 20px;
 }
 
-/* =========================
-   FULL WIDTH IMAGE
-========================= */
-
 .fullWidthImage {
     width: 100%;
     height: 60vh;
@@ -290,34 +238,13 @@ button:hover {
     object-fit: cover;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-.footer {
-    background: #181818;
-    color: #fff;
-    padding: 60px 20px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media (max-width: 900px) {
-
     .featureGrid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-
     h1 {
         font-size: 36px;
         width: 100%;
