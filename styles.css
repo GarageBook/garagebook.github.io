@@ -51,6 +51,7 @@ h2 {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: #181818;
+    margin:0 0 40px 0;
 }
 
 .featureCard h3 {
@@ -64,6 +65,12 @@ p {
     font-size: 17px;
     line-height: 1.8;
     color: #555;
+    margin:0;
+}
+
+p.bold {
+    font-family: 'ZalandoSansBold', sans-serif;
+    margin:20px 0 0 0;
 }
 
 .navigation {
@@ -211,7 +218,7 @@ button:hover {
 }
 
 .section {
-    padding: 80px 20px 140px;
+    padding: 4p0px 20px 140px;
 }
 
 .textBlock {
