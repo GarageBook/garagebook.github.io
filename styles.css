@@ -460,3 +460,31 @@ button:hover {
         gap: 40px;
     }
 }
+
+
+a {
+    color: #181818; /* zwart */
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+
+a:hover,
+a:visited:hover {
+    color: #ffd200;
+}
+
+
+a:visited {
+    color: #181818;
+}
+
+.footer a {
+    color: #fff;
+    opacity: 0.8;
+}
+
+.footer a:hover {
+    color: #ffd200;
+    opacity: 1;
+}
