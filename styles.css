@@ -306,3 +306,24 @@ button:hover {
         margin-top: 0;
     }
 }
+
+.contentImage {
+    max-width: 1200px;
+    margin: 100px auto 20px auto;
+    padding: 0 20px;
+}
+
+.contentImageInner {
+    width: 100%;
+    aspect-ratio: 16 / 6;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.contentImageInner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
