@@ -10,6 +10,18 @@
 
     <link rel="canonical" href="https://garagebook.nl/motor-onderhoud-app/">
     <link rel="stylesheet" href="../styles.css" />
+
+    <style>
+        .contentImageInner img {
+            max-width: 900px;
+            width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            opacity: 0.92;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,8 +32,8 @@
     </div>
 
     <div class="navItems">
-        <button onclick="window.open('https://app.garagebook.nl', '_blank')">
-            Maak gratis jouw garage aan
+        <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-app','event_label':'nav'}); window.location.href='https://app.garagebook.nl/admin/register';">
+            Start gratis
         </button>
     </div>
 </header>
@@ -29,9 +41,9 @@
 <main>
 
 <section class="heroTwo">
-    <h1>Motor onderhoud app gebruiken?</h1>
+    <h1>Houd je motoronderhoud automatisch bij</h1>
 
-    <h2 class="heroSubtitle">Alles van je motor op één plek</h2>
+    <h2 class="heroSubtitle">Alles van je motor op één plek, zonder Excel of losse notities</h2>
 
     <ul class="heroPoints">
         <li>Altijd inzicht in onderhoud</li>
@@ -39,7 +51,7 @@
         <li>Nooit meer iets vergeten</li>
     </ul>
 
-    <button onclick="window.open('https://app.garagebook.nl', '_blank')">
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-app','event_label':'hero'}); window.location.href='https://app.garagebook.nl/admin/register';">
         Start gratis
     </button>
 </section>
@@ -77,6 +89,12 @@
     </div>
 </section>
 
+<section style="text-align:center; margin:60px 0;">
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-app','event_label':'mid'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Start gratis met GarageBook
+    </button>
+</section>
+
 <section class="section">
     <div class="textBlock">
 
@@ -85,8 +103,8 @@
         </p>
 
         <p>
-            Onderhoud is niet alleen iets wat je afvinkt. Het is een verhaal van wat je hebt gedaan, wat je hebt vervangen en hoe je motor zich ontwikkelt.
-            Met een motor onderhoud app bouw je automatisch die complete historie op.
+            Onderhoud is niet alleen iets wat je afvinkt. Het is een compleet overzicht van wat je hebt gedaan en wat eraan komt.
+            Met een motor onderhoud app bouw je automatisch die historie op.
         </p>
 
     </div>
@@ -99,7 +117,7 @@
 </section>
 
 <section class="features">
-    <h2>Wat kun je bijhouden in een motor onderhoud app</h2>
+    <h2>Wat kun je bijhouden</h2>
 
     <div class="featureGrid">
         <div class="featureCard"><h3>Kilometerstanden</h3></div>
@@ -115,13 +133,13 @@
     <div class="textBlock">
 
         <p class="lead">
-            Van Excel naar een echte oplossing.
+            Van Excel naar overzicht.
         </p>
 
         <p>
-            Veel motorrijders beginnen met <a href="https://www.garagebook.nl/motor-onderhoud-excel/">motor onderhoud in Excel</a> of proberen hun <a href="https://www.garagebook.nl/motor-onderhoud-bijhouden/">motor onderhoud bij te houden</a> met losse notities.
-            Maar zodra je meer data hebt, meerdere onderhoudsmomenten en kosten wilt bijhouden, wordt dat al snel onoverzichtelijk.<br>
-            Een motor onderhoud app neemt dat werk uit handen en geeft je direct structuur.
+            Veel motorrijders beginnen met <a href="../motor-onderhoud-excel/">Excel</a> of losse notities.
+            Maar zodra je meer data hebt, wordt het onoverzichtelijk.
+            Een onderhoud app geeft direct structuur.
         </p>
 
     </div>
@@ -141,15 +159,20 @@
     <div class="textBlock">
 
         <p class="lead">
-            Meer inzicht. Meer controle.
+            Meer inzicht. Minder verrassingen.
         </p>
 
         <p>
-            Of je nu zelf sleutelt of onderhoud laat doen: met een motor onderhoud app weet je precies waar je staat.
-            En dat betekent minder verrassingen, betere planning en een motor die altijd in topconditie is.
+            Of je nu zelf sleutelt of onderhoud laat doen: je weet altijd waar je staat.
         </p>
 
     </div>
+</section>
+
+<section style="text-align:center; margin:60px 0;">
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-app','event_label':'bottom'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Maak gratis je onderhoudslog
+    </button>
 </section>
 
 <section class="section" style="margin:100px 0 0 0;">
@@ -158,27 +181,28 @@
         <h2>Veelgestelde vragen</h2>
 
         <p class="bold">Wat is een motor onderhoud app?</p>
-        <p>Een app waarin je onderhoud, reparaties, kosten en historie van je motor bijhoudt.</p>
+        <p>Een app waarin je onderhoud, reparaties, kosten en historie bijhoudt.</p>
 
         <p class="bold">Is een app beter dan Excel?</p>
-        <p>Ja, een app geeft structuur, overzicht en is altijd toegankelijk, terwijl Excel snel onoverzichtelijk wordt.</p>
+        <p>Ja, een app geeft structuur en overzicht.</p>
 
         <p class="bold">Kan ik meerdere motoren bijhouden?</p>
-        <p>Ja, je kunt eenvoudig meerdere voertuigen beheren binnen één account.</p>
+        <p>Ja, je kunt meerdere voertuigen beheren.</p>
 
         <p class="bold">Is GarageBook gratis?</p>
-        <p>Ja, je kunt gratis starten en direct je eerste motor toevoegen.</p>
+        <p>Ja, je kunt direct gratis starten.</p>
 
     </div>
 </section>
 
 <section class="heroTwo" style="min-height:auto; padding:80px 20px;text-align:center;margin-top:100px;">
-    <button onclick="window.open('https://garagebook.softr.app/register', '_blank')">
-        Maak gratis jouw garage aan
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-app','event_label':'final'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Start gratis en maak je eerste onderhoudslog
     </button>
 </section>
 
 </main>
+
 <footer class="footer">
     <div class="footerInner">
 
