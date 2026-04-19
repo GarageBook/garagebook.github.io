@@ -60,6 +60,18 @@
     </script>
 
     <link rel="stylesheet" href="../styles.css" />
+
+    <style>
+        .contentImageInner img {
+            max-width: 900px;
+            width: 100%;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            opacity: 0.92;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -70,8 +82,8 @@
     </div>
 
     <div class="navItems">
-        <button onclick="window.open('https://app.garagebook.nl', '_blank')">
-            Maak gratis jouw garage aan
+        <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-schema','event_label':'nav'}); window.location.href='https://app.garagebook.nl/admin/register';">
+            Start gratis
         </button>
     </div>
 </header>
@@ -88,8 +100,8 @@
         <li>Meer controle over kosten en planning</li>
     </ul>
 
-    <button onclick="window.open('https://app.garagebook.nl', '_blank')">
-        Start gratis
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-schema','event_label':'hero'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Start gratis en houd je onderhoud bij
     </button>
 </section>
 
@@ -126,6 +138,12 @@
     </div>
 </section>
 
+<section style="text-align:center; margin:60px 0;">
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-schema','event_label':'mid'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Start gratis met GarageBook
+    </button>
+</section>
+
 <section class="section" style="margin-top:80px;">
     <div class="textBlock">
         <h2>Concreet onderhoudsschema voorbeeld</h2>
@@ -135,7 +153,7 @@
         </p>
 
         <p>
-            Gebruik dit als basis onderhoudsschema voor je motor. Controleer daarnaast altijd het onderhoudsboekje van jouw merk en model. Onderhoudsintervallen: olie, ketting en remmen:
+            Gebruik dit als basis onderhoudsschema voor je motor. Controleer daarnaast altijd het onderhoudsboekje van jouw merk en model.
         </p>
     </div>
 </section>
@@ -212,6 +230,14 @@
     </div>
 </section>
 
+<section style="text-align:center; margin:60px 0;">
+    <p style="margin-bottom:15px;">Een schema is stap 1. Overzicht is stap 2.</p>
+
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-schema','event_label':'bottom'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Maak gratis je onderhoudslog
+    </button>
+</section>
+
 <section class="staggeredImages" style="margin-top:100px;">
     <div class="imageColumn left">
         <img src="../assets/garagebook-ipad-garage.png" alt="Motor onderhoud schema overzicht">
@@ -229,35 +255,30 @@
 
         <p class="bold">Hoe vaak moet je motorolie vervangen?</p>
         <p>
-            Gemiddeld elke 5.000 tot 10.000 kilometer, afhankelijk van het type motor en je rijstijl.
+            Gemiddeld elke 5.000 tot 10.000 kilometer.
         </p>
 
         <p class="bold">Hoe vaak moet je de ketting smeren?</p>
         <p>
-            Meestal elke 500 kilometer en altijd na regen of reinigen.
+            Meestal elke 500 kilometer.
         </p>
 
         <p class="bold">Hoe vaak moet je remmen controleren?</p>
         <p>
-            Controleer remblokken minimaal elke 5.000 kilometer.
+            Minimaal elke 5.000 kilometer.
         </p>
 
         <p class="bold">Is een onderhoud schema voldoende?</p>
         <p>
-            Nee, het is slim om ook bij te houden wat al uitgevoerd is.
-        </p>
-
-        <p class="bold">Wat is de beste manier?</p>
-        <p>
-            Een combinatie van schema + onderhoudshistorie in GarageBook.
+            Nee, je wilt ook bijhouden wat al gedaan is.
         </p>
 
     </div>
 </section>
 
 <section class="heroFour" style="min-height:auto; padding:80px 20px;text-align:center;margin-top:100px;">
-    <button onclick="window.open('https://garagebook.softr.app/register', '_blank')">
-        Maak gratis jouw garage aan
+    <button onclick="gtag('event','cta_click',{'event_category':'motor-onderhoud-schema','event_label':'final'}); window.location.href='https://app.garagebook.nl/admin/register';">
+        Start gratis en maak je eerste onderhoudslog
     </button>
 </section>
 
