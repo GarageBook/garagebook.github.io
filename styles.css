@@ -2,6 +2,23 @@
     box-sizing: border-box;
 }
 
+:root {
+    --color-text: #181818;
+    --color-text-muted: #555;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f6f4ee;
+    --color-accent: #ffd200;
+    --color-accent-dark: #c6a300;
+    --color-dark: #181818;
+    --color-border: rgba(24, 24, 24, 0.12);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.12);
+    --radius-card: 20px;
+    --radius-image: 18px;
+    --site-max-width: 1200px;
+    --reading-max-width: 720px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -9,28 +26,43 @@ html {
 body {
     margin: 0;
     font-family: 'ZalandoSansLight', sans-serif;
+    color: var(--color-text);
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,210,0,0.06), transparent 40%),
-        radial-gradient(circle at 80% 10%, rgba(255,210,0,0.05), transparent 45%),
-        #ffffff;
+        radial-gradient(circle at 20% 20%, rgba(255, 210, 0, 0.06), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(255, 210, 0, 0.05), transparent 45%),
+        var(--color-surface);
+}
+
+img {
+    max-width: 100%;
 }
 
 @font-face {
     font-family: 'ZalandoSansBold';
     src: url('assets/fonts/zalandosans/ZalandoSans-Bold.woff2') format('woff2');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'ZalandoSansLight';
     src: url('assets/fonts/zalandosans/ZalandoSans-Light.woff2') format('woff2');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'QuantixExtraBold';
     src: url('assets/fonts/quantix/QuantixExtrabold.woff2') format('woff2');
+    font-display: swap;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
     margin: 0;
 }
 
@@ -41,7 +73,7 @@ h1 {
     letter-spacing: -0.02em;
     text-transform: uppercase;
     color: #fff;
-    width: 50%;
+    width: min(50%, 620px);
 }
 
 h2 {
@@ -50,10 +82,11 @@ h2 {
     line-height: 1.2;
     letter-spacing: -0.02em;
     text-transform: uppercase;
-    color: #181818;
-    margin:0 0 40px 0;
+    color: var(--color-text);
+    margin-bottom: 40px;
 }
 
+h3,
 .featureCard h3 {
     font-family: 'ZalandoSansLight', sans-serif;
     font-size: 17px;
@@ -61,31 +94,76 @@ h2 {
     color: #333;
 }
 
-p {
+p,
+li {
     font-size: 17px;
     line-height: 1.8;
-    color: #555;
-    margin:0;
+    color: var(--color-text-muted);
 }
 
-p.bold {
+p + p {
+    margin-top: 24px;
+}
+
+.bold {
     font-family: 'ZalandoSansBold', sans-serif;
-    margin:20px 0 0 0;
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-accent-dark);
+}
+
+a:visited {
+    color: var(--color-text);
+}
+
+.skipLink {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 1200;
+    padding: 12px 16px;
+    background: #fff;
+    color: var(--color-text);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+}
+
+.skipLink:focus {
+    top: 16px;
 }
 
 .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
     padding: 30px 50px;
-    background: #181818;
+    background: rgba(24, 24, 24, 0.96);
     position: sticky;
     top: 0;
     z-index: 999;
+    transition: padding 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navigation.scrolled {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .logo img {
     width: 200px;
+    display: block;
 }
 
 .navItems {
@@ -94,65 +172,68 @@ p.bold {
     gap: 20px;
 }
 
-button {
-    background: #ffd200;
-    color: #181818;
+.buttonLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    gap: 10px;
+    min-height: 52px;
     padding: 14px 20px;
     border-radius: 10px;
-    border: none;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-button:hover {
+.buttonLink:hover,
+.buttonLink:focus-visible {
     transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    color: var(--color-text);
+    background: #ffe45a;
+}
+
+.buttonLink--wide {
+    min-width: 0;
+}
+
+.hero,
+.heroTwo,
+.heroThree,
+.heroFour {
+    padding: 100px 24px 100px 170px;
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .hero {
-    padding: 100px 0 0 170px;
-    width: 100%;
-    min-height: 100vh;
     background-image: url('assets/garagebook-motorcyle-owner.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 .heroTwo {
-    padding: 100px 0 0 170px;
-    width: 100%;
-    min-height: 100vh;
     background-image: url('assets/garagebook-motorcyle-owner2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 .heroThree {
-    padding: 100px 0 0 170px;
-    width: 100%;
-    min-height: 100vh;
     background-image: url('assets/garagebook-motorcyle-owner3.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 .heroFour {
-    padding: 100px 0 0 170px;
-    width: 100%;
-    min-height: 100vh;
     background-image: url('assets/garagebook-motorcyle-owner4.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
 }
 
 .hero::after,
@@ -164,10 +245,10 @@ button:hover {
     inset: 0;
     background: radial-gradient(
         circle at 20% 40%,
-        rgba(0,0,0,0.65) 0%,
-        rgba(0,0,0,0.45) 25%,
-        rgba(0,0,0,0.15) 50%,
-        rgba(0,0,0,0) 70%
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.45) 25%,
+        rgba(0, 0, 0, 0.15) 50%,
+        rgba(0, 0, 0, 0) 70%
     );
     z-index: 1;
 }
@@ -183,25 +264,33 @@ button:hover {
 .heroSubtitle {
     font-family: 'ZalandoSansBold', sans-serif;
     font-size: 30px;
-    color: rgba(255,255,255,0.9);
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.92);
     margin: 30px 0 20px;
     text-transform: none;
+    max-width: 680px;
+}
+
+.heroIntro {
+    max-width: 560px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.82);
 }
 
 .heroPoints {
     list-style: none;
     padding: 0;
-    margin: 0 0 25px 0;
+    margin: 0 0 32px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 500px;
+    max-width: 520px;
 }
 
 .heroPoints li {
     font-family: 'ZalandoSansLight', sans-serif;
     font-size: 18px;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.88);
     position: relative;
     padding-left: 18px;
 }
@@ -210,33 +299,71 @@ button:hover {
     content: "";
     position: absolute;
     left: 0;
-    top: 9px;
+    top: 12px;
     width: 6px;
     height: 6px;
-    background: #ffd200;
+    background: var(--color-accent);
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255,210,0,0.8);
+    box-shadow: 0 0 8px rgba(255, 210, 0, 0.8);
+}
+
+.section {
+    padding: 40px 20px 140px;
+}
+
+.section--intro {
+    padding-top: 100px;
+}
+
+.section--compact {
+    padding-bottom: 100px;
+}
+
+.section--faq {
+    padding-top: 100px;
+}
+
+.textBlock {
+    max-width: var(--reading-max-width);
+    margin: 0 auto;
+}
+
+.textBlock .lead {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 22px;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.sectionLabel {
+    display: inline-block;
+    margin-bottom: 18px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #776321;
 }
 
 .features {
-    max-width: 1200px;
+    max-width: var(--site-max-width);
     margin: 0 auto;
     padding: 140px 20px 80px;
 }
 
 .featureGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
 }
 
 .featureCard {
-    background: white;
+    background: var(--color-surface);
     padding: 30px 30px 30px 40px;
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: all 0.25s ease;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .featureCard::before {
@@ -246,109 +373,19 @@ button:hover {
     left: 20px;
     width: 8px;
     height: 8px;
-    background: #ffd200;
+    background: var(--color-accent);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255,210,0,0.7);
+    box-shadow: 0 0 10px rgba(255, 210, 0, 0.7);
 }
 
 .featureCard:hover {
     transform: translateY(-6px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-}
-
-.section {
-    padding: 4p0px 20px 140px;
-}
-
-.textBlock {
-    max-width: 720px;
-    margin: 0 auto;
-}
-
-.textBlock .lead {
-    font-family: 'ZalandoSansBold', sans-serif;
-    font-size: 22px;
-    color: #181818;
-    margin-bottom: 20px;
-}
-
-.fullWidthImage {
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-}
-
-.fullWidthImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-@media (max-width: 900px) {
-    .featureGrid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 36px;
-        width: 100%;
-    }
-
-    .hero {
-        padding: 80px 20px;
-    }
-
-    .navigation {
-        padding: 20px;
-    }
-
-    .logo img {
-        width: 140px;
-    }
-}
-
-.staggeredImages {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    padding: 0 0 100px 0;
-}
-
-/* Kolommen */
-.imageColumn {
-    width: 400px;
-}
-
-/* Afbeeldingen */
-.imageColumn img {
-    width: 100%;
-    height: auto;
-    border-radius: 50px; /* flinke radius */
-    display: block;
-    object-fit: cover;
-}
-
-/* stagger effect */
-.imageColumn.right {
-    margin-top: 180px;
-}
-
-@media (max-width: 768px) {
-    .staggeredImages {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .imageColumn.right {
-        margin-top: 0;
-    }
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
 }
 
 .contentImage {
-    max-width: 1200px;
-    margin: 100px auto 20px auto;
+    max-width: var(--site-max-width);
+    margin: 100px auto 20px;
     padding: 0 20px;
 }
 
@@ -356,8 +393,8 @@ button:hover {
     width: 100%;
     aspect-ratio: 16 / 6;
     overflow: hidden;
-    border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    border-radius: var(--radius-image);
+    box-shadow: var(--shadow-strong);
 }
 
 .contentImageInner img {
@@ -367,24 +404,140 @@ button:hover {
     display: block;
 }
 
-/* FOOTER */
+.fullWidthImage {
+    width: 100%;
+    height: 60vh;
+    min-height: 360px;
+    overflow: hidden;
+}
+
+.fullWidthImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.staggeredImages {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 100px;
+    padding: 0 20px 100px;
+}
+
+.imageColumn {
+    width: min(400px, 100%);
+}
+
+.imageColumn img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px;
+    display: block;
+    object-fit: cover;
+    box-shadow: var(--shadow-strong);
+}
+
+.imageColumn.right {
+    margin-top: 180px;
+}
+
+.ctaSection {
+    padding: 20px;
+    margin: 40px 0 80px;
+    text-align: center;
+}
+
+.ctaSection p {
+    margin-bottom: 15px;
+}
+
+.ctaBanner {
+    min-height: auto;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.tableWrap {
+    overflow-x: auto;
+    margin-top: 30px;
+    border-radius: var(--radius-image);
+    box-shadow: var(--shadow-soft);
+    background: var(--color-surface);
+}
+
+.maintenanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;
+}
+
+.maintenanceTable th,
+.maintenanceTable td {
+    padding: 14px;
+    text-align: left;
+}
+
+.maintenanceTable thead th {
+    border-bottom: 1px solid rgba(24, 24, 24, 0.18);
+    font-family: 'ZalandoSansBold', sans-serif;
+    color: var(--color-text);
+    background: var(--color-surface-muted);
+}
+
+.maintenanceTable tbody td {
+    border-bottom: 1px solid rgba(24, 24, 24, 0.08);
+}
+
+.maintenanceTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.faqList {
+    display: grid;
+    gap: 16px;
+}
+
+.faqItem {
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.faqItem summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    color: var(--color-text);
+}
+
+.faqItem summary::-webkit-details-marker {
+    display: none;
+}
+
+.faqItem p {
+    padding: 0 24px 22px;
+}
 
 .footer {
-    background: #181818;
+    background: var(--color-dark);
     color: #fff;
     padding: 100px 50px;
-    
 }
 
 .footerInner {
-    max-width: 1200px;
+    max-width: var(--site-max-width);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     gap: 60px;
 }
 
-/* Link kolommen */
 .footerLinks {
     display: flex;
     gap: 80px;
@@ -403,18 +556,22 @@ button:hover {
     text-transform: uppercase;
 }
 
-.footerColumn a {
-    color: rgba(255,255,255,0.7);
+.footerColumn a,
+.socials a {
+    color: rgba(255, 255, 255, 0.76);
     text-decoration: none;
     font-size: 15px;
-    transition: 0.2s ease;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-.footerColumn a:hover {
-    color: #ffd200;
+.footerColumn a:hover,
+.footerColumn a:focus-visible,
+.socials a:hover,
+.socials a:focus-visible {
+    color: var(--color-accent);
+    opacity: 1;
 }
 
-/* Rechterkant */
 .footerRight {
     display: flex;
     flex-direction: column;
@@ -426,65 +583,186 @@ button:hover {
     width: 180px;
 }
 
-/* Socials */
 .socials {
     display: flex;
     flex-direction: column;
-    gap: 10px; 
-}
-.socials a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.2s ease;
+    gap: 10px;
 }
 
-.socials a:hover {
-    color: #ffd200;
+@media (max-width: 1100px) {
+    .navigation {
+        padding-inline: 24px;
+    }
+
+    .hero,
+    .heroTwo,
+    .heroThree,
+    .heroFour {
+        padding-left: 80px;
+    }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .footerInner {
+@media (max-width: 900px) {
+    h1 {
+        width: 100%;
+        font-size: 44px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    .featureGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .footerInner,
+    .footerLinks {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 50px;
     }
 
     .footerRight {
         align-items: flex-start;
     }
+}
 
-    .footerLinks {
-        flex-direction: column;
-        gap: 40px;
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
     }
-}
 
+    h2 {
+        font-size: 30px;
+        margin-bottom: 28px;
+    }
 
-a {
-    color: #181818; /* zwart */
-    text-decoration: underline;
-    transition: color 0.2s ease;
-}
+    p,
+    li {
+        font-size: 16px;
+    }
 
+    .navigation {
+        padding: 18px 16px;
+        flex-wrap: wrap;
+    }
 
-a:hover,
-a:visited:hover {
-    color: #ffd200;
-}
+    .logo img {
+        width: 150px;
+    }
 
+    .navItems,
+    .navItems .buttonLink {
+        width: 100%;
+    }
 
-a:visited {
-    color: #181818;
-}
+    .navItems .buttonLink {
+        align-self: auto;
+    }
 
-.footer a {
-    color: #fff;
-    opacity: 0.8;
-}
+    .hero,
+    .heroTwo,
+    .heroThree,
+    .heroFour {
+        min-height: auto;
+        padding: 72px 20px 80px;
+        background-position: 62% center;
+    }
 
-.footer a:hover {
-    color: #ffd200;
-    opacity: 1;
+    .hero::after,
+    .heroTwo::after,
+    .heroThree::after,
+    .heroFour::after {
+        background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.55) 100%),
+            radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .heroSubtitle {
+        font-size: 24px;
+        margin-top: 22px;
+    }
+
+    .heroPoints {
+        gap: 12px;
+        max-width: 100%;
+    }
+
+    .section,
+    .features {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .section {
+        padding-bottom: 96px;
+    }
+
+    .section--intro {
+        padding-top: 80px;
+    }
+
+    .section--faq {
+        padding-top: 80px;
+    }
+
+    .features {
+        padding-top: 96px;
+        padding-bottom: 56px;
+    }
+
+    .featureCard {
+        padding: 24px 24px 24px 34px;
+    }
+
+    .contentImage {
+        margin-top: 72px;
+        padding-inline: 16px;
+    }
+
+    .contentImageInner {
+        aspect-ratio: 4 / 3;
+    }
+
+    .fullWidthImage {
+        height: auto;
+        min-height: 0;
+    }
+
+    .fullWidthImage img {
+        height: auto;
+    }
+
+    .staggeredImages {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        margin-top: 72px;
+        padding: 0 16px 72px;
+    }
+
+    .imageColumn.right {
+        margin-top: 0;
+    }
+
+    .imageColumn img {
+        border-radius: 28px;
+    }
+
+    .ctaSection {
+        margin: 16px 0 56px;
+        padding-inline: 16px;
+    }
+
+    .ctaBanner {
+        margin-top: 72px;
+        padding: 56px 16px;
+    }
+
+    .maintenanceTable {
+        min-width: 520px;
+    }
+
+    .footer {
+        padding: 72px 20px;
+    }
 }

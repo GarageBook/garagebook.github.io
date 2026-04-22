@@ -1,33 +1,14 @@
-let numButtonClicks = 0;
-function buttonClicked() {
-    document.getElementById("overlay").classList.add("active");
-}
-
-function closeOverlay() {
-    document.getElementById("overlay").classList.remove("active");
-}
-
-/* sluiten bij klik buiten modal */
-
-document.getElementById("overlay").addEventListener("click", function(e) {
-    if (e.target === this) {
-        closeOverlay();
-    }
-});
-
-
 document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector(".navigation");
 
-    window.addEventListener("scroll", function () {
+    if (!nav) {
+        return;
+    }
 
-        const nav = document.querySelector(".navigation");
+    function updateNavigationState() {
+        nav.classList.toggle("scrolled", window.scrollY > 50);
+    }
 
-        if (window.scrollY > 50) {
-            nav.classList.add("scrolled");
-        } else {
-            nav.classList.remove("scrolled");
-        }
-
-    });
-
+    updateNavigationState();
+    window.addEventListener("scroll", updateNavigationState, { passive: true });
 });
