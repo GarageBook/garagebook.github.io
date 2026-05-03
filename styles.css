@@ -221,23 +221,23 @@ a:visited {
 }
 
 .hero {
-    background-image: url('assets/garagebook-motorcyle-owner.png');
+    background-image: url('assets/garagebook-motorcyle-owner.webp');
 }
 
 .heroTwo {
-    background-image: url('assets/garagebook-motorcyle-owner2.png');
+    background-image: url('assets/garagebook-motorcyle-owner2.webp');
 }
 
 .heroTwo--circuit {
-    background-image: url('assets/garagebook-circuit-motor-onderhoud.jpg');
+    background-image: url('assets/garagebook-circuit-motor-onderhoud.webp');
 }
 
 .heroThree {
-    background-image: url('assets/garagebook-motorcyle-owner3.png');
+    background-image: url('assets/garagebook-motorcyle-owner3.webp');
 }
 
 .heroFour {
-    background-image: url('assets/garagebook-motorcyle-owner4.png');
+    background-image: url('assets/garagebook-motorcyle-owner4.webp');
 }
 
 .hero::after,
