@@ -655,8 +655,9 @@ a:visited {
     }
 
     .navigation {
-        padding: 18px 16px;
+        padding: 14px 16px;
         flex-wrap: wrap;
+        gap: 12px;
     }
 
     .logo img {
@@ -677,7 +678,7 @@ a:visited {
     .heroThree,
     .heroFour {
         min-height: auto;
-        padding: 72px 20px 80px;
+        padding: 56px 16px 64px;
         background-position: 62% center;
     }
 
@@ -707,20 +708,20 @@ a:visited {
     }
 
     .section {
-        padding-bottom: 96px;
+        padding-bottom: 72px;
     }
 
     .section--intro {
-        padding-top: 80px;
+        padding-top: 64px;
     }
 
     .section--faq {
-        padding-top: 80px;
+        padding-top: 64px;
     }
 
     .features {
-        padding-top: 96px;
-        padding-bottom: 56px;
+        padding-top: 72px;
+        padding-bottom: 40px;
     }
 
     .featureCard {
@@ -762,13 +763,17 @@ a:visited {
     }
 
     .ctaSection {
-        margin: 16px 0 56px;
+        margin: 8px 0 40px;
         padding-inline: 16px;
     }
 
     .ctaBanner {
-        margin-top: 72px;
-        padding: 56px 16px;
+        margin-top: 56px;
+        padding: 40px 16px;
+    }
+
+    .buttonLink--wide {
+        width: 100%;
     }
 
     .maintenanceTable {
@@ -777,5 +782,21 @@ a:visited {
 
     .footer {
         padding: 72px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+        line-height: 1.08;
+    }
+
+    .heroSubtitle {
+        font-size: 21px;
+    }
+
+    .navigation {
+        position: sticky;
+        top: 0;
     }
 }
