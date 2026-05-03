@@ -228,6 +228,10 @@ a:visited {
     background-image: url('assets/garagebook-motorcyle-owner2.png');
 }
 
+.heroTwo--circuit {
+    background-image: url('assets/garagebook-circuit-motor-onderhoud.jpg');
+}
+
 .heroThree {
     background-image: url('assets/garagebook-motorcyle-owner3.png');
 }
