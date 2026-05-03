@@ -18,8 +18,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "GarageBook",
+          "url": "https://garagebook.nl/",
+          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Motor onderhoud bijhouden? Zo houd je echt overzicht",
+          "url": "https://garagebook.nl/motor-onderhoud-bijhouden/",
+          "description": "Motor onderhoud bijhouden wordt pas echt overzichtelijk als je onderhoud, kilometerstanden, reparaties, kosten en documenten centraal opslaat.",
+          "inLanguage": "nl-NL"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "GarageBook",
+              "item": "https://garagebook.nl/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Motor onderhoud bijhouden",
+              "item": "https://garagebook.nl/motor-onderhoud-bijhouden/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
         {
           "@type": "Question",
           "name": "Hoe kan ik mijn motor onderhoud bijhouden?",
@@ -49,8 +81,10 @@
           "name": "Is GarageBook gratis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, je kunt gratis starten via app.garagebook.nl/admin/register."
+            "text": "Ja, je kunt gratis starten via app.garagebook.nl/start."
           }
+        }
+      ]
         }
       ]
     }
@@ -81,6 +115,15 @@
         </ul>
 
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Start gratis</a>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="bijhouden-short-answer">
+        <div class="textBlock">
+            <span class="sectionLabel">Kort antwoord</span>
+            <h2 id="bijhouden-short-answer">Motor onderhoud bijhouden werkt het best als alles op één plek samenkomt</h2>
+            <p class="lead">Onderhoud, reparaties, kilometerstanden, kosten en documenten zijn pas echt bruikbaar als je ze centraal bewaart.</p>
+            <p>Zo voorkom je gaten in je historie, kun je sneller terugzoeken en bouw je een onderhoudslog op dat ook waarde heeft voor planning en verkoop.</p>
+        </div>
     </section>
 
     <section class="section section--intro" aria-labelledby="bijhouden-problem">
@@ -167,6 +210,14 @@
             <p class="lead">Kopers willen weten wat er met een motor is gebeurd en hoe zorgvuldig ermee is omgegaan.</p>
 
             <p>Met een duidelijke onderhoudshistorie bouw je vertrouwen op en onderscheid je je direct. In plaats van vage herinneringen laat je gewoon zien wat wanneer is gedaan en welke kosten daarbij hoorden.</p>
+        </div>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="bijhouden-related">
+        <div class="textBlock">
+            <span class="sectionLabel">Gerelateerde pagina’s</span>
+            <h2 id="bijhouden-related">Verder lezen over overzicht en planning</h2>
+            <p>Lees ook meer over een <a href="/motor-onderhoud-app/">motor onderhoud app</a>, een praktisch <a href="/motor-onderhoud-schema/">motor onderhoud schema</a>, de verschillen met <a href="/motor-onderhoud-excel/">motor onderhoud in Excel</a> en specifiek <a href="/circuit-onderhoud-motor/">circuit onderhoud en trackday onderhoud</a>.</p>
         </div>
     </section>
 

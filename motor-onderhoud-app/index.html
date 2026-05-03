@@ -18,8 +18,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "GarageBook",
+          "url": "https://garagebook.nl/",
+          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Motor onderhoud app: waarom een app beter werkt dan Excel",
+          "url": "https://garagebook.nl/motor-onderhoud-app/",
+          "description": "Zoek je een motor onderhoud app? Ontdek waarom een app meer overzicht geeft dan Excel of losse notities en houd onderhoud, kosten en historie centraal bij.",
+          "inLanguage": "nl-NL"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "GarageBook",
+              "item": "https://garagebook.nl/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Motor onderhoud app",
+              "item": "https://garagebook.nl/motor-onderhoud-app/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
         {
           "@type": "Question",
           "name": "Wat is een motor onderhoud app?",
@@ -49,8 +81,10 @@
           "name": "Is GarageBook gratis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, je kunt gratis starten via app.garagebook.nl/admin/register."
+            "text": "Ja, je kunt gratis starten via app.garagebook.nl/start."
           }
+        }
+      ]
         }
       ]
     }
@@ -81,6 +115,15 @@
         </ul>
 
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Start gratis</a>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="app-short-answer">
+        <div class="textBlock">
+            <span class="sectionLabel">Kort antwoord</span>
+            <h2 id="app-short-answer">Een motor onderhoud app geeft meer structuur dan Excel of losse notities</h2>
+            <p class="lead">Je houdt onderhoud, reparaties, kilometerstanden, kosten en documenten per motor centraal bij.</p>
+            <p>Daardoor wordt terugzoeken eenvoudiger, onderhoud beter planbaar en je complete motorhistorie bruikbaarder tijdens bezit, onderhoud en verkoop.</p>
+        </div>
     </section>
 
     <section class="section section--intro" aria-labelledby="app-overview">
@@ -172,6 +215,14 @@
         </div>
     </section>
 
+    <section class="section section--compact" aria-labelledby="app-related">
+        <div class="textBlock">
+            <span class="sectionLabel">Gerelateerde pagina’s</span>
+            <h2 id="app-related">Verder lezen over onderhoud bijhouden</h2>
+            <p>Wil je vergelijken met andere manieren van vastleggen? Bekijk ook <a href="/motor-onderhoud-excel/">motor onderhoud in Excel</a>, lees hoe je structureel <a href="/motor-onderhoud-bijhouden/">motor onderhoud bijhoudt</a>, werk met een <a href="/motor-onderhoud-schema/">motor onderhoud schema</a> of lees meer over <a href="/circuit-onderhoud-motor/">circuit onderhoud en trackday onderhoud</a>.</p>
+        </div>
+    </section>
+
     <section class="ctaSection" aria-label="Maak gratis je onderhoudslog">
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Maak gratis je onderhoudslog</a>
     </section>
@@ -198,7 +249,7 @@
 
                 <details class="faqItem">
                     <summary>Is GarageBook gratis?</summary>
-                    <p>Ja, je kunt direct gratis starten via app.garagebook.nl/admin/register.</p>
+                    <p>Ja, je kunt direct gratis starten via app.garagebook.nl/start.</p>
                 </details>
             </div>
         </div>

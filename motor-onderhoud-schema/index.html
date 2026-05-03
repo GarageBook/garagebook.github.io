@@ -18,8 +18,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "GarageBook",
+          "url": "https://garagebook.nl/",
+          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Motor onderhoud schema: wat moet je wanneer doen?",
+          "url": "https://garagebook.nl/motor-onderhoud-schema/",
+          "description": "Motor onderhoud schema nodig? Bekijk een praktisch onderhoudsschema voor olie, ketting, remmen en banden, plus een handige checklist voor je motor.",
+          "inLanguage": "nl-NL"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "GarageBook",
+              "item": "https://garagebook.nl/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Motor onderhoud schema",
+              "item": "https://garagebook.nl/motor-onderhoud-schema/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
         {
           "@type": "Question",
           "name": "Hoe vaak moet je motorolie vervangen?",
@@ -61,6 +93,8 @@
           }
         }
       ]
+        }
+      ]
     }
     </script>
 </head>
@@ -89,6 +123,15 @@
         </ul>
 
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Start gratis en houd je onderhoud bij</a>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="schema-short-answer">
+        <div class="textBlock">
+            <span class="sectionLabel">Kort antwoord</span>
+            <h2 id="schema-short-answer">Een motor onderhoud schema helpt je plannen, maar wordt pas sterk met een onderhoudshistorie</h2>
+            <p class="lead">Een goed schema laat zien wat je wanneer controleert of vervangt.</p>
+            <p>Door dat te combineren met een logboek van uitgevoerde werkzaamheden krijg je niet alleen planning, maar ook bewijs, context en kosteninzicht per onderhoudsmoment.</p>
+        </div>
     </section>
 
     <section class="section section--intro" aria-labelledby="schema-intro">
@@ -212,6 +255,14 @@
 
         <div class="imageColumn right">
             <img src="../assets/garagebook-holding-iphone.png" alt="Motor onderhoud schema bekijken op smartphone" loading="lazy" />
+        </div>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="schema-related">
+        <div class="textBlock">
+            <span class="sectionLabel">Gerelateerde pagina’s</span>
+            <h2 id="schema-related">Verder lezen over plannen en vastleggen</h2>
+            <p>Lees ook meer over een <a href="/motor-onderhoud-app/">motor onderhoud app</a>, hoe je <a href="/motor-onderhoud-bijhouden/">motor onderhoud bijhoudt</a>, de vergelijking met <a href="/motor-onderhoud-excel/">motor onderhoud in Excel</a> en extra aandachtspunten bij <a href="/circuit-onderhoud-motor/">circuit onderhoud en trackday onderhoud</a>.</p>
         </div>
     </section>
 

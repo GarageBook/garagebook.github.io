@@ -21,8 +21,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "GarageBook",
+          "url": "https://garagebook.nl/",
+          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Circuit onderhoud motor en trackday onderhoud bijhouden | GarageBook",
+          "url": "https://garagebook.nl/circuit-onderhoud-motor/",
+          "description": "Rijd je trackdays of circuit? Ontdek welk motor onderhoud na een trackday belangrijk is, hoe je slijtage bijhoudt en hoe je overzicht houdt met GarageBook.",
+          "inLanguage": "nl-NL"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "GarageBook",
+              "item": "https://garagebook.nl/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Circuit onderhoud motor",
+              "item": "https://garagebook.nl/circuit-onderhoud-motor/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
         {
           "@type": "Question",
           "name": "Waarom vraagt circuitgebruik meer onderhoud?",
@@ -52,8 +84,10 @@
           "name": "Is GarageBook gratis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, je kunt gratis starten via app.garagebook.nl/admin/register."
+            "text": "Ja, je kunt gratis starten via app.garagebook.nl/start."
           }
+        }
+      ]
         }
       ]
     }
@@ -84,6 +118,15 @@
         </ul>
 
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Start gratis met GarageBook</a>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="circuit-short-answer">
+        <div class="textBlock">
+            <span class="sectionLabel">Kort antwoord</span>
+            <h2 id="circuit-short-answer">Trackday onderhoud draait om sneller controleren, registreren en vervangen</h2>
+            <p class="lead">Bij circuitgebruik slijten banden, remmen, olie en aandrijving sneller dan bij normaal straatgebruik.</p>
+            <p>Wie onderhoud na een trackday direct vastlegt, houdt beter zicht op slijtage, kosten, vervangmomenten en veiligheid tussen circuitdagen door.</p>
+        </div>
     </section>
 
     <section class="section section--intro" aria-labelledby="circuit-difference">
@@ -182,6 +225,14 @@
             <p class="lead">Met GarageBook houd je per motor een complete onderhoudshistorie bij, juist ook voor intensief gebruik.</p>
 
             <p>Zo zie je sneller patronen in slijtage, plan je onderhoud slimmer tussen trackdays en voorkom je dat belangrijke checks tussen wal en schip vallen. Dat geeft rust, overzicht en meer controle over veiligheid, budget en onderhoud na circuitgebruik.</p>
+        </div>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="circuit-related">
+        <div class="textBlock">
+            <span class="sectionLabel">Gerelateerde pagina’s</span>
+            <h2 id="circuit-related">Verder lezen over onderhoud en overzicht</h2>
+            <p>Werk ook aan je basis met <a href="/motor-onderhoud-bijhouden/">motor onderhoud bijhouden</a>, een praktisch <a href="/motor-onderhoud-schema/">motor onderhoud schema</a>, de vergelijking met <a href="/motor-onderhoud-excel/">motor onderhoud in Excel</a> en de voordelen van een <a href="/motor-onderhoud-app/">motor onderhoud app</a>.</p>
         </div>
     </section>
 

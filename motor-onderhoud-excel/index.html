@@ -18,8 +18,40 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "GarageBook",
+          "url": "https://garagebook.nl/",
+          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Motor onderhoud in Excel? Dit werkt beter voor overzicht en historie",
+          "url": "https://garagebook.nl/motor-onderhoud-excel/",
+          "description": "Gebruik je Excel om motor onderhoud bij te houden? Ontdek waarom spreadsheets snel tekortschieten en wat beter werkt voor historie, kosten en overzicht.",
+          "inLanguage": "nl-NL"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "GarageBook",
+              "item": "https://garagebook.nl/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Motor onderhoud in Excel",
+              "item": "https://garagebook.nl/motor-onderhoud-excel/"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
         {
           "@type": "Question",
           "name": "Is Excel geschikt voor motor onderhoud?",
@@ -49,8 +81,10 @@
           "name": "Is GarageBook gratis?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, je kunt gratis starten via app.garagebook.nl/admin/register."
+            "text": "Ja, je kunt gratis starten via app.garagebook.nl/start."
           }
+        }
+      ]
         }
       ]
     }
@@ -81,6 +115,15 @@
         </ul>
 
         <a class="buttonLink buttonLink--wide" href="https://app.garagebook.nl/start">Start mijn onderhoudslog</a>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="excel-short-answer">
+        <div class="textBlock">
+            <span class="sectionLabel">Kort antwoord</span>
+            <h2 id="excel-short-answer">Excel werkt voor losse registraties, maar niet ideaal voor een complete motorhistorie</h2>
+            <p class="lead">Zodra onderhoud, kosten, documenten en context samenkomen, wordt een spreadsheet snel beperkt.</p>
+            <p>Een onderhoudsapp geeft meer structuur, betere terugvindbaarheid en een logischer totaaloverzicht van alles wat je aan je motor doet.</p>
+        </div>
     </section>
 
     <section class="section section--intro" aria-labelledby="excel-intro">
@@ -169,6 +212,14 @@
             <p class="lead">Je wilt laten zien wat er met je motor is gebeurd, overzichtelijk en betrouwbaar.</p>
 
             <p>Een heldere onderhoudshistorie wekt meer vertrouwen dan een los Excel-bestand. Daarmee maak je zichtbaar hoe zorgvuldig je onderhoud hebt uitgevoerd en wat de motor daadwerkelijk heeft meegemaakt.</p>
+        </div>
+    </section>
+
+    <section class="section section--compact" aria-labelledby="excel-related">
+        <div class="textBlock">
+            <span class="sectionLabel">Gerelateerde pagina’s</span>
+            <h2 id="excel-related">Verder lezen over betere manieren van bijhouden</h2>
+            <p>Vergelijk Excel ook met een <a href="/motor-onderhoud-app/">motor onderhoud app</a>, lees hoe je structureel <a href="/motor-onderhoud-bijhouden/">motor onderhoud bijhoudt</a>, werk met een <a href="/motor-onderhoud-schema/">motor onderhoud schema</a> of verdiep je in <a href="/circuit-onderhoud-motor/">circuit onderhoud en trackday onderhoud</a>.</p>
         </div>
     </section>
 
