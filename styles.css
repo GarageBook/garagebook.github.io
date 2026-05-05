@@ -553,6 +553,14 @@ a:visited {
     aspect-ratio: 16 / 9;
 }
 
+.section[aria-labelledby="blog-intro"] {
+    padding-bottom: 44px;
+}
+
+.section[aria-labelledby="blog-intro"] + .contentImage {
+    margin-top: 44px;
+}
+
 .blogArticleProse > h2:first-child {
     display: none;
 }
@@ -809,6 +817,14 @@ a:visited {
     .contentImage {
         margin-top: 72px;
         padding-inline: 16px;
+    }
+
+    .section[aria-labelledby="blog-intro"] {
+        padding-bottom: 28px;
+    }
+
+    .section[aria-labelledby="blog-intro"] + .contentImage {
+        margin-top: 28px;
     }
 
     .contentImageInner {
