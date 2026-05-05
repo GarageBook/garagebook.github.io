@@ -594,6 +594,8 @@ a:visited {
 
 .footerRight img {
     width: 180px;
+    height: auto;
+    display: block;
 }
 
 .socials {
