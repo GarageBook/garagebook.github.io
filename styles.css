@@ -537,6 +537,73 @@ a:visited {
     padding: 0 24px 22px;
 }
 
+.blogHero h1 {
+    width: min(72%, 900px);
+}
+
+.blogHero .heroSubtitle {
+    width: min(70%, 760px);
+}
+
+.blogHeroLabel {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.blogHeroImage {
+    aspect-ratio: 16 / 9;
+}
+
+.blogArticleProse > h2:first-child {
+    display: none;
+}
+
+.blogArticleProse h2 {
+    margin-top: 56px;
+    margin-bottom: 24px;
+}
+
+.blogArticleProse h3 {
+    margin-top: 32px;
+    margin-bottom: 12px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--color-text);
+}
+
+.blogArticleProse ul,
+.blogArticleProse ol {
+    margin: 24px 0;
+    padding-left: 24px;
+}
+
+.blogArticleProse li + li {
+    margin-top: 10px;
+}
+
+.blogArticleProse li p {
+    margin: 0;
+}
+
+.blogArticleProse strong,
+.blogArticleProse em {
+    color: var(--color-text);
+}
+
+.blogCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.blogCard {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.blogCard .buttonLink {
+    align-self: flex-start;
+}
+
 .footer {
     background: var(--color-dark);
     color: #fff;
@@ -631,6 +698,10 @@ a:visited {
         grid-template-columns: 1fr;
     }
 
+    .blogCardGrid {
+        grid-template-columns: 1fr;
+    }
+
     .footerInner,
     .footerLinks {
         flex-direction: column;
@@ -701,6 +772,11 @@ a:visited {
     .heroPoints {
         gap: 12px;
         max-width: 100%;
+    }
+
+    .blogHero h1,
+    .blogHero .heroSubtitle {
+        width: 100%;
     }
 
     .section,
