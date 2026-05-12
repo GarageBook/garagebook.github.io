@@ -619,6 +619,10 @@ a:visited {
     aspect-ratio: 16 / 9;
 }
 
+.blogHero--zelfOnderhoud {
+    background-image: url('assets/garagebook-zelf-motor-onderhouden-bewijs-bijhouden.jpg');
+}
+
 .section[aria-labelledby="blog-intro"] {
     padding-bottom: 44px;
 }
@@ -900,6 +904,11 @@ a:visited {
 
     .section[aria-labelledby="blog-intro"] {
         padding-bottom: 28px;
+    }
+
+    .breadcrumbSection {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .section[aria-labelledby="blog-intro"] + .contentImage {
