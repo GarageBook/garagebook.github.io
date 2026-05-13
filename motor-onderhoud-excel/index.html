@@ -12,12 +12,11 @@
 
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function () { dataLayer.push(arguments); };
-        window.gtag("js", new Date());
-        window.gtag("config", "G-6KJM1W5N63", {
-          linker: {
-            domains: ["garagebook.nl", "app.garagebook.nl"]
-          }
+        window.gtag("set", "linker", {
+          domains: ["garagebook.nl", "app.garagebook.nl"]
         });
+        window.gtag("js", new Date());
+        window.gtag("config", "G-6KJM1W5N63");
 
         var script = document.createElement("script");
         script.async = true;
