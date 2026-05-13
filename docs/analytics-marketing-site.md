@@ -5,7 +5,7 @@ Laatste controle uitgevoerd op 13 mei 2026.
 ## Huidige GA4 implementatie
 
 - De marketingsite laadt GA4 rechtstreeks in de `<head>` van elke actieve publieke pagina.
-- De gebruikte Measurement ID op `garagebook.nl` is `G-55BFEXZGMC`.
+- De centrale GA4 Measurement ID voor `garagebook.nl` en `app.garagebook.nl` is `G-6KJM1W5N63`.
 - De CTA-eventlogica draait centraal via [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
 - Er is per pagina één GA4-loader aangetroffen. Er zijn geen dubbele GA4 `gtag.js` loaders of dubbele `gtag('config', ...)` calls op dezelfde pagina gevonden.
 - Dezelfde GA4-snippet stond voorheen op elke pagina ongeconditioneerd aan, dus ook bij lokaal openen of andere niet-productie-hostnames.
@@ -81,19 +81,23 @@ Belangrijk:
 
 ## Cross-domain voorbereiding
 
-De Measurement ID van de marketingsite is op 13 mei 2026 gecontroleerd als:
+De centrale stream is op 13 mei 2026 ingesteld als:
 
-- marketingsite `garagebook.nl`: `G-55BFEXZGMC`
+- `G-6KJM1W5N63`
 
-De Measurement ID van de app-home op `https://app.garagebook.nl` is op 13 mei 2026 gecontroleerd als:
+Deze Measurement ID geldt voor:
 
-- app `app.garagebook.nl`: `G-6KJM1W5N63`
+- `garagebook.nl`
+- actieve marketing-, SEO- en blogpagina's op `garagebook.nl`
+- `app.garagebook.nl`
 
-Conclusie:
+Segmentatie binnen GA4 gebeurt via hostname, bijvoorbeeld:
 
-- de marketingsite en app gebruiken momenteel niet dezelfde GA4 Measurement ID
-- cross-domain meting binnen dezelfde GA4 property is daarmee nog niet volledig voorbereid
-- voor volledige sessiecontinuiteit tussen marketingsite en app moeten beide domeinen onder dezelfde GA4 property of een expliciet ontworpen meetstrategie vallen
+- `garagebook.nl`
+- `www.garagebook.nl`
+- `app.garagebook.nl`
+
+Daarmee vallen marketingsite en app binnen dezelfde analytics stream en funnel.
 
 ## Testplan
 
@@ -161,8 +165,7 @@ In GA4:
 
 Statisch gecontroleerd op 13 mei 2026:
 
-- marketingsite Measurement ID bevestigd als `G-55BFEXZGMC`
-- app Measurement ID bevestigd als `G-6KJM1W5N63`
+- centrale Measurement ID bevestigd als `G-6KJM1W5N63`
 - bestaande dubbele GA4-loaders op dezelfde pagina niet aangetroffen
 - productie-only gating toegevoegd aan alle actieve marketingpagina's
 - centrale `cta_click` payload aangepast naar de gevraagde velden
