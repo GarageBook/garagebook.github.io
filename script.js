@@ -2,6 +2,7 @@ const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
 const APP_HOSTNAME = "app.garagebook.nl";
 const GARAGEBOOK_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl", APP_HOSTNAME]);
 const START_PATH = "/start/";
+const LEGACY_REGISTER_PATH = "/admin/register/";
 const SCROLL_THRESHOLDS = [50, 75, 90];
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 const MONEY_PAGE_PATHS = new Set([
@@ -40,6 +41,35 @@ window.garagebookTrack = function (eventName, params = {}) {
 
 function isStartUrl(url) {
     return url.hostname === APP_HOSTNAME && normalizePath(url.pathname) === START_PATH;
+}
+
+function isLegacyRegisterUrl(url) {
+    return GARAGEBOOK_HOSTNAMES.has(url.hostname) && normalizePath(url.pathname) === LEGACY_REGISTER_PATH;
+}
+
+function copySearchParams(sourceUrl, destinationUrl) {
+    for (const [key, value] of sourceUrl.searchParams.entries()) {
+        if (destinationUrl.searchParams.has(key)) {
+            continue;
+        }
+
+        destinationUrl.searchParams.append(key, value);
+    }
+}
+
+function getNormalizedStartUrl(url) {
+    if (isStartUrl(url)) {
+        return url;
+    }
+
+    if (!isLegacyRegisterUrl(url)) {
+        return null;
+    }
+
+    const startUrl = new URL("https://app.garagebook.nl/start");
+    copySearchParams(url, startUrl);
+
+    return startUrl;
 }
 
 function isInternalMoneyPageUrl(url) {
@@ -134,15 +164,17 @@ function ensureTrackedLinkDestination(link) {
         return null;
     }
 
-    if (!isStartUrl(url)) {
+    const normalizedStartUrl = getNormalizedStartUrl(url);
+
+    if (!normalizedStartUrl) {
         return null;
     }
 
-    if (mergeCurrentUtmsIntoUrl(url)) {
-        updateLinkHref(link, url);
+    if (mergeCurrentUtmsIntoUrl(normalizedStartUrl) || normalizedStartUrl.toString() !== url.toString()) {
+        updateLinkHref(link, normalizedStartUrl);
     }
 
-    return url;
+    return normalizedStartUrl;
 }
 
 function getCtaLocation(link) {
