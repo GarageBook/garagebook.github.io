@@ -1,5 +1,6 @@
 const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
 const APP_HOSTNAME = "app.garagebook.nl";
+const SCROLL_THRESHOLDS = [25, 50, 75, 90];
 
 function isProductionHostname(hostname = window.location.hostname) {
     return PRODUCTION_HOSTNAMES.has(hostname);
@@ -106,6 +107,70 @@ function getCtaLocation(link) {
     return "content";
 }
 
+function getScrollPercent() {
+    const doc = document.documentElement;
+    const scrollableHeight = doc.scrollHeight - window.innerHeight;
+
+    if (scrollableHeight <= 0) {
+        return 100;
+    }
+
+    return Math.min(100, Math.round((window.scrollY / scrollableHeight) * 100));
+}
+
+function createScrollDepthTracker() {
+    const firedThresholds = new Set();
+
+    function trackScrollDepth() {
+        const currentPercent = getScrollPercent();
+
+        for (const threshold of SCROLL_THRESHOLDS) {
+            if (currentPercent < threshold || firedThresholds.has(threshold)) {
+                continue;
+            }
+
+            firedThresholds.add(threshold);
+            window.garagebookTrack("scroll_depth", {
+                scroll_percent: threshold,
+                page_path: window.location.pathname,
+                page_title: document.title,
+                transport_type: "beacon",
+            });
+        }
+    }
+
+    return trackScrollDepth;
+}
+
+function getDemoTrackableElement(target) {
+    if (!(target instanceof Element)) {
+        return null;
+    }
+
+    return target.closest("[data-track-demo]");
+}
+
+function trackDemoInteraction(event) {
+    const element = getDemoTrackableElement(event.target);
+
+    if (!element) {
+        return;
+    }
+
+    const label = element.getAttribute("data-track-demo-label") || getNormalizedLinkText(element);
+    const location = element.getAttribute("data-track-demo-location") || "content";
+    const targetId = element.getAttribute("href") || element.getAttribute("data-track-demo-target") || "";
+
+    window.garagebookTrack("demo_click", {
+        click_text: label,
+        click_location: location,
+        click_target: targetId,
+        page_path: window.location.pathname,
+        page_title: document.title,
+        transport_type: "beacon",
+    });
+}
+
 function trackMarketingCtaClick(event) {
     if (!(event.target instanceof Element)) {
         return;
@@ -143,6 +208,7 @@ function updateTrackedAppLinks() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const nav = document.querySelector(".navigation");
+    const trackScrollDepth = createScrollDepthTracker();
 
     if (nav) {
         function updateNavigationState() {
@@ -154,5 +220,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateTrackedAppLinks();
+    trackScrollDepth();
+    window.addEventListener("scroll", trackScrollDepth, { passive: true });
     document.addEventListener("click", trackMarketingCtaClick, true);
+    document.addEventListener("click", trackDemoInteraction, true);
 });

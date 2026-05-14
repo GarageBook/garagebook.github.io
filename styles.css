@@ -534,9 +534,391 @@ a:visited {
     align-items: center;
 }
 
+.ctaBanner p {
+    margin-bottom: 32px;
+}
+
 .ctaBanner .buttonLink {
     align-self: center;
     margin-inline: auto;
+}
+
+.ctaBanner--final h2,
+.ctaBanner--final p {
+    margin: 0;
+}
+
+.ctaBanner--final p + .buttonLink {
+    margin-top: 40px !important;
+}
+
+.pageHero {
+    min-height: auto;
+    padding: 120px 24px 96px 170px;
+    background:
+        linear-gradient(90deg, rgba(12, 12, 12, 0.9) 0%, rgba(12, 12, 12, 0.74) 36%, rgba(12, 12, 12, 0.34) 68%, rgba(12, 12, 12, 0.22) 100%),
+        radial-gradient(circle at top left, rgba(255, 210, 0, 0.16), transparent 28%),
+        url('assets/garagebook-digitaal-onderhoudsboekje-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pageHero::after {
+    display: none;
+}
+
+.pageHeroInner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0;
+    display: block;
+}
+
+.pageHeroContent h1,
+.pageHeroContent .heroSubtitle {
+    width: 100%;
+    max-width: none;
+}
+
+.heroEyebrow {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.78);
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.heroCtaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+}
+
+.buttonLink--ghost {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    box-shadow: none;
+}
+
+.buttonLink--ghost:hover,
+.buttonLink--ghost:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    box-shadow: none;
+}
+
+.trustList {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    margin: 28px 0 0;
+}
+
+.trustList li {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.heroVisualCard,
+.placeholderCard {
+    border-radius: 30px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+}
+
+.heroVisualCard {
+    min-height: 520px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.heroVisualTop,
+.timelinePreviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.heroVisualLabel,
+.timelinePreviewLabel {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.heroVisualBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    min-height: 34px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 210, 0, 0.14);
+    color: #fff0a5;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 13px;
+}
+
+.placeholderCard {
+    min-height: 340px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholderCard p {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+    text-align: center;
+}
+
+.timelinePreview {
+    margin-top: 24px;
+    padding: 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timelinePreviewList {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    gap: 16px;
+}
+
+.timelinePreviewItem {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.timelinePreviewDate {
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.timelinePreviewBody {
+    padding-left: 18px;
+    border-left: 2px solid rgba(255, 210, 0, 0.42);
+}
+
+.timelinePreviewBody strong,
+.timelinePreviewBody span {
+    display: block;
+}
+
+.timelinePreviewBody strong {
+    font-family: 'ZalandoSansBold', sans-serif;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.timelinePreviewBody span {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.inlineUspGrid,
+.comparisonGrid,
+.vehicleTypeGrid,
+.timelineGrid,
+.diyGrid {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    gap: 24px;
+}
+
+.inlineUspGrid,
+.comparisonGrid,
+.timelineGrid,
+.diyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.vehicleTypeGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.inlineUspGrid {
+    margin-top: 24px;
+    padding-bottom: 100px;
+}
+
+.inlineCard {
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--shadow-soft);
+}
+
+.inlineCard h3,
+.comparisonCard h3,
+.vehicleTypeCard h3,
+.timelineCard h3,
+.diyCard h3 {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 24px;
+    line-height: 1.35;
+    color: var(--color-text);
+    margin-bottom: 12px;
+}
+
+.inlineCard p,
+.comparisonCard p,
+.vehicleTypeCard p,
+.timelineCard p,
+.diyCard p {
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.comparisonCard,
+.vehicleTypeCard,
+.timelineCard,
+.diyCard {
+    padding: 30px;
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+}
+
+.comparisonCard--dark {
+    background:
+        linear-gradient(180deg, rgba(24, 24, 24, 0.98) 0%, rgba(36, 36, 36, 0.98) 100%);
+}
+
+.comparisonCard--dark h3,
+.comparisonCard--dark p,
+.comparisonCard--dark li {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.comparisonCard--accent {
+    background:
+        linear-gradient(180deg, rgba(255, 210, 0, 0.26) 0%, rgba(255, 255, 255, 0.98) 100%);
+}
+
+.comparisonCard ul,
+.timelineCard ul,
+.diyCard ul {
+    margin: 18px 0 0;
+    padding-left: 20px;
+}
+
+.comparisonLabel {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.comparisonCard--dark .comparisonLabel {
+    color: #fff0a5;
+}
+
+.comparisonCard--accent .comparisonLabel {
+    color: #6a5600;
+}
+
+.vehicleTypeGrid,
+.timelineGrid,
+.diyGrid {
+    padding-bottom: 100px;
+}
+
+.timelineCard--highlight {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 244, 238, 0.98) 100%);
+}
+
+.timelineCallout {
+    margin-top: 24px;
+    padding: 18px 20px;
+    border-radius: 18px;
+    background: rgba(255, 210, 0, 0.14);
+    color: var(--color-text);
+}
+
+.timelineCtaWrap {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.imagePlaceholderSection {
+    max-width: var(--site-max-width);
+    margin: 72px auto 0;
+    padding: 0 20px;
+}
+
+.imagePlaceholderInner {
+    min-height: 420px;
+    padding: 28px;
+    border-radius: 28px;
+    border: 1px dashed rgba(24, 24, 24, 0.18);
+    background:
+        linear-gradient(180deg, rgba(246, 244, 238, 0.86) 0%, rgba(255, 255, 255, 0.96) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+}
+
+.imagePlaceholderInner p {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 20px;
+    color: #6b6b6b;
+    text-align: center;
+}
+
+.sectionLinks {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.sectionLinks a {
+    font-family: 'ZalandoSansBold', sans-serif;
 }
 
 .tableWrap {
@@ -760,6 +1142,14 @@ a:visited {
     .heroFour {
         padding-left: 80px;
     }
+
+    .pageHeroInner {
+        grid-template-columns: 1fr;
+    }
+
+    .heroVisualCard {
+        min-height: 0;
+    }
 }
 
 @media (max-width: 900px) {
@@ -777,6 +1167,14 @@ a:visited {
     }
 
     .blogCardGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .inlineUspGrid,
+    .comparisonGrid,
+    .vehicleTypeGrid,
+    .timelineGrid,
+    .diyGrid {
         grid-template-columns: 1fr;
     }
 
@@ -847,6 +1245,40 @@ a:visited {
         margin-top: 22px;
     }
 
+    .pageHero {
+        padding: 64px 16px 56px;
+    }
+
+    .heroEyebrow {
+        margin-bottom: 18px;
+    }
+
+    .heroCtaRow {
+        margin-top: 28px;
+    }
+
+    .trustList {
+        margin-top: 22px;
+    }
+
+    .heroVisualCard,
+    .placeholderCard {
+        border-radius: 24px;
+    }
+
+    .heroVisualCard {
+        padding: 20px;
+    }
+
+    .timelinePreviewItem {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .timelinePreviewBody {
+        padding-left: 14px;
+    }
+
     .heroPoints {
         gap: 12px;
         max-width: 100%;
@@ -895,6 +1327,41 @@ a:visited {
 
     .featureCard {
         padding: 24px 24px 24px 34px;
+    }
+
+    .inlineUspGrid,
+    .comparisonGrid,
+    .vehicleTypeGrid,
+    .timelineGrid,
+    .diyGrid,
+    .imagePlaceholderSection {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .inlineUspGrid,
+    .vehicleTypeGrid,
+    .timelineGrid,
+    .diyGrid {
+        padding-bottom: 72px;
+    }
+
+    .inlineCard,
+    .comparisonCard,
+    .vehicleTypeCard,
+    .timelineCard,
+    .diyCard {
+        padding: 24px 20px;
+    }
+
+    .imagePlaceholderSection {
+        margin-top: 56px;
+    }
+
+    .imagePlaceholderInner {
+        min-height: 280px;
+        padding: 20px;
+        border-radius: 22px;
     }
 
     .contentImage {
@@ -980,5 +1447,9 @@ a:visited {
     .navigation {
         position: sticky;
         top: 0;
+    }
+
+    .heroCtaRow {
+        flex-direction: column;
     }
 }
