@@ -8,15 +8,16 @@ Segmentatie binnen dezelfde funnel gebeurt via hostname, waaronder:
 - `www.garagebook.nl`
 - `app.garagebook.nl`
 
-## `cta_click`
+## Marketing website events
 
-Verzonden wanneer een bezoeker op de marketingsite klikt op een link naar `https://app.garagebook.nl/...`.
+De actuele marketingwebsite-events staan beschreven in [analytics-marketing.md](/mnt/raid1/GarageBook/Website/GarageBook/docs/analytics-marketing.md).
 
-Gemeten velden:
-- `cta_text`
-- `cta_location`
-- `destination_url`
-- `page_path`
-- `page_title`
+Belangrijkste events:
+
+- `clicked_start_gratis`
+- `blog_cta_clicked`
+- `outbound_click`
+- `scroll_depth`
+- `landing_page_engaged`
 
 Er worden geen persoonsgegevens meegestuurd. De tracking loopt centraal via [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
