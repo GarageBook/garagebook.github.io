@@ -1007,6 +1007,10 @@ a:visited {
     background-image: url('assets/garagebook-zelf-motor-onderhouden-bewijs-bijhouden.jpg');
 }
 
+.blogHero--youngtimerDeepDive {
+    background-image: url('assets/gb-yt-matteo-balzanelli-GZpS_yF3OFQ-unsplash.jpg');
+}
+
 .section[aria-labelledby="blog-intro"] {
     padding-bottom: 44px;
 }
@@ -1060,6 +1064,14 @@ a:visited {
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+
+.blogCardMedia {
+    display: none;
+}
+
+.blogCardMedia img {
+    display: none;
 }
 
 .blogCard .buttonLink {
