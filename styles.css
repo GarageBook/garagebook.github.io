@@ -922,8 +922,10 @@ a:visited {
 }
 
 .tableWrap {
+    max-width: var(--reading-max-width);
+    margin: 30px auto 0;
+    width: calc(100% - 40px);
     overflow-x: auto;
-    margin-top: 30px;
     border-radius: var(--radius-image);
     box-shadow: var(--shadow-soft);
     background: var(--color-surface);
