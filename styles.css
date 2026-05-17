@@ -1011,6 +1011,14 @@ a:visited {
     background-image: url('assets/gb-yt-matteo-balzanelli-GZpS_yF3OFQ-unsplash.jpg');
 }
 
+.blogHero--digitaalBoekje {
+    background-image: url('assets/garagebook-digitaal-onderhoudsboekje-hero.jpg');
+}
+
+.blogHero--oldtimerHistory {
+    background-image: url('assets/garagebook-voor-klassiekers1.jpg');
+}
+
 .section[aria-labelledby="blog-intro"] {
     padding-bottom: 44px;
 }
