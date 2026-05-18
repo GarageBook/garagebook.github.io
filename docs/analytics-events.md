@@ -1,23 +1,17 @@
 # Analytics Events
 
-De centrale GarageBook GA4 webstream voor marketingsite en app gebruikt Measurement ID `G-6KJM1W5N63`.
+De publieke GarageBook-site gebruikt GA4 Measurement ID `G-6KJM1W5N63`.
 
-Segmentatie binnen dezelfde funnel gebeurt via hostname, waaronder:
+De GA4 loader en click-events staan centraal in [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js). Die helper configureert cross-domain linking voor:
 
 - `garagebook.nl`
 - `www.garagebook.nl`
 - `app.garagebook.nl`
 
-## Marketing website events
+## Events op garagebook.nl
 
-De actuele marketingwebsite-events staan beschreven in [analytics-marketing.md](/mnt/raid1/GarageBook/Website/GarageBook/docs/analytics-marketing.md).
+- `start_click`
+- `blog_cta_click`
+- `outbound_referral_click`
 
-Belangrijkste events:
-
-- `clicked_start_gratis`
-- `blog_cta_clicked`
-- `outbound_click`
-- `scroll_depth`
-- `landing_page_engaged`
-
-Er worden geen persoonsgegevens meegestuurd. De tracking loopt centraal via [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
+De helper stuurt alleen technische en marketingparameters mee, zoals URL’s, paden, CTA-tekst, `cta_location` en `blog_slug`. Er worden geen persoonsgegevens naar GA4 gestuurd.

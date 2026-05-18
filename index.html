@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 <html lang="nl-NL">
 <head>
-    <script>
-      (function () {
-        var hostname = window.location.hostname;
-        var isProduction = hostname === "garagebook.nl" || hostname === "www.garagebook.nl";
-
-        if (!isProduction) {
-          return;
-        }
-
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || function () { dataLayer.push(arguments); };
-        window.gtag("set", "linker", {
-          domains: ["garagebook.nl", "app.garagebook.nl"]
-        });
-        window.gtag("js", new Date());
-        window.gtag("config", "G-6KJM1W5N63");
-
-        var script = document.createElement("script");
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-6KJM1W5N63";
-        document.head.appendChild(script);
-      })();
-    </script>
+    <script src="assets/js/analytics-events.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GarageBook: digitaal onderhoudsplatform voor voertuigen</title>

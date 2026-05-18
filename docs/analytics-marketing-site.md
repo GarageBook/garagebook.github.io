@@ -1,23 +1,13 @@
 # Analytics marketing site
 
-> Verouderde auditnotitie. De actuele marketingwebsite-tracking staat in [analytics-marketing.md](/mnt/raid1/GarageBook/Website/GarageBook/docs/analytics-marketing.md) en gebruikt de events `clicked_start_gratis`, `blog_cta_clicked`, `outbound_click`, `scroll_depth` en `landing_page_engaged`.
+> Verouderde auditnotitie. De actuele implementatie staat in [analytics-marketing.md](/mnt/raid1/GarageBook/Website/GarageBook/docs/analytics-marketing.md).
 
-Laatste controle uitgevoerd op 14 mei 2026.
+Laatste controle uitgevoerd op 18 mei 2026.
 
-## Implementatie
+## Huidige status
 
-- De marketingsite laadt GA4 rechtstreeks in de `<head>` van actieve publieke pagina's.
-- De centrale GA4 Measurement ID is `G-6KJM1W5N63`.
-- Events en UTM-preservation draaien centraal via [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
-- Analytics wordt alleen verzonden op `garagebook.nl` en `www.garagebook.nl`.
-- Lokale preview, localhost en geblokkeerde analytics scripts mogen geen JavaScript errors veroorzaken.
-
-## Actuele events
-
-- `clicked_start_gratis`
-- `blog_cta_clicked`
-- `outbound_click`
-- `scroll_depth`
-- `landing_page_engaged`
-
-Zie [analytics-marketing.md](/mnt/raid1/GarageBook/Website/GarageBook/docs/analytics-marketing.md) voor triggers, parameters, privacy-afspraken, lokale teststappen en GA4 DebugView-controle.
+- GA4 laadt centraal via [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js)
+- Measurement ID: `G-6KJM1W5N63`
+- Cross-domain linker: `garagebook.nl`, `www.garagebook.nl`, `app.garagebook.nl`
+- Events: `start_click`, `blog_cta_click`, `outbound_referral_click`
+- Lokale publieke pagina's laden geen losse inline GA4-snippets meer
