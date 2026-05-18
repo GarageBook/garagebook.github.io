@@ -106,6 +106,7 @@ Belangrijk:
 - de sync gaat van source naar Git-repo
 - niet andersom
 - er wordt niet blind de hele map gekopieerd
+- nieuwe routes of blogs gaan alleen mee als ze expliciet in de curated arrays van `publish-sync.sh` staan
 
 ### 3. Lokale commit maken in de echte Git-repo
 
@@ -125,6 +126,10 @@ Wat dit script doet:
 - staged alleen de curated lijst met goedgekeurde bestanden
 - maakt daarna de commit in `/tmp/garagebook.github.io`
 - pusht nog niet
+
+Belangrijk:
+
+- als een nieuw bestand niet expliciet in `publish-commit.sh` staat, wordt het ook niet gestaged voor de commit
 
 ### 4. Push naar GitHub
 
@@ -155,6 +160,17 @@ Alleen bestanden die expliciet in de publish-scripts zijn opgenomen, zoals:
 - goedgekeurde website-assets
 - actieve blogpagina's
 - actieve SEO-landingspagina's
+
+### Verplicht bij nieuwe routes
+
+Als je een nieuwe landingspagina of blog toevoegt, werk dan meteen ook deze plekken bij:
+
+- `publish-sync.sh`
+- `publish-commit.sh`
+- `sitemap.xml`
+- `blog/index.html` als het een blog is
+
+Doe je dat niet, dan kan een pagina lokaal wel bestaan maar alsnog niet live komen.
 
 ### Niet blind meenemen
 
@@ -201,10 +217,11 @@ Gebruik bij elke wijziging deze checklist:
 4. Bevestig: source-map is `/mnt/raid1/GarageBook/Website/GarageBook`
 5. Bevestig: echte Git-repo is `/tmp/garagebook.github.io`
 6. Draai `./publish-sync.sh /tmp/garagebook.github.io`
-7. Controleer `git -C /tmp/garagebook.github.io status --short`
-8. Maak commit via `./publish-commit.sh /tmp/garagebook.github.io "..."` of handmatig in `/tmp/garagebook.github.io`
-9. Push via `./publish-release.sh /tmp/garagebook.github.io "..."` of `git -C /tmp/garagebook.github.io push origin main`
-10. Controleer eindstatus met `git -C /tmp/garagebook.github.io status --short`
+7. Controleer of nieuwe routes of blogs echt in `git status` verschijnen
+8. Controleer `git -C /tmp/garagebook.github.io status --short`
+9. Maak commit via `./publish-commit.sh /tmp/garagebook.github.io "..."` of handmatig in `/tmp/garagebook.github.io`
+10. Push via `./publish-release.sh /tmp/garagebook.github.io "..."` of `git -C /tmp/garagebook.github.io push origin main`
+11. Controleer eindstatus met `git -C /tmp/garagebook.github.io status --short`
 
 ## Analytics-specifieke waarschuwing
 
