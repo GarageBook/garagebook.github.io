@@ -814,6 +814,10 @@ section[aria-labelledby="beste-app-fit"] {
     margin-top: 150px;
 }
 
+section[aria-label="Historie tijdens bezit en overdracht"] {
+    margin-top: 150px;
+}
+
 .inlineCard {
     padding: 28px;
     border-radius: var(--radius-card);
