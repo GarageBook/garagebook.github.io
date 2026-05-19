@@ -627,6 +627,10 @@ a:visited {
     margin-top: 36px;
 }
 
+section[aria-labelledby="garage-cta"] .heroCtaRow {
+    justify-content: center;
+}
+
 .buttonLink--ghost {
     background: transparent;
     border-color: rgba(255, 255, 255, 0.22);
