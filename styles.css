@@ -517,6 +517,18 @@ a:visited {
     display: block;
 }
 
+.contentImage--circuit {
+    margin-top: 72px;
+}
+
+.contentImage--circuit-tight {
+    margin-top: 56px;
+}
+
+.contentImage--circuit-bottom {
+    margin-top: 80px;
+}
+
 .fullWidthImage {
     width: 100%;
     height: 60vh;
@@ -554,6 +566,54 @@ a:visited {
 
 .imageColumn.right {
     margin-top: 180px;
+}
+
+.circuitPhotoPair,
+.circuitSupportGrid {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 0 20px 100px;
+    display: grid;
+    gap: 28px;
+}
+
+.circuitPhotoPair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.circuitSupportGrid {
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    align-items: stretch;
+    padding-top: 20px;
+}
+
+.circuitPhotoCard,
+.circuitSupportFigure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: var(--shadow-strong);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.circuitPhotoCard img,
+.circuitSupportFigure img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.circuitPhotoCard--portrait {
+    aspect-ratio: 4 / 5;
+}
+
+.circuitSupportFigure--portrait {
+    aspect-ratio: 4 / 5;
+}
+
+.circuitSupportFigure--landscape {
+    aspect-ratio: 16 / 10;
 }
 
 .ctaSection {
@@ -1574,6 +1634,11 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
         padding-inline: 16px;
     }
 
+    .contentImage--circuit-tight,
+    .contentImage--circuit-bottom {
+        margin-top: 56px;
+    }
+
     .section[aria-labelledby="blog-intro"] {
         padding-bottom: 28px;
     }
@@ -1614,6 +1679,28 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .imageColumn img {
         border-radius: 28px;
+    }
+
+    .circuitPhotoPair,
+    .circuitSupportGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px 72px;
+    }
+
+    .circuitSupportGrid {
+        padding-top: 0;
+    }
+
+    .circuitPhotoCard,
+    .circuitSupportFigure {
+        border-radius: 24px;
+    }
+
+    .circuitPhotoCard--portrait,
+    .circuitSupportFigure--portrait,
+    .circuitSupportFigure--landscape {
+        aspect-ratio: 4 / 3;
     }
 
     .ctaSection {
