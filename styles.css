@@ -707,11 +707,14 @@ a:visited {
 }
 
 section[aria-labelledby="garage-cta"] .heroCtaRow {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 section[aria-labelledby="garage-cta"] .heroCtaRow .buttonLink {
+    width: fit-content;
+    max-width: 100%;
     align-self: center;
     margin-inline: auto;
 }
