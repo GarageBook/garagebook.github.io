@@ -4,6 +4,7 @@
     const APP_HOSTNAME = "app.garagebook.nl";
     const GARAGEBOOK_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl", APP_HOSTNAME]);
     const CROSS_DOMAIN_HOSTNAMES = ["garagebook.nl", "www.garagebook.nl", "app.garagebook.nl"];
+    const START_URL = "https://app.garagebook.nl/start?utm_source=garagebook.nl&utm_medium=website&utm_campaign=organic_cta";
     const START_PATH = "/start/";
     const LEGACY_REGISTER_PATH = "/admin/register/";
     const TRACKED_EVENT_TIMEOUT_MS = 800;
@@ -106,15 +107,6 @@
         }
     }
 
-    function copySearchParams(sourceUrl, destinationUrl) {
-        for (const [key, value] of sourceUrl.searchParams.entries()) {
-            if (destinationUrl.searchParams.has(key)) {
-                continue;
-            }
-
-            destinationUrl.searchParams.append(key, value);
-        }
-    }
 
     function isAppStartUrl(url) {
         return url.hostname === APP_HOSTNAME && normalizePath(url.pathname) === START_PATH;
@@ -139,12 +131,7 @@
             return null;
         }
 
-        const startUrl = new URL("https://app.garagebook.nl/start");
-
-        copySearchParams(url, startUrl);
-        copySearchParams(new URL(window.location.href), startUrl);
-
-        return startUrl;
+        return new URL(START_URL);
     }
 
     function updateLinkHref(link, url) {
