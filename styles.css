@@ -708,6 +708,12 @@ a:visited {
 
 section[aria-labelledby="garage-cta"] .heroCtaRow {
     justify-content: center;
+    align-items: center;
+}
+
+section[aria-labelledby="garage-cta"] .heroCtaRow .buttonLink {
+    align-self: center;
+    margin-inline: auto;
 }
 
 .buttonLink--ghost {
