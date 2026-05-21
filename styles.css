@@ -232,6 +232,10 @@ a:visited {
     background-image: url('assets/garagebook-circuit-motor-onderhoud.webp');
 }
 
+.heroTwo--auto-onderhoud {
+    background-image: url('assets/garagebook-auto-onderhoud.jpg');
+}
+
 .heroThree {
     background-image: url('assets/garagebook-motorcyle-owner3.webp');
 }
