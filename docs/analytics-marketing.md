@@ -4,7 +4,7 @@ Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketin
 
 ## GA4 loading
 
-- Measurement ID: `G-6KJM1W5N63`
+- Measurement ID: `G-HZE3QJPSBR`
 - Geladen op alle publieke pagina's via een centrale `<script src=".../assets/js/analytics-events.js" defer></script>` include
 - Cross-domain linker geconfigureerd voor `garagebook.nl`, `www.garagebook.nl` en `app.garagebook.nl`
 - De helper voegt geen dubbele GA4-tag toe als dezelfde webstream al aanwezig is

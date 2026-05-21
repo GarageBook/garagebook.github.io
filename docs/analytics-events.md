@@ -1,6 +1,6 @@
 # Analytics Events
 
-De publieke GarageBook-site gebruikt GA4 Measurement ID `G-6KJM1W5N63`.
+De publieke GarageBook-site gebruikt GA4 Measurement ID `G-HZE3QJPSBR`.
 
 De GA4 loader en click-events staan centraal in [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js). Die helper configureert cross-domain linking voor:
 

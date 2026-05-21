@@ -1,5 +1,5 @@
 (function () {
-    const MEASUREMENT_ID = "G-6KJM1W5N63";
+    const MEASUREMENT_ID = "G-HZE3QJPSBR";
     const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
     const APP_HOSTNAME = "app.garagebook.nl";
     const GARAGEBOOK_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl", APP_HOSTNAME]);
