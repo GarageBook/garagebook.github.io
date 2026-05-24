@@ -336,6 +336,10 @@ a:visited {
     margin: 0 auto;
 }
 
+.section--tableWide .textBlock {
+    max-width: 1180px;
+}
+
 .textBlock .lead {
     font-family: 'ZalandoSansBold', sans-serif;
     font-size: 22px;
@@ -1112,19 +1116,41 @@ section[aria-label="Historie tijdens bezit en overdracht"] {
 
 .maintenanceTable--example {
     margin-top: 0;
-    min-width: 760px;
+    min-width: 100%;
+    table-layout: fixed;
     box-shadow: none;
     background: transparent;
 }
 
 .maintenanceTable--example thead th {
-    padding: 18px 20px;
+    padding: 16px 18px;
     border-bottom: 1px solid rgba(24, 24, 24, 0.10);
     background: rgba(255, 214, 10, 0.12);
     color: #111827;
-    font-size: 14px;
-    letter-spacing: 0.02em;
+    font-size: 13px;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
+}
+
+.maintenanceTable--example thead th:nth-child(1) {
+    width: 11%;
+}
+
+.maintenanceTable--example thead th:nth-child(2) {
+    width: 11%;
+}
+
+.maintenanceTable--example thead th:nth-child(3) {
+    width: 31%;
+}
+
+.maintenanceTable--example thead th:nth-child(4) {
+    width: 29%;
+}
+
+.maintenanceTable--example thead th:nth-child(5) {
+    width: 18%;
 }
 
 .maintenanceTable--example tbody tr {
@@ -1144,22 +1170,24 @@ section[aria-label="Historie tijdens bezit en overdracht"] {
 }
 
 .maintenanceTable--example tbody td {
-    padding: 18px 20px;
+    padding: 16px 18px;
     border-bottom: 1px solid rgba(24, 24, 24, 0.06);
     color: #1f2937;
+    font-size: 15px;
+    line-height: 1.4;
     vertical-align: top;
 }
 
+.maintenanceTable--example tbody td:nth-child(1),
 .maintenanceTable--example tbody td:nth-child(2),
 .maintenanceTable--example tbody td:nth-child(5) {
     white-space: nowrap;
-    font-family: 'ZalandoSansBold', sans-serif;
     color: #111827;
 }
 
-.maintenanceTable--example tbody td:nth-child(3) {
-    font-family: 'ZalandoSansBold', sans-serif;
-    color: #111827;
+.maintenanceTable--example tbody td:nth-child(3),
+.maintenanceTable--example tbody td:nth-child(4) {
+    min-width: 0;
 }
 
 .blogArticleProse .maintenanceTable thead th:first-child {
@@ -1732,6 +1760,24 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .maintenanceTable {
         min-width: 520px;
+    }
+
+    .section--tableWide .textBlock {
+        max-width: var(--reading-max-width);
+    }
+
+    .maintenanceTable--example {
+        min-width: 760px;
+    }
+
+    .maintenanceTable--example thead th {
+        font-size: 12px;
+        padding: 14px 16px;
+    }
+
+    .maintenanceTable--example tbody td {
+        font-size: 14px;
+        padding: 14px 16px;
     }
 
     .footer {
