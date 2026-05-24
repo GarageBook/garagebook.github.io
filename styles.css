@@ -14,7 +14,7 @@
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
     --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.12);
     --radius-card: 20px;
-    --radius-image: 18px;
+    --radius-image: 50px;
     --site-max-width: 1200px;
     --reading-max-width: 720px;
 }
@@ -518,17 +518,26 @@ a:visited {
     box-shadow: var(--shadow-strong);
 }
 
+.contentImage .contentImageInner:not(.blogHeroImage) {
+    width: min(70%, 760px);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .contentImageInner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: inherit;
 }
 
 .contentImage--natural .contentImageInner {
     aspect-ratio: auto;
     overflow: visible;
     background: rgba(255, 255, 255, 0.94);
+    border-radius: var(--radius-image);
 }
 
 .contentImage--natural .contentImageInner img {
@@ -556,7 +565,7 @@ a:visited {
 
 .localPagePhotoCard {
     margin: 0;
-    border-radius: 30px;
+    border-radius: var(--radius-image);
     overflow: hidden;
     box-shadow: var(--shadow-strong);
     background: rgba(255, 255, 255, 0.94);
@@ -567,6 +576,12 @@ a:visited {
     height: auto;
     display: block;
     object-fit: contain;
+}
+
+.blogArticleProse figure img,
+.blogArticleProse > img {
+    display: block;
+    border-radius: var(--radius-image);
 }
 
 .contentImage--circuit {
@@ -610,7 +625,7 @@ a:visited {
 .imageColumn img {
     width: 100%;
     height: auto;
-    border-radius: 50px;
+    border-radius: var(--radius-image);
     display: block;
     object-fit: cover;
     box-shadow: var(--shadow-strong);
@@ -643,7 +658,7 @@ a:visited {
 .circuitSupportFigure {
     margin: 0;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: var(--radius-image);
     box-shadow: var(--shadow-strong);
     background: rgba(255, 255, 255, 0.92);
 }
@@ -1716,7 +1731,7 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .heroVisualCard,
     .placeholderCard {
-        border-radius: 24px;
+        border-radius: var(--radius-image);
     }
 
     .heroVisualCard {
@@ -1856,6 +1871,11 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
         aspect-ratio: 4 / 3;
     }
 
+    .contentImage .contentImageInner:not(.blogHeroImage) {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .fullWidthImage {
         height: auto;
         min-height: 0;
@@ -1878,7 +1898,7 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
     }
 
     .imageColumn img {
-        border-radius: 28px;
+        border-radius: var(--radius-image);
     }
 
     .circuitPhotoPair,
@@ -1900,7 +1920,7 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .circuitPhotoCard,
     .circuitSupportFigure {
-        border-radius: 24px;
+        border-radius: var(--radius-image);
     }
 
     .circuitPhotoCard--portrait,
