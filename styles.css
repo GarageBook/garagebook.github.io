@@ -525,6 +525,50 @@ a:visited {
     display: block;
 }
 
+.contentImage--natural .contentImageInner {
+    aspect-ratio: auto;
+    overflow: visible;
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.contentImage--natural .contentImageInner img {
+    height: auto;
+    object-fit: contain;
+}
+
+.localPagePhotoGrid {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 0 20px 100px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    align-items: start;
+}
+
+.localPagePhotoGrid--portraits {
+    max-width: 1040px;
+}
+
+.localPagePhotoGrid--spacedTop {
+    margin-top: 140px;
+}
+
+.localPagePhotoCard {
+    margin: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-strong);
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.localPagePhotoCard img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
 .contentImage--circuit {
     margin-top: 72px;
 }
@@ -739,6 +783,19 @@ section[aria-labelledby="garage-cta"] .heroCtaRow .buttonLink {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     box-shadow: none;
+}
+
+.ctaBanner .buttonLink--ghost {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(60, 60, 60, 0.22);
+    color: rgba(24, 24, 24, 0.82);
+}
+
+.ctaBanner .buttonLink--ghost:hover,
+.ctaBanner .buttonLink--ghost:focus-visible {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(60, 60, 60, 0.32);
+    color: rgba(16, 16, 16, 0.9);
 }
 
 .trustList {
@@ -1189,6 +1246,108 @@ section[aria-label="Historie tijdens bezit en overdracht"] {
 .maintenanceTable--example tbody td:nth-child(4) {
     min-width: 0;
 }
+
+.maintenance-table-wide {
+    width: min(1120px, 90vw);
+    max-width: 90vw;
+    margin: 30px auto 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.maintenance-table-wide table {
+    width: 100%;
+    min-width: 1120px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.maintenance-table-wide th,
+.maintenance-table-wide td {
+    box-sizing: border-box;
+}
+
+.maintenance-table-wide th:nth-child(1),
+.maintenance-table-wide td:nth-child(1) {
+    width: 150px;
+    white-space: nowrap;
+}
+
+.maintenance-table-wide th:nth-child(2),
+.maintenance-table-wide td:nth-child(2) {
+    width: 155px;
+    white-space: nowrap;
+}
+
+.maintenance-table-wide th:nth-child(3),
+.maintenance-table-wide td:nth-child(3) {
+    width: 330px;
+}
+
+.maintenance-table-wide th:nth-child(4),
+.maintenance-table-wide td:nth-child(4) {
+    width: 210px;
+}
+
+.maintenance-table-wide th:nth-child(5),
+.maintenance-table-wide td:nth-child(5) {
+    width: 110px;
+    white-space: nowrap;
+}
+
+.maintenance-table-wide th:nth-child(6),
+.maintenance-table-wide td:nth-child(6) {
+    width: 165px;
+    white-space: nowrap;
+}
+
+.maintenanceTable--exampleSix thead th {
+    padding: 15px 16px;
+    font-size: 12px;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(1) {
+    width: 12%;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(2) {
+    width: 13%;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(3) {
+    width: 20%;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(4) {
+    width: 22%;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(5) {
+    width: 11%;
+}
+
+.maintenanceTable--exampleSix thead th:nth-child(6) {
+    width: 22%;
+}
+
+.maintenanceTable--exampleSix tbody td {
+    padding: 15px 16px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.maintenanceTable--exampleSix tbody td:nth-child(1),
+.maintenanceTable--exampleSix tbody td:nth-child(2),
+.maintenanceTable--exampleSix tbody td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.maintenanceTable--exampleSix tbody td:nth-child(3),
+.maintenanceTable--exampleSix tbody td:nth-child(4),
+.maintenanceTable--exampleSix tbody td:nth-child(6) {
+    min-width: 0;
+}
+
 
 .blogArticleProse .maintenanceTable thead th:first-child {
     border-top-left-radius: 22px;
@@ -1729,6 +1888,12 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
         padding: 0 16px 72px;
     }
 
+    .localPagePhotoGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 16px 72px;
+    }
+
     .circuitSupportGrid {
         padding-top: 0;
     }
@@ -1778,6 +1943,30 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
     .maintenanceTable--example tbody td {
         font-size: 14px;
         padding: 14px 16px;
+    }
+
+    .maintenance-table-wide {
+        width: auto;
+        max-width: none;
+        margin: 30px 0 0;
+    }
+
+    .maintenance-table-wide table {
+        min-width: 1120px;
+    }
+
+    .maintenanceTable--exampleSix {
+        min-width: 920px;
+    }
+
+    .maintenanceTable--exampleSix thead th {
+        font-size: 11px;
+        padding: 13px 14px;
+    }
+
+    .maintenanceTable--exampleSix tbody td {
+        font-size: 13px;
+        padding: 13px 14px;
     }
 
     .footer {
