@@ -1,9 +1,7 @@
 (function () {
-    const MEASUREMENT_ID = "G-HZE3QJPSBR";
     const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
     const APP_HOSTNAME = "app.garagebook.nl";
     const GARAGEBOOK_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl", APP_HOSTNAME]);
-    const CROSS_DOMAIN_HOSTNAMES = ["garagebook.nl", "www.garagebook.nl", "app.garagebook.nl"];
     const START_URL = "https://app.garagebook.nl/start?utm_source=garagebook.nl&utm_medium=website&utm_campaign=organic_cta";
     const START_PATH = "/start/";
     const LEGACY_REGISTER_PATH = "/admin/register/";
@@ -51,52 +49,6 @@
         }
 
         return path.replace(/^\/blog\//, "").replace(/\/$/, "");
-    }
-
-    function ensureGtagStub() {
-        window.dataLayer = window.dataLayer || [];
-
-        if (typeof window.gtag === "function") {
-            return window.gtag;
-        }
-
-        window.gtag = function () {
-            window.dataLayer.push(arguments);
-        };
-
-        return window.gtag;
-    }
-
-    function hasMeasurementScript() {
-        return Boolean(document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"]`));
-    }
-
-    function loadGa4() {
-        if (!isProductionHostname()) {
-            return;
-        }
-
-        const gtag = ensureGtagStub();
-
-        if (!window.__garagebookGa4Configured) {
-            gtag("js", new Date());
-            gtag("config", MEASUREMENT_ID, {
-                linker: {
-                    domains: CROSS_DOMAIN_HOSTNAMES,
-                },
-            });
-            window.__garagebookGa4Configured = true;
-        }
-
-        if (hasMeasurementScript() || window.__garagebookGa4ScriptRequested) {
-            return;
-        }
-
-        const script = document.createElement("script");
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
-        document.head.appendChild(script);
-        window.__garagebookGa4ScriptRequested = true;
     }
 
     function getDestinationUrl(link) {
@@ -371,8 +323,6 @@
     }
 
     window.garagebookTrack = garagebookTrack;
-    loadGa4();
-
     document.addEventListener("DOMContentLoaded", function () {
         updateTrackedAppLinks();
         document.addEventListener("click", handleTrackedClick, true);

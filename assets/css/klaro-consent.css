@@ -1,0 +1,81 @@
+.klaro .cookie-notice {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    left: auto;
+    z-index: 10000;
+    max-width: 420px;
+    padding: 16px;
+    border: 1px solid rgba(255, 210, 0, 0.28);
+    border-radius: 8px;
+    background: #151515;
+    color: #ffffff;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    font-family: inherit;
+}
+
+.klaro .cookie-notice .cn-body,
+.klaro .cookie-notice .cn-ok {
+    display: flex;
+    gap: 12px;
+}
+
+.klaro .cookie-notice .cn-body {
+    flex-direction: column;
+}
+
+.klaro .cookie-notice .cn-ok {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.klaro .cookie-notice .cn-body p,
+.klaro .cookie-notice .cn-body strong {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.klaro .cookie-notice .cm-btn {
+    min-height: 40px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.klaro .cookie-notice .cm-btn-success {
+    background: #ffd200;
+    color: #000000;
+}
+
+.klaro .cookie-notice .cm-btn-danger {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.klaro .cookie-notice .cm-btn:focus-visible {
+    outline: 3px solid rgba(255, 210, 0, 0.5);
+    outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+    .klaro .cookie-notice {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        max-width: none;
+    }
+
+    .klaro .cookie-notice .cn-ok {
+        justify-content: stretch;
+    }
+
+    .klaro .cookie-notice .cm-btn {
+        flex: 1;
+    }
+}
