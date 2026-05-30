@@ -22,6 +22,9 @@
 html {
     scroll-behavior: smooth;
     overflow-x: clip;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
 }
 
 body {
@@ -33,6 +36,9 @@ body {
         radial-gradient(circle at 80% 10%, rgba(255, 210, 0, 0.05), transparent 45%),
         var(--color-surface);
     overflow-x: clip;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
 }
 
 img {
@@ -77,8 +83,9 @@ h1 {
     text-transform: uppercase;
     color: #fff;
     width: min(50%, 620px);
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 h2 {
@@ -89,8 +96,9 @@ h2 {
     text-transform: uppercase;
     color: var(--color-text);
     margin-bottom: 40px;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 h3,
@@ -99,8 +107,9 @@ h3,
     font-size: 17px;
     line-height: 1.6;
     color: #333;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 p,
@@ -108,8 +117,9 @@ li {
     font-size: 17px;
     line-height: 1.8;
     color: var(--color-text-muted);
-    overflow-wrap: break-word;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 p + p {
@@ -126,7 +136,9 @@ a {
     text-decoration: underline;
     text-underline-offset: 0.15em;
     transition: color 0.2s ease;
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 a:hover,
@@ -136,6 +148,37 @@ a:focus-visible {
 
 a:visited {
     color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+li,
+span,
+summary,
+.hero,
+.heroTwo,
+.heroThree,
+.heroFour,
+.featureCard,
+.inlineCard,
+.comparisonCard,
+.vehicleTypeCard,
+.timelineCard,
+.diyCard,
+.faqItem,
+.faqItem summary,
+.buttonLink,
+.blogArticleProse {
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
 }
 
 .skipLink {
@@ -202,7 +245,9 @@ a:visited {
     text-align: center;
     white-space: normal;
     max-width: 100%;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -1659,8 +1704,9 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 .timelinePreviewBody span,
 .footerColumn a,
 .socials a {
-    overflow-wrap: anywhere;
-    hyphens: auto;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 picture,
