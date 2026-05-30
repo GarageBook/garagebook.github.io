@@ -21,6 +21,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: clip;
 }
 
 body {
@@ -31,10 +32,12 @@ body {
         radial-gradient(circle at 20% 20%, rgba(255, 210, 0, 0.06), transparent 40%),
         radial-gradient(circle at 80% 10%, rgba(255, 210, 0, 0.05), transparent 45%),
         var(--color-surface);
+    overflow-x: clip;
 }
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 @font-face {
@@ -74,6 +77,8 @@ h1 {
     text-transform: uppercase;
     color: #fff;
     width: min(50%, 620px);
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 h2 {
@@ -84,6 +89,8 @@ h2 {
     text-transform: uppercase;
     color: var(--color-text);
     margin-bottom: 40px;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 h3,
@@ -92,6 +99,8 @@ h3,
     font-size: 17px;
     line-height: 1.6;
     color: #333;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 p,
@@ -99,6 +108,8 @@ li {
     font-size: 17px;
     line-height: 1.8;
     color: var(--color-text-muted);
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 p + p {
@@ -115,6 +126,7 @@ a {
     text-decoration: underline;
     text-underline-offset: 0.15em;
     transition: color 0.2s ease;
+    overflow-wrap: break-word;
 }
 
 a:hover,
@@ -188,6 +200,9 @@ a:visited {
     font-size: 16px;
     text-decoration: none;
     text-align: center;
+    white-space: normal;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -1599,6 +1614,76 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
     gap: 10px;
 }
 
+.heroSubtitle,
+.heroIntro,
+.heroPoints,
+.heroEyebrow,
+.sectionLabel,
+.comparisonLabel,
+.pressMentionLabel,
+.textBlock,
+.featureCard,
+.inlineCard,
+.comparisonCard,
+.vehicleTypeCard,
+.timelineCard,
+.diyCard,
+.faqItem,
+.footerColumn,
+.footerRight,
+.blogArticleProse {
+    min-width: 0;
+}
+
+.heroSubtitle,
+.heroIntro,
+.heroPoints li,
+.heroEyebrow,
+.sectionLabel,
+.comparisonLabel,
+.pressMentionLabel,
+.faqItem summary,
+.timelinePreviewBody strong,
+.timelinePreviewBody span,
+.footerColumn a,
+.socials a {
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+picture,
+svg,
+video,
+canvas,
+iframe {
+    max-width: 100%;
+}
+
+figure img,
+.contentImageInner img,
+.localPagePhotoCard img,
+.circuitPhotoCard img,
+.circuitSupportFigure img,
+.fullWidthImage img,
+.blogArticleProse img {
+    max-width: 100%;
+    height: auto;
+}
+
+.textBlock > table,
+.blogArticleProse > table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.textBlock > .maintenanceTable,
+.blogArticleProse > .maintenanceTable {
+    min-width: 560px;
+}
+
 @media (max-width: 1100px) {
     .navigation {
         padding-inline: 24px;
@@ -1723,6 +1808,11 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .heroCtaRow {
         margin-top: 28px;
+        max-width: 100%;
+    }
+
+    .heroCtaRow .buttonLink {
+        min-width: 0;
     }
 
     .trustList {
@@ -1941,6 +2031,22 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .buttonLink--wide {
         width: 100%;
+        align-self: stretch;
+    }
+
+    .ctaSection .buttonLink,
+    .ctaBanner .buttonLink,
+    .blogCard .buttonLink {
+        width: 100%;
+    }
+
+    .sectionLinks {
+        flex-direction: column;
+    }
+
+    .sectionLinks a {
+        width: fit-content;
+        max-width: 100%;
     }
 
     .maintenanceTable {
@@ -2000,6 +2106,11 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
         line-height: 1.08;
     }
 
+    h2 {
+        font-size: 27px;
+        line-height: 1.16;
+    }
+
     .heroSubtitle {
         font-size: 21px;
     }
@@ -2011,5 +2122,49 @@ section[aria-labelledby="digitaal-vergelijk"] .textBlock .sectionTitleSpacing {
 
     .heroCtaRow {
         flex-direction: column;
+    }
+
+    .heroCtaRow .buttonLink {
+        width: 100%;
+    }
+
+    .featureCard,
+    .inlineCard,
+    .comparisonCard,
+    .vehicleTypeCard,
+    .timelineCard,
+    .diyCard {
+        padding-right: 18px;
+    }
+
+    .faqItem summary {
+        padding: 18px 20px;
+    }
+
+    .faqItem p {
+        padding: 0 20px 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 29px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    .heroSubtitle {
+        font-size: 20px;
+    }
+
+    .buttonLink {
+        padding-inline: 16px;
+        font-size: 15px;
+    }
+
+    .logo img {
+        width: 138px;
     }
 }
