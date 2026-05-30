@@ -294,6 +294,18 @@ a:visited {
     max-width: 680px;
 }
 
+.heroSubtitle a,
+.heroSubtitle a:visited {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.heroSubtitle a:hover,
+.heroSubtitle a:focus-visible {
+    color: #fff;
+}
+
 .heroIntro {
     max-width: 560px;
     margin-bottom: 24px;
