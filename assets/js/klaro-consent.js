@@ -11,7 +11,7 @@
     }
 
     function hasMeasurementScript() {
-        return Boolean(document.querySelector(`script[src*="googletagmanager.com/gtag/js?id="]`));
+        return Boolean(document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"]`));
     }
 
     function hasStoredAnalyticsConsent() {
@@ -63,7 +63,7 @@
 
         const script = document.createElement("script");
         script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=`;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
         document.head.appendChild(script);
     }
 

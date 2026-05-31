@@ -123,6 +123,13 @@
         if (!normalizedStartUrl) {
             return null;
         }
+    }
+
+    function getNormalizedLinkText(link) {
+        return link.textContent.replace(/\s+/g, " ").trim().slice(0, 120);
+    }
+
+    function getCtaLocation(link) {
 
         if (normalizedStartUrl.toString() !== destinationUrl.toString()) {
             updateLinkHref(link, normalizedStartUrl);
