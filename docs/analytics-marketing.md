@@ -1,13 +1,36 @@
 # Marketing analytics
 
-Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketingwebsite van GarageBook. De implementatie staat in [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js). De overige UI-logica blijft in [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
+Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketingwebsite van GarageBook. De implementatie staat in [assets/js/klaro-consent.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/klaro-consent.js) en [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js). De overige UI-logica blijft in [script.js](/mnt/raid1/GarageBook/Website/GarageBook/script.js).
 
 ## GA4 loading
 
 - Measurement ID: `G-HZE3QJPSBR`
-- Geladen op alle publieke pagina's via een centrale `<script src=".../assets/js/analytics-events.js" defer></script>` include
-- Cross-domain linker geconfigureerd voor `garagebook.nl`, `www.garagebook.nl` en `app.garagebook.nl`
-- De helper voegt geen dubbele GA4-tag toe als dezelfde webstream al aanwezig is
+- De marketing-site gebruikt bewust alleen deze property. Als je sinds 21 of 22 mei 2026 in de oude GA4-property `G-6KJM1W5N63` kijkt, kan dat een nul-lijn verklaren zonder dat de huidige sitecode defect is.
+- Alle publieke pagina's laden centraal:
+  - `assets/js/klaro-consent.js`
+  - `assets/vendor/klaro/klaro-no-css.js`
+  - `assets/js/analytics-events.js`
+- `klaro-consent.js` maakt `window.dataLayer` en `window.gtag` vroeg beschikbaar, laadt `gtag.js` centraal en zet vóór GA4-configuratie:
+  - `gtag('consent', 'default', { analytics_storage: 'denied' })`
+- Daarna configureert de site GA4 met:
+  - `gtag('config', 'G-HZE3QJPSBR', { send_page_view: false })`
+- Cross-domain linker blijft geconfigureerd voor `garagebook.nl`, `www.garagebook.nl` en `app.garagebook.nl`
+
+## Consent flow
+
+1. Bij pageload wordt Consent Mode standaard op denied gezet.
+2. Klaro bepaalt of er al opgeslagen analytics-consent is.
+3. Bij acceptatie of bestaande opgeslagen consent stuurt de site:
+   - `gtag('consent', 'update', { analytics_storage: 'granted' })`
+4. Pas daarna worden de eerste `page_view` en eventuele gequeue'de events verstuurd.
+
+## Page view en queue
+
+- De site gebruikt `send_page_view: false` om dubbele pageviews te voorkomen.
+- [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js) bewaart pre-consent events eerst in een lokale queue.
+- Na Klaro-acceptatie wordt exact één `page_view` verstuurd voor de huidige pagina.
+- Daarna replayt de helper de gequeue'de events in volgorde.
+- Als consent al opgeslagen was, gebeurt dit direct bij pageload.
 
 ## Events
 
@@ -56,16 +79,19 @@ Er worden geen persoonsgegevens naar GA4 gestuurd. Eventpayloads bevatten alleen
 
 Controleer lokaal in DevTools:
 
-- elke publieke pagina laadt `assets/js/analytics-events.js`
-- CTA-links naar `app.garagebook.nl/start` behouden bestaande querystrings
+- elke publieke pagina laadt `assets/js/klaro-consent.js` en `assets/js/analytics-events.js`
+- `gtag('consent', 'default', { analytics_storage: 'denied' })` staat vóór de GA4-config
+- bij Klaro-acceptatie volgt `gtag('consent', 'update', { analytics_storage: 'granted' })`
+- er wordt exact één `page_view` verstuurd na consent
 - klikken blijven normaal navigeren als GA4 of een adblocker het request blokkeert
-- `outbound_referral_click` wordt niet opgebouwd voor `garagebook.nl` of `app.garagebook.nl`
 
 ## GA4 DebugView controleren
 
 1. Open een productiepagina op `garagebook.nl` met desgewenst UTM-parameters.
-2. Activeer GA4 DebugView of een debug-extensie.
-3. Klik een header-, hero-, footer- en blog-CTA naar `app.garagebook.nl/start`.
-4. Controleer dat `start_click` binnenkomt met `link_url`, `link_text`, `page_location`, `page_path` en `cta_location`.
-5. Controleer op een blogartikel dat daarnaast `blog_cta_click` binnenkomt met `blog_slug`.
-6. Klik een externe social link en controleer `outbound_referral_click`.
+2. Bevestig dat Consent Mode eerst `analytics_storage: denied` gebruikt.
+3. Accepteer analytics via Klaro.
+4. Controleer dat één `page_view` binnenkomt voor de huidige pagina.
+5. Klik een header-, hero-, footer- en blog-CTA naar `app.garagebook.nl/start`.
+6. Controleer dat `start_click` binnenkomt met `link_url`, `link_text`, `page_location`, `page_path` en `cta_location`.
+7. Controleer op een blogartikel dat daarnaast `blog_cta_click` binnenkomt met `blog_slug`.
+8. Klik een externe social link en controleer `outbound_referral_click`.

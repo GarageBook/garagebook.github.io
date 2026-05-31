@@ -6,9 +6,27 @@
     const START_PATH = "/start/";
     const LEGACY_REGISTER_PATH = "/admin/register/";
     const TRACKED_EVENT_TIMEOUT_MS = 800;
+    const CONSENT_GRANTED_EVENT = "garagebook:analytics-consent-granted";
 
     function isProductionHostname(hostname = window.location.hostname) {
         return PRODUCTION_HOSTNAMES.has(hostname);
+    }
+
+    function getAnalyticsState() {
+        if (!window.garageBookAnalytics) {
+            window.garageBookAnalytics = {
+                consentGranted: false,
+                initialized: false,
+                pageViewSent: false,
+                queuedEvents: [],
+            };
+        }
+
+        return window.garageBookAnalytics;
+    }
+
+    function hasAnalyticsConsent() {
+        return getAnalyticsState().consentGranted === true;
     }
 
     function normalizePath(pathname) {
@@ -16,7 +34,7 @@
             return "/";
         }
 
-        return pathname.endsWith("/") ? pathname : `${pathname}/`;
+        return pathname.endsWith("/") ? pathname : pathname + "/";
     }
 
     function getPagePath() {
@@ -25,6 +43,10 @@
 
     function getPageLocation() {
         return window.location.href;
+    }
+
+    function getPageTitle() {
+        return document.title || "";
     }
 
     function getPageType() {
@@ -48,7 +70,7 @@
             return "";
         }
 
-        return path.replace(/^\/blog\//, "").replace(/\/$/, "");
+        return path.slice(6, -1);
     }
 
     function getDestinationUrl(link) {
@@ -58,7 +80,6 @@
             return null;
         }
     }
-
 
     function isAppStartUrl(url) {
         return url.hostname === APP_HOSTNAME && normalizePath(url.pathname) === START_PATH;
@@ -111,7 +132,7 @@
     }
 
     function getNormalizedLinkText(link) {
-        return link.textContent.replace(/\s+/g, " ").trim().slice(0, 120);
+        return link.textContent.replace(/s+/g, " ").trim().slice(0, 120);
     }
 
     function getCtaLocation(link) {
@@ -166,7 +187,7 @@
         return !target || target === "_self";
     }
 
-    function garagebookTrack(eventName, params = {}, options = {}) {
+    function sendToGtag(command, eventName, params = {}, options = {}) {
         if (!isProductionHostname() || typeof window.gtag !== "function") {
             return false;
         }
@@ -179,11 +200,85 @@
                 eventParams.event_timeout = TRACKED_EVENT_TIMEOUT_MS;
             }
 
-            window.gtag("event", eventName, eventParams);
+            window.gtag(command, eventName, eventParams);
             return true;
         } catch {
             return false;
         }
+    }
+
+    function queueAnalyticsHit(hit) {
+        const analyticsState = getAnalyticsState();
+        analyticsState.queuedEvents.push(hit);
+    }
+
+    function sendAnalyticsHit(hit, options = {}) {
+        return sendToGtag(hit.command, hit.name, hit.params, options);
+    }
+
+    function garagebookTrack(eventName, params = {}, options = {}) {
+        if (!isProductionHostname()) {
+            return false;
+        }
+
+        const hit = {
+            command: "event",
+            name: eventName,
+            params: { ...params },
+        };
+
+        if (!hasAnalyticsConsent()) {
+            queueAnalyticsHit(hit);
+            return false;
+        }
+
+        return sendAnalyticsHit(hit, options);
+    }
+
+    function buildPageViewHit() {
+        return {
+            command: "event",
+            name: "page_view",
+            params: {
+                page_title: getPageTitle(),
+                page_location: getPageLocation(),
+                page_path: getPagePath(),
+            },
+        };
+    }
+
+    function sendInitialPageView() {
+        const analyticsState = getAnalyticsState();
+
+        if (!hasAnalyticsConsent() || analyticsState.pageViewSent === true) {
+            return false;
+        }
+
+        const tracked = sendAnalyticsHit(buildPageViewHit());
+
+        if (tracked) {
+            analyticsState.pageViewSent = true;
+        }
+
+        return tracked;
+    }
+
+    function flushQueuedEvents() {
+        const analyticsState = getAnalyticsState();
+
+        if (!hasAnalyticsConsent()) {
+            return;
+        }
+
+        while (analyticsState.queuedEvents.length > 0) {
+            const hit = analyticsState.queuedEvents.shift();
+            sendAnalyticsHit(hit);
+        }
+    }
+
+    function onAnalyticsConsentGranted() {
+        sendInitialPageView();
+        flushQueuedEvents();
     }
 
     function buildStartClickEvent(link, destinationUrl) {
@@ -244,6 +339,15 @@
 
     function sendEventsBeforeNavigation(events, navigate) {
         if (events.length === 0) {
+            navigate();
+            return;
+        }
+
+        if (!hasAnalyticsConsent()) {
+            for (const event of events) {
+                garagebookTrack(event.eventName, event.params);
+            }
+
             navigate();
             return;
         }
@@ -326,5 +430,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         updateTrackedAppLinks();
         document.addEventListener("click", handleTrackedClick, true);
+        onAnalyticsConsentGranted();
     });
+    document.addEventListener(CONSENT_GRANTED_EVENT, onAnalyticsConsentGranted);
 })();

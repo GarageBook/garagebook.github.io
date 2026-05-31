@@ -4,13 +4,14 @@
     const CROSS_DOMAIN_HOSTNAMES = ["garagebook.nl", "www.garagebook.nl", "app.garagebook.nl"];
     const CONSENT_STORAGE_NAME = "klaro";
     const SERVICE_NAME = "googleAnalytics";
+    const CONSENT_GRANTED_EVENT = "garagebook:analytics-consent-granted";
 
     function isProductionHostname(hostname = window.location.hostname) {
         return PRODUCTION_HOSTNAMES.has(hostname);
     }
 
     function hasMeasurementScript() {
-        return Boolean(document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"]`));
+        return Boolean(document.querySelector(`script[src*="googletagmanager.com/gtag/js?id="]`));
     }
 
     function hasStoredAnalyticsConsent() {
@@ -40,30 +41,82 @@
         return window.gtag;
     }
 
-    function loadGoogleAnalytics() {
-        if (!isProductionHostname() || window.garageBookAnalyticsLoaded) {
+    function getAnalyticsState() {
+        if (!window.garageBookAnalytics) {
+            window.garageBookAnalytics = {
+                consentGranted: false,
+                initialized: false,
+                pageViewSent: false,
+                queuedEvents: [],
+                measurementId: MEASUREMENT_ID,
+                consentGrantedEventName: CONSENT_GRANTED_EVENT,
+            };
+        }
+
+        return window.garageBookAnalytics;
+    }
+
+    function loadMeasurementScript() {
+        if (!isProductionHostname() || hasMeasurementScript()) {
+            return;
+        }
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=`;
+        document.head.appendChild(script);
+    }
+
+    function initializeGoogleAnalytics() {
+        if (!isProductionHostname()) {
+            return;
+        }
+
+        const analyticsState = getAnalyticsState();
+
+        if (analyticsState.initialized === true) {
             return;
         }
 
         const gtag = ensureGtag();
+        loadMeasurementScript();
         gtag("js", new Date());
+        gtag("consent", "default", {
+            analytics_storage: "denied",
+        });
         gtag("config", MEASUREMENT_ID, {
             linker: {
                 domains: CROSS_DOMAIN_HOSTNAMES,
             },
+            send_page_view: false,
         });
 
-        if (!hasMeasurementScript()) {
-            const script = document.createElement("script");
-            script.async = true;
-            script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
-            document.head.appendChild(script);
-        }
-
-        window.garageBookAnalyticsLoaded = true;
+        analyticsState.initialized = true;
     }
 
-    window.garageBookLoadAnalytics = loadGoogleAnalytics;
+    function grantAnalyticsConsent() {
+        if (!isProductionHostname()) {
+            return;
+        }
+
+        initializeGoogleAnalytics();
+
+        const analyticsState = getAnalyticsState();
+
+        if (analyticsState.consentGranted === true) {
+            return;
+        }
+
+        window.gtag("consent", "update", {
+            analytics_storage: "granted",
+        });
+
+        analyticsState.consentGranted = true;
+        document.dispatchEvent(new CustomEvent(CONSENT_GRANTED_EVENT));
+    }
+
+    window.garageBookLoadAnalytics = initializeGoogleAnalytics;
+    window.garageBookGrantAnalyticsConsent = grantAnalyticsConsent;
     window.klaroConfig = {
         version: 1,
         elementID: "klaro",
@@ -109,14 +162,16 @@
                 onlyOnce: true,
                 callback: function (consent) {
                     if (consent === true) {
-                        loadGoogleAnalytics();
+                        grantAnalyticsConsent();
                     }
                 },
             },
         ],
     };
 
+    initializeGoogleAnalytics();
+
     if (hasStoredAnalyticsConsent()) {
-        loadGoogleAnalytics();
+        grantAnalyticsConsent();
     }
 })();
