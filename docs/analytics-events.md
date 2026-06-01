@@ -1,6 +1,6 @@
 # Analytics Events
 
-De publieke GarageBook-site gebruikt GA4 Measurement ID `G-6KJM1W5N63`.
+De publieke GarageBook-site gebruikt GA4 Measurement ID `G-L3BERFQ7KV`.
 
 De centrale analytics-flow is opgesplitst over [assets/js/klaro-consent.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/klaro-consent.js) en [assets/js/analytics-events.js](/mnt/raid1/GarageBook/Website/GarageBook/assets/js/analytics-events.js):
 
