@@ -1,5 +1,5 @@
 (function () {
-    const MEASUREMENT_ID = "G-HZE3QJPSBR";
+    const MEASUREMENT_ID = "G-6KJM1W5N63";
     const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
     const CROSS_DOMAIN_HOSTNAMES = ["garagebook.nl", "www.garagebook.nl", "app.garagebook.nl"];
     const CONSENT_STORAGE_NAME = "klaro";

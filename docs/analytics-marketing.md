@@ -4,8 +4,8 @@ Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketin
 
 ## GA4 loading
 
-- Measurement ID: `G-HZE3QJPSBR`
-- De marketing-site gebruikt bewust alleen deze property. Als je sinds 21 of 22 mei 2026 in de oude GA4-property `G-6KJM1W5N63` kijkt, kan dat een nul-lijn verklaren zonder dat de huidige sitecode defect is.
+- Measurement ID: `G-6KJM1W5N63`
+- Deze marketing-site hoort naar de aparte GA4-property `GarageBook` te meten. De tijdelijke omschakeling naar `G-HZE3QJPSBR` op 21 mei 2026 is teruggedraaid.
 - Alle publieke pagina's laden centraal:
   - `assets/js/klaro-consent.js`
   - `assets/vendor/klaro/klaro-no-css.js`
@@ -13,7 +13,7 @@ Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketin
 - `klaro-consent.js` maakt `window.dataLayer` en `window.gtag` vroeg beschikbaar, laadt `gtag.js` centraal en zet vóór GA4-configuratie:
   - `gtag('consent', 'default', { analytics_storage: 'denied' })`
 - Daarna configureert de site GA4 met:
-  - `gtag('config', 'G-HZE3QJPSBR', { send_page_view: false })`
+  - `gtag('config', 'G-6KJM1W5N63', { send_page_view: false })`
 - Cross-domain linker blijft geconfigureerd voor `garagebook.nl`, `www.garagebook.nl` en `app.garagebook.nl`
 
 ## Consent flow
