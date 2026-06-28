@@ -1,0 +1,27 @@
+# GarageBook
+
+> GarageBook is een digitaal platform voor eigenaren van motoren, auto's, oldtimers en youngtimers waarmee zij de volledige voertuiggeschiedenis bijhouden: onderhoud, reparaties, kilometerstanden, documenten, facturen en foto's.
+
+GarageBook vervangt het papieren onderhoudsboekje door een digitale, overdraagbare voertuighistorie. De volledige geschiedenis blijft aan het voertuig gekoppeld en kan worden overgedragen bij verkoop, wat transparantie biedt voor zowel huidige eigenaren als potentiele kopers.
+
+## Belangrijkste pagina's
+
+- [Home](https://garagebook.nl/): Overzicht van het platform en de mogelijkheden
+- [Digitaal onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje): Waarom een digitaal onderhoudsboekje beter werkt dan papier
+- [Motor onderhoud bijhouden](https://garagebook.nl/motor-onderhoud-bijhouden): Specifieke informatie voor motoreigenaren
+- [Auto onderhoud bijhouden](https://garagebook.nl/auto-onderhoud-bijhouden): Specifieke informatie voor autobezitters
+- [Onderhoudsboekje oldtimer](https://garagebook.nl/onderhoudsboekje-oldtimer): GarageBook voor oldtimer eigenaren
+- [Onderhoudsboekje youngtimer](https://garagebook.nl/onderhoudsboekje-youngtimer): GarageBook voor youngtimer eigenaren
+- [Motor kopen onderhoudshistorie](https://garagebook.nl/motor-kopen-onderhoudshistorie): Hoe voertuighistorie helpt bij aankoop
+- [Blog](https://garagebook.nl/blog/): Tips en artikelen over voertuigonderhoud en -documentatie
+
+## Applicatie
+
+De GarageBook-applicatie is beschikbaar op [app.garagebook.nl](https://app.garagebook.nl). Hier kunnen gebruikers een account aanmaken, voertuigen toevoegen en hun volledige voertuighistorie digitaal bijhouden.
+
+De marketingsite en SEO-hub is bereikbaar op [garagebook.nl](https://garagebook.nl).
+
+## Contactinformatie
+
+- Website: https://garagebook.nl
+- E-mail: social@garagebook.nl
