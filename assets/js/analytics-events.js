@@ -401,6 +401,9 @@
 
         const startDestinationUrl = ensureTrackedLinkDestination(link);
         const destinationUrl = startDestinationUrl || originalDestinationUrl;
+        const navigationUrl = isAppStartUrl(destinationUrl) && window.garageBookAttribution
+            ? window.garageBookAttribution.appendToStartUrl(destinationUrl)
+            : destinationUrl;
         const events = [
             buildStartClickEvent(link, destinationUrl),
             buildBlogCtaClickEvent(link, destinationUrl),
@@ -412,6 +415,10 @@
         }
 
         if (!shouldInterceptNavigation(event, link)) {
+            if (navigationUrl !== destinationUrl) {
+                link.setAttribute("href", navigationUrl.toString());
+            }
+
             for (const trackedEvent of events) {
                 garagebookTrack(trackedEvent.eventName, trackedEvent.params);
             }
@@ -421,7 +428,7 @@
 
         event.preventDefault();
         sendEventsBeforeNavigation(events, function () {
-            window.location.assign(destinationUrl.toString());
+            window.location.assign(navigationUrl.toString());
         });
     }
 
