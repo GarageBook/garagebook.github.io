@@ -1,33 +1,68 @@
 # GarageBook
 
-> GarageBook is een gratis Nederlands digitaal platform waarmee eigenaren van motoren, auto's, oldtimers en youngtimers de volledige voertuiggeschiedenis bijhouden: onderhoud, reparaties, kilometerstanden, kosten, facturen, foto's en documenten op één overdraagbare plek.
+> GarageBook is een gratis Nederlands platform voor het digitaal bijhouden van
+> voertuiggeschiedenis: onderhoud, reparaties, kilometerstanden, kosten, facturen
+> en documenten per voertuig op een overdraagbare plek.
 
-## Wat is GarageBook?
+Beschikbaar via web, iOS en Android. Gemaakt door Willem van Veen.
 
-GarageBook vervangt het papieren onderhoudsboekje door een digitale, overdraagbare voertuighistorie. Per voertuig bouw je een dossier op met alle onderhoudsmomenten, bewijsstukken en documenten. Dat dossier blijft aan het voertuig gekoppeld en kan bij verkoop worden overgedragen aan de nieuwe eigenaar.
+## Registreren
 
-Het platform is gemaakt door Willem van Veen, een Nederlandse motorrijder en autoenthusiast die merkte dat voertuighistorie versnipperd raakt over losse bonnetjes, foto's op oude telefoons en halfvergeten herinneringen. GarageBook lost dat probleem op met een centrale tijdlijn per voertuig.
+- [Start gratis](https://app.garagebook.nl/start): account aanmaken en direct
+  voertuigen toevoegen
 
-GarageBook is gratis te gebruiken. Je maakt een account aan op garagebook.nl of via app.garagebook.nl en voegt direct voertuigen en onderhoud toe.
+## Hoofdpagina's
 
-## Kernpagina's
+- [Home](https://garagebook.nl/): platformoverzicht en uitleg over digitale
+  voertuiggeschiedenis
+- [Digitaal onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje/):
+  wat het is, hoe het werkt en waarom het meer bewijskracht heeft dan papier
+- [Motor onderhoud bijhouden](https://garagebook.nl/motor-onderhoud-bijhouden/):
+  motoronderhoud registreren met datum, kilometerstand, werkzaamheden en bewijs
+- [Auto onderhoud bijhouden](https://garagebook.nl/auto-onderhoud-bijhouden/):
+  volledige onderhoudshistorie van een auto centraal bijhouden
+- [Onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/): digitaal
+  onderhoudsboekje voor auto, motor, oldtimer en youngtimer
+- [Digitaal vs papier onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje-vs-papier/):
+  vergelijking op bewijskracht, verliesrisico, deelbaarheid en overdraagbaarheid
+- [Motor kopen en onderhoudshistorie](https://garagebook.nl/motor-kopen-onderhoudshistorie/):
+  hoe je bij aankoop de onderhoudshistorie beoordeelt
 
-- [Home](https://garagebook.nl/): Overzicht van het platform, uitleg over digitale voertuiggeschiedenis en de meerwaarde bij bezit, verkoop en overdracht.
-- [Digitaal onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje/): Wat een digitaal onderhoudsboekje is, hoe het werkt en waarom het beter is dan een papieren variant.
-- [Motor onderhoud bijhouden](https://garagebook.nl/motor-onderhoud-bijhouden/): Hoe je motoronderhoud systematisch bijhoudt met datum, kilometerstand, werkzaamheden, onderdelen, kosten en bewijs.
-- [Auto onderhoud bijhouden](https://garagebook.nl/auto-onderhoud-bijhouden/): Hoe je alle onderhoudshistorie van je auto centraal bijhoudt en aantoonbaar maakt.
-- [Onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/): Alles over het digitale onderhoudsboekje voor auto, motor, oldtimer en youngtimer.
-- [Onderhoudsboekje oldtimer](https://garagebook.nl/onderhoudsboekje-oldtimer/): Hoe klassiekers en oldtimers gebaat zijn bij een volledige digitale onderhouds- en restauratiehistorie.
-- [Youngtimer onderhoud bijhouden](https://garagebook.nl/youngtimer-onderhoud-bijhouden/): Hoe je de onderhoudshistorie van een youngtimer opbouwt voor waardebehoud en verkoop.
-- [Motor kopen en onderhoudshistorie](https://garagebook.nl/motor-kopen-onderhoudshistorie/): Waarom je als koper altijd om onderhoudshistorie moet vragen en hoe je die beoordeelt.
-- [Digitaal vs papier onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje-vs-papier/): Een eerlijke vergelijking van papier en digitaal op bewijskracht, verliesrisico, deelbaarheid en overdraagbaarheid.
-- [Blog](https://garagebook.nl/blog/): Artikelen en tips over voertuigonderhoud, onderhoudshistorie, bewijs bij verkoop en waardebehoud.
+## Per voertuigtype
+
+- [Onderhoudsboekje motor](https://garagebook.nl/onderhoudsboekje-motor/)
+- [Onderhoudsboekje oldtimer](https://garagebook.nl/onderhoudsboekje-oldtimer/)
+- [Onderhoudsboekje youngtimer](https://garagebook.nl/onderhoudsboekje-youngtimer/)
+- [Youngtimer onderhoud bijhouden](https://garagebook.nl/youngtimer-onderhoud-bijhouden/)
+- [Digitaal onderhoudsboekje motor](https://garagebook.nl/digitaal-onderhoudsboekje-motor/)
+- [Auto onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/auto/)
+- [Motor onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/motor/)
+- [Oldtimer onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/oldtimer/)
+- [Youngtimer onderhoudsboekje](https://garagebook.nl/onderhoudsboekje/youngtimer/)
+
+## Overige landingspagina's
+
+- [Motor onderhoud app](https://garagebook.nl/motor-onderhoud-app/)
+- [Auto onderhoud app](https://garagebook.nl/auto-onderhoud-app/)
+- [Beste motor onderhoud app](https://garagebook.nl/beste-motor-onderhoud-app/)
+- [Zelf motor onderhoud documenteren](https://garagebook.nl/zelf-motor-onderhoud-documenteren/)
+- [Voertuighistorie bij verkoop](https://garagebook.nl/voertuighistorie-bij-verkoop/)
+- [Circuit motor onderhoud](https://garagebook.nl/circuit-onderhoud-motor/)
+- [Motor onderhoud schema](https://garagebook.nl/motor-onderhoud-schema/)
+- [Motor onderhoud Excel](https://garagebook.nl/motor-onderhoud-excel/)
+
+## Blog
+
+- [Blog overzicht](https://garagebook.nl/blog/): artikelen over onderhoud,
+  onderhoudshistorie, bewijs bij verkoop en waardebehoud
 
 ## Doelgroep
 
-- Motorrijders die onderhoud zelf uitvoeren of laten uitvoeren en hun historie willen bewaren
+- Motorrijders die onderhoud zelf uitvoeren of laten uitvoeren en hun historie
+  willen bewaren
 - Auto-eigenaren die een aantoonbare onderhoudsgeschiedenis willen opbouwen
-- Oldtimer- en youngtimerbezitters voor wie documentatie onderdeel is van de voertuigwaarde
+- Oldtimer- en youngtimerbezitters voor wie documentatie onderdeel is van de
+  voertuigwaarde
 - Verkopers die een betrouwbare overdracht van voertuighistorie willen regelen
 - Kopers die de staat van onderhoud van een tweedehands voertuig willen beoordelen
 
@@ -40,8 +75,14 @@ GarageBook is gratis te gebruiken. Je maakt een account aan op garagebook.nl of 
 - Facturen en kassabonnen als bewijsstukken
 - Foto's van werkzaamheden en staat van onderdelen
 - APK-rapporten, keuringsdocumenten en verzekeringsbewijzen
-- Opmerkingen en context voor een volgende eigenaar of specialist
 
 ## Achtergrond
 
-GarageBook is opgericht door Willem van Veen, een Nederlandse motorrijder die de frustratie kende van versnipperde voertuigdocumentatie. In mei 2026 verschenen artikelen over GarageBook op motor.nl, motorfreaks.nl, nieuwsmotor.nl en motornieuws.nl als erkenning van het platform als serieus alternatief voor het papieren onderhoudsboekje.
+GarageBook is opgericht door Willem van Veen, een Nederlandse motorrijder die de
+frustratie kende van versnipperde voertuigdocumentatie. In mei 2026 verschenen
+artikelen over GarageBook op motor.nl, motorfreaks.nl, nieuwsmotor.nl en
+motornieuws.nl.
+
+## Contact
+
+social@garagebook.nl
