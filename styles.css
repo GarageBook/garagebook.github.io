@@ -2226,3 +2226,48 @@ figure img,
         width: 138px;
     }
 }
+
+/* ── Motortype-pagina's: disclaimer en 3-koloms onderhoudsschema ─────────── */
+
+.maintenanceDisclaimer {
+    background: rgba(255, 210, 0, 0.09);
+    border-left: 3px solid var(--color-accent);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 24px 0 16px;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+}
+
+.maintenanceSource {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.maintenanceSource a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+}
+
+.maintenanceTable--schedule thead th:nth-child(1),
+.maintenanceTable--schedule tbody td:nth-child(1) {
+    width: 27%;
+}
+
+.maintenanceTable--schedule thead th:nth-child(2),
+.maintenanceTable--schedule tbody td:nth-child(2) {
+    width: 23%;
+    white-space: nowrap;
+}
+
+.maintenanceTable--schedule thead th:nth-child(3),
+.maintenanceTable--schedule tbody td:nth-child(3) {
+    width: 50%;
+}
+
+.sectionCtaLink {
+    display: inline-block;
+    margin-top: 28px;
+}
