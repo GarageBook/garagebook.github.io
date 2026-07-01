@@ -148,6 +148,44 @@ Wat dit script doet:
 - draait eerst `publish-commit.sh`
 - vraagt om expliciete bevestiging met `PUSH`
 - voert daarna `git push origin main` uit vanuit `/tmp/garagebook.github.io`
+- voert automatisch een live verificatiestap uit (zie stap 5)
+
+### 5. Live verificatie na push (automatisch)
+
+Na elke push controleert `publish-release.sh` automatisch en faalt expliciet als iets misgaat:
+
+**Hash-check**
+
+Vergelijkt de lokale HEAD-hash met `origin/main` na een `git fetch`. Als ze niet overeenkomen, stopt het script met:
+
+```
+ERROR: Push verification failed.
+  Lokale HEAD:  <hash>
+  origin/main:  <andere hash>
+  De lokale commit staat NIET op origin/main.
+```
+
+Dit vangt het scenario op waarbij `git push` geen foutcode retourneert maar de wijziging toch niet aankomt (bijv. HTTPS-credentials die stil falen).
+
+**HTTP-check**
+
+Controleert de homepage plus elke `*/index.html` route die in de commit is gewijzigd via `curl`. Bij een andere status dan 200 faalt het script.
+
+**Samenvatting**
+
+Aan het eind print het script altijd:
+
+```
+==============================================
+ Gepusht naar origin/main: <hash>
+ Live geverifieerd:
+   200  https://garagebook.nl/
+   200  https://garagebook.nl/garagebook-vs-drivvo/
+   ...
+==============================================
+```
+
+Gebruik `publish-release.sh` altijd voor productie-pushes. Gebruik `publish-commit.sh` alleen als je bewust alleen lokaal wilt committen zonder te pushen.
 
 ## Welke bestanden wel en niet meegaan
 
@@ -216,12 +254,18 @@ Gebruik bij elke wijziging deze checklist:
 3. `git status`
 4. Bevestig: source-map is `/mnt/raid1/GarageBook/Website/GarageBook`
 5. Bevestig: echte Git-repo is `/tmp/garagebook.github.io`
-6. Draai `./publish-sync.sh /tmp/garagebook.github.io`
-7. Controleer of nieuwe routes of blogs echt in `git status` verschijnen
-8. Controleer `git -C /tmp/garagebook.github.io status --short`
-9. Maak commit via `./publish-commit.sh /tmp/garagebook.github.io "..."` of handmatig in `/tmp/garagebook.github.io`
-10. Push via `./publish-release.sh /tmp/garagebook.github.io "..."` of `git -C /tmp/garagebook.github.io push origin main`
-11. Controleer eindstatus met `git -C /tmp/garagebook.github.io status --short`
+6. Bevestig: remote gebruikt SSH — `git -C /tmp/garagebook.github.io remote get-url origin` moet `git@github.com:...` tonen
+7. Draai `./publish-sync.sh /tmp/garagebook.github.io`
+8. Controleer of nieuwe routes of blogs echt in `git status` verschijnen
+9. Controleer `git -C /tmp/garagebook.github.io status --short`
+10. Push via `./publish-release.sh /tmp/garagebook.github.io "..."` — dit doet commit + push + live verificatie in één stap
+11. Bevestig de samenvatting die het script afdrukt: hash en HTTP-statussen moeten allemaal groen zijn
+
+Als je alleen lokaal wilt committen zonder te pushen (ter review):
+
+```bash
+./publish-commit.sh /tmp/garagebook.github.io "..."
+```
 
 ## Analytics-specifieke waarschuwing
 
