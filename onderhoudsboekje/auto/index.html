@@ -25,94 +25,115 @@
     <meta name="twitter:description" content="Houd je onderhoudsboekje auto digitaal bij. Van APK tot oliebeurt en van banden tot schadeherstel. Bewaar de complete autohistorie op één plek." />
     <meta name="twitter:image" content="https://garagebook.nl/assets/garagebook-onderhouds-tijdlijn.webp" />
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@id": "https://garagebook.nl/#organization"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Onderhoudsboekje auto digitaal bijhouden | GarageBook",
+      "url": "https://garagebook.nl/onderhoudsboekje/auto/",
+      "description": "Houd je onderhoudsboekje auto digitaal bij. Van APK tot oliebeurt en van banden tot schadeherstel. Bewaar de complete autohistorie op één plek.",
+      "inLanguage": "nl-NL",
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "@id": "https://garagebook.nl/onderhoudsboekje/auto/#webpage",
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
-          "name": "GarageBook",
-          "url": "https://garagebook.nl/",
-          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://garagebook.nl/"
         },
         {
-          "@type": "WebPage",
-          "name": "Onderhoudsboekje auto digitaal bijhouden | GarageBook",
-          "url": "https://garagebook.nl/onderhoudsboekje/auto/",
-          "description": "Houd je onderhoudsboekje auto digitaal bij. Van APK tot oliebeurt en van banden tot schadeherstel. Bewaar de complete autohistorie op één plek.",
-          "inLanguage": "nl-NL",
-          "publisher": { "@type": "Organization", "name": "GarageBook", "url": "https://garagebook.nl/" }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Onderhoudsboekje",
+          "item": "https://garagebook.nl/onderhoudsboekje/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://garagebook.nl/" },
-            { "@type": "ListItem", "position": 2, "name": "Onderhoudsboekje", "item": "https://garagebook.nl/onderhoudsboekje/" },
-            { "@type": "ListItem", "position": 3, "name": "Onderhoudsboekje auto", "item": "https://garagebook.nl/onderhoudsboekje/auto/" }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Onderhoudsboekje auto",
+          "item": "https://garagebook.nl/onderhoudsboekje/auto/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat moet er in een onderhoudsboekje van een auto staan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een goed onderhoudsboekje auto bevat beurten, kilometerstanden, uitgevoerde werkzaamheden, gebruikte vloeistoffen en onderdelen, APK-rapportages, facturen en bonnetjes. Ook zelf uitgevoerd onderhoud hoor je erin op te nemen."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Wat moet er in een onderhoudsboekje van een auto staan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een goed onderhoudsboekje auto bevat beurten, kilometerstanden, uitgevoerde werkzaamheden, gebruikte vloeistoffen en onderdelen, APK-rapportages, facturen en bonnetjes. Ook zelf uitgevoerd onderhoud hoor je erin op te nemen."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Hoe houd ik het onderhoudsboekje van mijn auto digitaal bij?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Met GarageBook leg je elk onderhoudmoment vast met datum, kilometerstand en een omschrijving. Je koppelt facturen en foto's direct aan de beurt en bouwt zo stap voor stap een complete digitale autohistorie op."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is een onderhoudsboekje nodig voor de APK?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een onderhoudsboekje is geen vereiste voor de APK, maar een aantoonbare onderhoudshistorie maakt onderhoudsproblemen makkelijker te achterhalen en helpt bij gesprekken met een garage over de staat van je auto."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Helpt een onderhoudsboekje bij de verkoop van mijn auto?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Een koper die kan zien welk onderhoud is gedaan, wanneer en door wie, heeft meer vertrouwen in de auto. Een compleet onderhoudsboekje auto maakt je verkooppositie sterker en het gesprek eerlijker."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Wat is het verschil tussen een fysiek en digitaal onderhoudsboekje auto?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een fysiek onderhoudsboekje is papier: het kan kwijtraken, beschadigen en is niet doorzoekbaar. Een digitaal onderhoudsboekje zoals GarageBook is altijd beschikbaar, inclusief foto's van facturen, en kan eenvoudig worden gedeeld bij verkoop."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Welke informatie heeft een garage nodig als ik mijn onderhoudsboekje toon?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een garage wil doorgaans de km-stand bij vorige beurten, welke onderdelen zijn vervangen en wanneer de laatste APK of grote beurt was. Al deze informatie staat overzichtelijk in je GarageBook-profiel."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik een onderhoudsboekje koppelen aan meerdere auto's?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. In GarageBook voeg je meerdere voertuigen toe aan één account. Elke auto krijgt een eigen onderhoudshistorie, maar je beheert alles vanuit dezelfde omgeving."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Hoe houd ik het onderhoudsboekje van mijn auto digitaal bij?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Met GarageBook leg je elk onderhoudmoment vast met datum, kilometerstand en een omschrijving. Je koppelt facturen en foto's direct aan de beurt en bouwt zo stap voor stap een complete digitale autohistorie op."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is een onderhoudsboekje nodig voor de APK?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een onderhoudsboekje is geen vereiste voor de APK, maar een aantoonbare onderhoudshistorie maakt onderhoudsproblemen makkelijker te achterhalen en helpt bij gesprekken met een garage over de staat van je auto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Helpt een onderhoudsboekje bij de verkoop van mijn auto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Een koper die kan zien welk onderhoud is gedaan, wanneer en door wie, heeft meer vertrouwen in de auto. Een compleet onderhoudsboekje auto maakt je verkooppositie sterker en het gesprek eerlijker."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat is het verschil tussen een fysiek en digitaal onderhoudsboekje auto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een fysiek onderhoudsboekje is papier: het kan kwijtraken, beschadigen en is niet doorzoekbaar. Een digitaal onderhoudsboekje zoals GarageBook is altijd beschikbaar, inclusief foto's van facturen, en kan eenvoudig worden gedeeld bij verkoop."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welke informatie heeft een garage nodig als ik mijn onderhoudsboekje toon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een garage wil doorgaans de km-stand bij vorige beurten, welke onderdelen zijn vervangen en wanneer de laatste APK of grote beurt was. Al deze informatie staat overzichtelijk in je GarageBook-profiel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan ik een onderhoudsboekje koppelen aan meerdere auto's?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. In GarageBook voeg je meerdere voertuigen toe aan één account. Elke auto krijgt een eigen onderhoudshistorie, maar je beheert alles vanuit dezelfde omgeving."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 </head>
 <body>

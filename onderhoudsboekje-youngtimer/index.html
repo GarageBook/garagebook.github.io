@@ -24,110 +24,117 @@
     <meta name="twitter:description" content="Voor liefhebbers die historie, facturen, restauratiebewijzen en onderhoudsdocumentatie van hun youngtimer serieus nemen." />
     <meta name="twitter:image" content="https://garagebook.nl/assets/garagebook-onderhouds-tijdlijn.webp" />
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@id": "https://garagebook.nl/#organization"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Onderhoudsboekje youngtimer | Digitaal onderhoudsboekje liefhebbersauto | GarageBook",
+      "url": "https://garagebook.nl/onderhoudsboekje-youngtimer/",
+      "description": "GarageBook helpt je om onderhoudshistorie, facturen, restauratiefoto’s, bewijsstukken en documentatie van je youngtimer of liefhebbersauto centraal te bewaren.",
+      "inLanguage": "nl-NL",
+      "@id": "https://garagebook.nl/onderhoudsboekje-youngtimer/#webpage",
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      },
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
+          "@type": "ListItem",
+          "position": 1,
           "name": "GarageBook",
-          "url": "https://garagebook.nl/",
-          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+          "item": "https://garagebook.nl/"
         },
         {
-          "@type": "WebPage",
-          "name": "Onderhoudsboekje youngtimer | Digitaal onderhoudsboekje liefhebbersauto | GarageBook",
-          "url": "https://garagebook.nl/onderhoudsboekje-youngtimer/",
-          "description": "GarageBook helpt je om onderhoudshistorie, facturen, restauratiefoto’s, bewijsstukken en documentatie van je youngtimer of liefhebbersauto centraal te bewaren.",
-          "inLanguage": "nl-NL"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Onderhoudsboekje youngtimer",
+          "item": "https://garagebook.nl/onderhoudsboekje-youngtimer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat is een digitaal onderhoudsboekje voor een youngtimer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een digitaal onderhoudsboekje voor een youngtimer is een centrale plek waar je onderhoud, reparaties, kilometerstanden, facturen, foto’s, APK-documenten en restauratiehistorie bewaart. Zo bouw je een complete en aantoonbare historie op."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "GarageBook",
-              "item": "https://garagebook.nl/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Onderhoudsboekje youngtimer",
-              "item": "https://garagebook.nl/onderhoudsboekje-youngtimer/"
-            }
-          ]
+          "@type": "Question",
+          "name": "Waarom is onderhoudshistorie extra belangrijk bij een liefhebbersauto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bij een liefhebbersauto draait waarde vaak niet alleen om de staat van de auto, maar ook om de onderbouwing. Een sluitende historie met bewijsstukken geeft vertrouwen bij taxatie, verzekering en verkoop."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Wat is een digitaal onderhoudsboekje voor een youngtimer?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een digitaal onderhoudsboekje voor een youngtimer is een centrale plek waar je onderhoud, reparaties, kilometerstanden, facturen, foto’s, APK-documenten en restauratiehistorie bewaart. Zo bouw je een complete en aantoonbare historie op."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Waarom is onderhoudshistorie extra belangrijk bij een liefhebbersauto?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Bij een liefhebbersauto draait waarde vaak niet alleen om de staat van de auto, maar ook om de onderbouwing. Een sluitende historie met bewijsstukken geeft vertrouwen bij taxatie, verzekering en verkoop."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik facturen en restauratiefoto’s bewaren in GarageBook?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Je kunt facturen, foto’s, onderdelenbonnen, keuringsdocumenten en andere bewijsstukken koppelen aan de juiste onderhoudsmomenten of fases van een restauratie."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is GarageBook geschikt voor een import-youngtimer zonder complete historie?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Ook als een importauto met gaten in de historie binnenkomt, kun je vanaf nu alles gestructureerd vastleggen en nieuwe documentatie centraal opbouwen."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik eigen onderhoud als bewijs vastleggen?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Juist voor liefhebbers die zelf sleutelen is het handig om werkzaamheden, onderdelen, foto’s en notities direct vast te leggen zodat eigen onderhoud ook aantoonbaar blijft."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Werkt dit ook voor BMW E36, BMW E46 of Volvo 850 T5?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. GarageBook past goed bij youngtimers en liefhebbersauto’s zoals de BMW E36, BMW E46, Volvo 850 T5, Audi S3 8L, Mercedes W124, Saab 900 Turbo en andere modellen waarvan historie en documentatie belangrijk zijn."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Helpt een digitaal onderhoudsboekje bij verkoop van een youngtimer?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Een overzichtelijke historie met onderhoud, revisies, onderdelen en bewijsstukken maakt het voor kopers makkelijker om vertrouwen te hebben in de auto en zijn verhaal."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik meerdere liefhebbersauto’s in één account beheren?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. Je kunt meerdere voertuigen toevoegen en per auto een eigen onderhoudsboekje, documentatie en historie opbouwen."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Kan ik facturen en restauratiefoto’s bewaren in GarageBook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Je kunt facturen, foto’s, onderdelenbonnen, keuringsdocumenten en andere bewijsstukken koppelen aan de juiste onderhoudsmomenten of fases van een restauratie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is GarageBook geschikt voor een import-youngtimer zonder complete historie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Ook als een importauto met gaten in de historie binnenkomt, kun je vanaf nu alles gestructureerd vastleggen en nieuwe documentatie centraal opbouwen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan ik eigen onderhoud als bewijs vastleggen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Juist voor liefhebbers die zelf sleutelen is het handig om werkzaamheden, onderdelen, foto’s en notities direct vast te leggen zodat eigen onderhoud ook aantoonbaar blijft."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Werkt dit ook voor BMW E36, BMW E46 of Volvo 850 T5?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. GarageBook past goed bij youngtimers en liefhebbersauto’s zoals de BMW E36, BMW E46, Volvo 850 T5, Audi S3 8L, Mercedes W124, Saab 900 Turbo en andere modellen waarvan historie en documentatie belangrijk zijn."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Helpt een digitaal onderhoudsboekje bij verkoop van een youngtimer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Een overzichtelijke historie met onderhoud, revisies, onderdelen en bewijsstukken maakt het voor kopers makkelijker om vertrouwen te hebben in de auto en zijn verhaal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan ik meerdere liefhebbersauto’s in één account beheren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Je kunt meerdere voertuigen toevoegen en per auto een eigen onderhoudsboekje, documentatie en historie opbouwen."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 </head>
 <body>

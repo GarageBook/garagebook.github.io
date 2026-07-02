@@ -31,123 +31,165 @@
     <meta name="twitter:description" content="Onderhoud, kilometerstanden, documenten, facturen en bewijs samen in één overdraagbare voertuiggeschiedenis." />
     <meta name="twitter:image" content="https://garagebook.nl/assets/garagebook-header-2.jpg" />
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Organization",
+      "@id": "https://garagebook.nl/#organization",
+      "name": "GarageBook",
+      "url": "https://garagebook.nl",
+      "logo": "https://garagebook.nl/assets/GarageBookLogo.png",
+      "description": "Digitaal platform voor overdraagbare voertuiggeschiedenis: onderhoud, documenten, kilometerstanden en bewijs bij verkoop voor motoren, auto's, oldtimers en youngtimers.",
+      "founder": {
+        "@id": "https://garagebook.nl/#founder"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "social@garagebook.nl",
+        "contactType": "customer support"
+      },
+      "sameAs": [
+        "https://www.instagram.com/garagebook.global",
+        "https://www.linkedin.com/company/thegaragebook",
+        "https://www.facebook.com/profile.php?id=61584164445375"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://garagebook.nl/#founder",
+      "name": "Willem van Veen",
+      "url": "https://garagebook.nl/",
+      "worksFor": {
+        "@id": "https://garagebook.nl/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://garagebook.nl/#software",
+      "name": "GarageBook",
+      "url": "https://app.garagebook.nl",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Vehicle maintenance software",
+      "operatingSystem": "Web, iOS, Android",
+      "inLanguage": "nl-NL",
+      "description": "GarageBook is een gratis digitaal platform waarmee eigenaren van auto's, motoren, oldtimers en youngtimers hun volledige voertuighistorie centraal bijhouden: onderhoud, reparaties, kilometerstanden, facturen en documenten.",
+      "creator": {
+        "@id": "https://garagebook.nl/#founder"
+      },
+      "founder": {
+        "@id": "https://garagebook.nl/#founder"
+      },
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "provider": {
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "featureList": [
+        "Onderhoudsregistratie per voertuig",
+        "Documenten en facturen uploaden",
+        "Kilometerstanden bijhouden",
+        "Kostenoverzicht per voertuig",
+        "Overdraagbare voertuighistorie"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://garagebook.nl/#website",
+      "name": "GarageBook",
+      "url": "https://garagebook.nl",
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      },
+      "inLanguage": "nl-NL"
+    },
+    {
+      "@type": "WebPage",
+      "name": "GarageBook: centrale voertuiggeschiedenis voor onderhoud, bewijs en waarde",
+      "url": "https://garagebook.nl/",
+      "description": "De centrale plek voor voertuiggeschiedenis met onderhoudsbewijs, documenten, transparantie en waardebehoud per voertuig.",
+      "inLanguage": "nl-NL",
+      "@id": "https://garagebook.nl/#webpage",
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      },
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
-          "name": "GarageBook",
-          "url": "https://garagebook.nl",
-          "logo": "https://garagebook.nl/assets/GarageBookLogo.png",
-          "description": "Digitaal platform voor overdraagbare voertuiggeschiedenis: onderhoud, documenten, kilometerstanden en bewijs bij verkoop voor motoren, auto’s, oldtimers en youngtimers.",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "social@garagebook.nl",
-            "contactType": "customer support"
-          },
-          "sameAs": [
-            "https://www.instagram.com/garagebook.global",
-            "https://www.linkedin.com/company/thegaragebook",
-            "https://www.facebook.com/profile.php?id=61584164445375"
-          ]
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "GarageBook",
-          "applicationCategory": "UtilitiesApplication",
-          "operatingSystem": "Web, iOS, Android",
-          "url": "https://app.garagebook.nl",
-          "description": "GarageBook is een gratis digitaal platform waarmee eigenaren van auto's, motoren, oldtimers en youngtimers hun volledige voertuighistorie centraal bijhouden: onderhoud, reparaties, kilometerstanden, facturen en documenten.",
-          "inLanguage": "nl-NL",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "EUR"
-          },
-          "author": {
-            "@type": "Person",
-            "name": "Willem van Veen"
-          },
-          "audience": {
-            "@type": "Audience",
-            "audienceType": "Eigenaren van auto's, motoren, oldtimers en youngtimers"
-          },
-          "featureList": [
-            "Onderhoudsregistratie per voertuig",
-            "Documenten en facturen uploaden",
-            "Kilometerstanden bijhouden",
-            "Kostenoverzicht per voertuig",
-            "Overdraagbare voertuighistorie"
-          ]
-        },
-        {
-          "@type": "WebPage",
-          "name": "GarageBook: centrale voertuiggeschiedenis voor onderhoud, bewijs en waarde",
-          "url": "https://garagebook.nl/",
-          "description": "De centrale plek voor voertuiggeschiedenis met onderhoudsbewijs, documenten, transparantie en waardebehoud per voertuig.",
-          "inLanguage": "nl-NL"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://garagebook.nl/"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://garagebook.nl/"
         }
       ]
     }
+  ]
+}
     </script>
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Wat is GarageBook?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "GarageBook is een Nederlands digitaal platform voor het centraal bijhouden van voertuigonderhoud, reparaties, kilometerstanden, kosten en documenten. Het platform werkt voor auto's, motoren, oldtimers en youngtimers en is gemaakt door Willem van Veen als digitaal alternatief voor het papieren onderhoudsboekje."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Voor welke voertuigen werkt GarageBook?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "GarageBook werkt voor alle typen voertuigen: auto's, motoren, oldtimers, youngtimers en andere voertuigen. Elk voertuig krijgt een eigen dossier met onderhoudshistorie, documenten en kostenoverzicht."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Wat is het verschil tussen GarageBook en een papieren onderhoudsboekje?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Een papieren onderhoudsboekje bevat alleen dealer-stempels en raakt makkelijk kwijt. GarageBook laat je zelf onderhoud, reparaties, foto's, facturen en kilometerstanden toevoegen en houdt alles centraal en overdraagbaar bij."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is GarageBook gratis?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja, GarageBook is gratis te gebruiken. Je maakt een account aan op garagebook.nl en voegt direct voertuigen en onderhoud toe zonder kosten."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Hoe helpt GarageBook bij de verkoop van mijn voertuig?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Met GarageBook bouw je een aantoonbare onderhoudshistorie op met facturen, foto's en documenten. Bij verkoop kun je die historie overdragen aan de koper, wat vertrouwen wekt en een sterkere verkooppositie oplevert."
-          }
-        }
-      ]
+      "@type": "Question",
+      "name": "Wat is GarageBook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GarageBook is een Nederlands digitaal platform voor het centraal bijhouden van voertuigonderhoud, reparaties, kilometerstanden, kosten en documenten. Het platform werkt voor auto's, motoren, oldtimers en youngtimers en is gemaakt door Willem van Veen als digitaal alternatief voor het papieren onderhoudsboekje."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Voor welke voertuigen werkt GarageBook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GarageBook werkt voor alle typen voertuigen: auto's, motoren, oldtimers, youngtimers en andere voertuigen. Elk voertuig krijgt een eigen dossier met onderhoudshistorie, documenten en kostenoverzicht."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen GarageBook en een papieren onderhoudsboekje?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een papieren onderhoudsboekje bevat alleen dealer-stempels en raakt makkelijk kwijt. GarageBook laat je zelf onderhoud, reparaties, foto's, facturen en kilometerstanden toevoegen en houdt alles centraal en overdraagbaar bij."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GarageBook gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, GarageBook is gratis te gebruiken. Je maakt een account aan op garagebook.nl en voegt direct voertuigen en onderhoud toe zonder kosten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe helpt GarageBook bij de verkoop van mijn voertuig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Met GarageBook bouw je een aantoonbare onderhoudshistorie op met facturen, foto's en documenten. Bij verkoop kun je die historie overdragen aan de koper, wat vertrouwen wekt en een sterkere verkooppositie oplevert."
+      }
     }
+  ]
+}
     </script>
 </head>
 <body>

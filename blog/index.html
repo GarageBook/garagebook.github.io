@@ -22,25 +22,11 @@
     <meta name="twitter:title" content="GarageBook blog over onderhoud en historie" />
     <meta name="twitter:description" content="Lees GarageBook-artikelen over onderhoudsboekjes, onderhoudshistorie, motoronderhoud, auto-onderhoud, oldtimers en slim digitaal bijhouden." />
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "name": "GarageBook",
-      "url": "https://garagebook.nl",
-      "logo": "https://garagebook.nl/assets/GarageBookLogo.png",
-      "description": "Digitaal platform voor overdraagbare voertuiggeschiedenis: onderhoud, documenten, kilometerstanden en bewijs bij verkoop voor motoren, auto's, oldtimers en youngtimers.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "social@garagebook.nl",
-        "contactType": "customer support"
-      },
-      "sameAs": [
-        "https://www.instagram.com/garagebook.global",
-        "https://www.linkedin.com/company/thegaragebook",
-        "https://www.facebook.com/profile.php?id=61584164445375"
-      ]
+      "@id": "https://garagebook.nl/#organization"
     },
     {
       "@type": "Blog",
@@ -49,9 +35,13 @@
       "description": "Lees GarageBook-artikelen over onderhoudsboekjes, onderhoudshistorie, motoronderhoud, auto-onderhoud, oldtimers en slim digitaal bijhouden.",
       "inLanguage": "nl-NL",
       "publisher": {
-        "@type": "Organization",
-        "name": "GarageBook",
-        "url": "https://garagebook.nl/"
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
       }
     },
     {

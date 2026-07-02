@@ -25,25 +25,11 @@
     <meta name="twitter:title" content="Digitaal onderhoudsboekje voor auto of motor | GarageBook" />
     <meta name="twitter:description" content="Bewaar onderhoud, documenten, bewijs en overdraagbare digitale historie centraal met GarageBook." />
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "name": "GarageBook",
-      "url": "https://garagebook.nl",
-      "logo": "https://garagebook.nl/assets/GarageBookLogo.png",
-      "description": "Digitaal platform voor overdraagbare voertuiggeschiedenis: onderhoud, documenten, kilometerstanden en bewijs bij verkoop voor motoren, auto's, oldtimers en youngtimers.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "social@garagebook.nl",
-        "contactType": "customer support"
-      },
-      "sameAs": [
-        "https://www.instagram.com/garagebook.global",
-        "https://www.linkedin.com/company/thegaragebook",
-        "https://www.facebook.com/profile.php?id=61584164445375"
-      ]
+      "@id": "https://garagebook.nl/#organization"
     },
     {
       "@type": "WebPage",
@@ -53,9 +39,13 @@
       "description": "Gebruik GarageBook als centrale voertuiggeschiedenis voor onderhoud, documenten, kilometerstanden, bewijs en overdraagbare digitale historie.",
       "inLanguage": "nl-NL",
       "publisher": {
-        "@type": "Organization",
-        "name": "GarageBook",
-        "url": "https://garagebook.nl/"
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
       }
     },
     {
@@ -79,60 +69,60 @@
 }
     </script>
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Wat is een digitaal onderhoudsboekje?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Een digitaal onderhoudsboekje is een online omgeving waar je alle onderhoud, reparaties, facturen en km-standen van je voertuig bijhoudt. In plaats van losse bonnetjes, stempels of notities heb je alles op één plek, toegankelijk via je telefoon of computer."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Wat zijn de voordelen van een digitaal onderhoudsboekje ten opzichte van papier?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Een digitaal onderhoudsboekje raakt nooit kwijt, is altijd bij de hand en bevat foto's van facturen en onderdelen. Je kunt het eenvoudig delen bij verkoop en herinneringen instellen voor aankomende beurten. Een papieren boekje biedt dat allemaal niet."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Werkt een digitaal onderhoudsboekje voor zowel auto als motor?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja. GarageBook werkt voor auto's, motoren, oldtimers en youngtimers. Je kunt meerdere voertuigen toevoegen en elk voertuig krijgt zijn eigen onderhoudshistorie."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Hoe begin ik met een digitaal onderhoudsboekje?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Maak gratis een account aan op GarageBook, voeg je voertuig toe met kenteken of VIN-nummer en log je eerste onderhoudsbeurt in. Het duurt minder dan vijf minuten om te starten."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is een digitaal onderhoudsboekje gratis?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja, GarageBook is gratis te gebruiken. Je kunt direct starten zonder creditcard of abonnement."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Kan ik mijn digitale onderhoudsboekje delen bij verkoop?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ja. Je kunt een digitale onderhoudshistorie exporteren of delen als bewijs voor een potentiële koper. Dit verhoogt het vertrouwen en vaak ook de verkoopprijs van je voertuig."
-          }
-        }
-      ]
+      "@type": "Question",
+      "name": "Wat is een digitaal onderhoudsboekje?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een digitaal onderhoudsboekje is een online omgeving waar je alle onderhoud, reparaties, facturen en km-standen van je voertuig bijhoudt. In plaats van losse bonnetjes, stempels of notities heb je alles op één plek, toegankelijk via je telefoon of computer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat zijn de voordelen van een digitaal onderhoudsboekje ten opzichte van papier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Een digitaal onderhoudsboekje raakt nooit kwijt, is altijd bij de hand en bevat foto's van facturen en onderdelen. Je kunt het eenvoudig delen bij verkoop en herinneringen instellen voor aankomende beurten. Een papieren boekje biedt dat allemaal niet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Werkt een digitaal onderhoudsboekje voor zowel auto als motor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. GarageBook werkt voor auto's, motoren, oldtimers en youngtimers. Je kunt meerdere voertuigen toevoegen en elk voertuig krijgt zijn eigen onderhoudshistorie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe begin ik met een digitaal onderhoudsboekje?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maak gratis een account aan op GarageBook, voeg je voertuig toe met kenteken of VIN-nummer en log je eerste onderhoudsbeurt in. Het duurt minder dan vijf minuten om te starten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is een digitaal onderhoudsboekje gratis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, GarageBook is gratis te gebruiken. Je kunt direct starten zonder creditcard of abonnement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik mijn digitale onderhoudsboekje delen bij verkoop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja. Je kunt een digitale onderhoudshistorie exporteren of delen als bewijs voor een potentiële koper. Dit verhoogt het vertrouwen en vaak ook de verkoopprijs van je voertuig."
+      }
     }
+  ]
+}
     </script>
 </head>
 <body>

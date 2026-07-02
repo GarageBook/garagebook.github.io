@@ -25,86 +25,93 @@
     <meta name="twitter:description" content="Digitale onderhoudshistorie voor oldtimers, klassiekers en liefhebbersauto’s. Bewaar onderhoud, documenten, foto’s en kosten centraal." />
     <meta name="twitter:image" content="https://garagebook.nl/assets/garagebook-onderhouds-tijdlijn.jpg" />
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@id": "https://garagebook.nl/#organization"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Onderhoudsboekje oldtimer | Digitaal onderhoud bijhouden | GarageBook",
+      "url": "https://garagebook.nl/onderhoudsboekje-oldtimer/",
+      "description": "Houd het onderhoud van je oldtimer of klassieker digitaal bij en bewaar onderhoudshistorie, documenten, foto’s, kilometerstanden en kosten overzichtelijk op één plek.",
+      "inLanguage": "nl-NL",
+      "@id": "https://garagebook.nl/onderhoudsboekje-oldtimer/#webpage",
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      },
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
+          "@type": "ListItem",
+          "position": 1,
           "name": "GarageBook",
-          "url": "https://garagebook.nl/",
-          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+          "item": "https://garagebook.nl/"
         },
         {
-          "@type": "WebPage",
-          "name": "Onderhoudsboekje oldtimer | Digitaal onderhoud bijhouden | GarageBook",
-          "url": "https://garagebook.nl/onderhoudsboekje-oldtimer/",
-          "description": "Houd het onderhoud van je oldtimer of klassieker digitaal bij en bewaar onderhoudshistorie, documenten, foto’s, kilometerstanden en kosten overzichtelijk op één plek.",
-          "inLanguage": "nl-NL"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Onderhoudsboekje oldtimer",
+          "item": "https://garagebook.nl/onderhoudsboekje-oldtimer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kan ik GarageBook gebruiken voor een oldtimer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, GarageBook werkt ook voor oldtimers, klassiekers, youngtimers en andere liefhebbersauto’s. Je houdt onderhoud, historie, kosten en documenten per voertuig overzichtelijk bij."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "GarageBook",
-              "item": "https://garagebook.nl/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Onderhoudsboekje oldtimer",
-              "item": "https://garagebook.nl/onderhoudsboekje-oldtimer/"
-            }
-          ]
+          "@type": "Question",
+          "name": "Kan ik documenten zoals taxatierapporten en facturen bewaren?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, je kunt documenten zoals facturen, bonnetjes, taxatierapporten en foto’s koppelen aan onderhoudsmomenten of bewaren als onderdeel van de voertuiggeschiedenis."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Kan ik GarageBook gebruiken voor een oldtimer?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, GarageBook werkt ook voor oldtimers, klassiekers, youngtimers en andere liefhebbersauto’s. Je houdt onderhoud, historie, kosten en documenten per voertuig overzichtelijk bij."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik documenten zoals taxatierapporten en facturen bewaren?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, je kunt documenten zoals facturen, bonnetjes, taxatierapporten en foto’s koppelen aan onderhoudsmomenten of bewaren als onderdeel van de voertuiggeschiedenis."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is GarageBook geschikt voor restauratieprojecten?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, juist bij restauratieprojecten is het handig om werkzaamheden, onderdelen, kosten, foto’s en voortgang per fase vast te leggen zodat de historie compleet blijft."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik meerdere voertuigen bijhouden?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, je kunt meerdere voertuigen beheren en voor elk voertuig een eigen onderhoudshistorie, documentatie en kostenoverzicht opbouwen."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Vervangt GarageBook een papieren onderhoudsboekje?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "GarageBook is een digitaal alternatief voor een papieren onderhoudsboekje. Het helpt om onderhoud, bewijsstukken en historie centraler en overzichtelijker te bewaren."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Is GarageBook geschikt voor restauratieprojecten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, juist bij restauratieprojecten is het handig om werkzaamheden, onderdelen, kosten, foto’s en voortgang per fase vast te leggen zodat de historie compleet blijft."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan ik meerdere voertuigen bijhouden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, je kunt meerdere voertuigen beheren en voor elk voertuig een eigen onderhoudshistorie, documentatie en kostenoverzicht opbouwen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vervangt GarageBook een papieren onderhoudsboekje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GarageBook is een digitaal alternatief voor een papieren onderhoudsboekje. Het helpt om onderhoud, bewijsstukken en historie centraler en overzichtelijker te bewaren."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 </head>
 <body>

@@ -25,70 +25,91 @@
     <meta name="twitter:description" content="Bewaar de onderhoudshistorie van je oldtimer digitaal. Restauraties, revisies, taxatierapporten en foto's samen in één compleet klassiekerdossier." />
     <meta name="twitter:image" content="https://garagebook.nl/assets/garagebook-voor-klassiekers1.jpg" />
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@id": "https://garagebook.nl/#organization"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Onderhoudsboekje oldtimer digitaal bijhouden | GarageBook",
+      "url": "https://garagebook.nl/onderhoudsboekje/oldtimer/",
+      "description": "Bewaar de onderhoudshistorie van je oldtimer digitaal. Restauraties, revisies, taxatierapporten en foto's samen in één compleet klassiekerdossier.",
+      "inLanguage": "nl-NL",
+      "publisher": {
+        "@id": "https://garagebook.nl/#organization"
+      },
+      "@id": "https://garagebook.nl/onderhoudsboekje/oldtimer/#webpage",
+      "isPartOf": {
+        "@id": "https://garagebook.nl/#website"
+      },
+      "about": {
+        "@id": "https://garagebook.nl/#software"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "Organization",
-          "name": "GarageBook",
-          "url": "https://garagebook.nl/",
-          "logo": "https://garagebook.nl/assets/GarageBookLogo.png"
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://garagebook.nl/"
         },
         {
-          "@type": "WebPage",
-          "name": "Onderhoudsboekje oldtimer digitaal bijhouden | GarageBook",
-          "url": "https://garagebook.nl/onderhoudsboekje/oldtimer/",
-          "description": "Bewaar de onderhoudshistorie van je oldtimer digitaal. Restauraties, revisies, taxatierapporten en foto's samen in één compleet klassiekerdossier.",
-          "inLanguage": "nl-NL",
-          "publisher": { "@type": "Organization", "name": "GarageBook", "url": "https://garagebook.nl/" }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Onderhoudsboekje",
+          "item": "https://garagebook.nl/onderhoudsboekje/"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://garagebook.nl/" },
-            { "@type": "ListItem", "position": 2, "name": "Onderhoudsboekje", "item": "https://garagebook.nl/onderhoudsboekje/" },
-            { "@type": "ListItem", "position": 3, "name": "Onderhoudsboekje oldtimer", "item": "https://garagebook.nl/onderhoudsboekje/oldtimer/" }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Onderhoudsboekje oldtimer",
+          "item": "https://garagebook.nl/onderhoudsboekje/oldtimer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat moet er in een onderhoudsboekje van een oldtimer staan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een onderhoudsboekje oldtimer bevat niet alleen beurten en kilometerstanden, maar ook restauratiefases, revisies, originele onderdelen, taxatierapporten, foto's van werkzaamheden, APK-historie en informatie over vorige eigenaren als die beschikbaar is."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Wat moet er in een onderhoudsboekje van een oldtimer staan?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een onderhoudsboekje oldtimer bevat niet alleen beurten en kilometerstanden, maar ook restauratiefases, revisies, originele onderdelen, taxatierapporten, foto's van werkzaamheden, APK-historie en informatie over vorige eigenaren als die beschikbaar is."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Verhoogt een onderhoudsboekje de waarde van mijn oldtimer?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Een complete en aantoonbare historie maakt onderhoud, restauraties en investeringen zichtbaar voor kopers, taxateurs en verzekeraars. Dat geeft vertrouwen en ondersteunt een sterkere positie bij taxatie of verkoop."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is een digitaal onderhoudsboekje geschikt voor een restauratieproject?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja, juist bij restauratieprojecten is een digitale aanpak waardevol. Je documenteert per fase: wat is gedaan, welke onderdelen zijn gebruikt, welke foto's horen erbij en wat het heeft gekost. Zo gaat de build history niet verloren."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Kan ik taxatierapporten en verzekeringsdocumenten bewaren in GarageBook?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ja. In GarageBook bewaar je documenten zoals taxatierapporten, APK-rapporten, facturen en foto's als onderdeel van het voertuigdossier. Zo heb je alles op één plek bij de hand."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Verhoogt een onderhoudsboekje de waarde van mijn oldtimer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een complete en aantoonbare historie maakt onderhoud, restauraties en investeringen zichtbaar voor kopers, taxateurs en verzekeraars. Dat geeft vertrouwen en ondersteunt een sterkere positie bij taxatie of verkoop."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is een digitaal onderhoudsboekje geschikt voor een restauratieproject?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, juist bij restauratieprojecten is een digitale aanpak waardevol. Je documenteert per fase: wat is gedaan, welke onderdelen zijn gebruikt, welke foto's horen erbij en wat het heeft gekost. Zo gaat de build history niet verloren."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kan ik taxatierapporten en verzekeringsdocumenten bewaren in GarageBook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. In GarageBook bewaar je documenten zoals taxatierapporten, APK-rapporten, facturen en foto's als onderdeel van het voertuigdossier. Zo heb je alles op één plek bij de hand."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 </head>
 <body>
