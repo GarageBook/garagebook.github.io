@@ -617,6 +617,10 @@ summary,
     object-fit: contain;
 }
 
+.contentImage--vehicle .contentImageInner {
+    aspect-ratio: 3 / 2;
+}
+
 .localPagePhotoGrid {
     max-width: var(--site-max-width);
     margin: 0 auto;
