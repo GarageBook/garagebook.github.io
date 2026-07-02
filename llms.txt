@@ -15,6 +15,15 @@ Beschikbaar via web, iOS en Android. Gemaakt door Willem van Veen.
 
 - [Home](https://garagebook.nl/): platformoverzicht en uitleg over digitale
   voertuiggeschiedenis
+- [Over GarageBook](https://garagebook.nl/over-garagebook/): achtergrond,
+  oprichter, officiële productcontext en entity-informatie
+- [Pers](https://garagebook.nl/pers/): persinformatie, korte omschrijving,
+  externe vermeldingen en perscontact
+- [Contact](https://garagebook.nl/contact/): officiële contactmogelijkheden
+- [Privacy](https://garagebook.nl/privacy/): privacy-informatie voor website en
+  appvragen
+- [Media](https://garagebook.nl/media/): logo, productbeeld en korte
+  productomschrijvingen
 - [Digitaal onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje/):
   wat het is, hoe het werkt en waarom het meer bewijskracht heeft dan papier
 - [Motor onderhoud bijhouden](https://garagebook.nl/motor-onderhoud-bijhouden/):
@@ -82,6 +91,23 @@ GarageBook is opgericht door Willem van Veen, een Nederlandse motorrijder die de
 frustratie kende van versnipperde voertuigdocumentatie. In mei 2026 verschenen
 artikelen over GarageBook op motor.nl, motorfreaks.nl, nieuwsmotor.nl en
 motornieuws.nl.
+
+Officiële entity-links:
+
+- Marketingwebsite: https://garagebook.nl/
+- App: https://app.garagebook.nl
+- Registreren: https://app.garagebook.nl/start
+- Organization @id: https://garagebook.nl/#organization
+- SoftwareApplication @id: https://garagebook.nl/#software
+- WebSite @id: https://garagebook.nl/#website
+- Founder @id: https://garagebook.nl/#founder
+
+Externe vermeldingen:
+
+- https://www.motor.nl/nieuws/het-onderhoudsboekje-wordt-misschien-wel-volledig-digitaal-dankzij-garagebook/
+- https://motorfreaks.nl/artikel/garagebook-digitaal-onderhoudsboekje-voor-zelfsleuteraars/
+- https://nieuwsmotor.nl/nieuws/persberichten/garagebook-onderhoudshistorie-motorfietsen-digitaal-vastleggen/
+- https://www.motornieuws.nl/het-onderhoudsboekje-wordt-misschien-wel-volledig-digitaal-dankzij-garagebook/
 
 ## Contact
 
