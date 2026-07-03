@@ -15,15 +15,53 @@ const fs = require('fs');
 const cp = require('child_process');
 
 const site = 'https://garagebook.nl';
+const host = 'garagebook.nl';
 const ignoredHtml = new Set([
   '404.html',
   '__layout_check__.html',
   'motor-onderhoud-bijhouden/alternatief.html',
 ]);
+const noindexAllowlist = new Set([
+  // Intentional non-indexed pages that are synced but kept out of sitemap.
+  'geratel/index.html',
+  'ktm-390-duke-onderhoud/index.html',
+  'triumph-bonneville-t120-onderhoud/index.html',
+]);
+const allowedJsonLdTypes = new Set([
+  'Article',
+  'Blog',
+  'BlogPosting',
+  'BreadcrumbList',
+  'ContactPage',
+  'FAQPage',
+  'HowTo',
+  'HowToStep',
+  'ListItem',
+  'Organization',
+  'Person',
+  'Question',
+  'Answer',
+  'SoftwareApplication',
+  'WebPage',
+  'WebSite',
+  'Offer',
+  'ImageObject',
+]);
+const requiredSitemapUrls = [
+  `${site}/`,
+  `${site}/blog/`,
+  `${site}/digitaal-onderhoudsboekje/`,
+  `${site}/motor-onderhoud-app/`,
+  `${site}/auto-onderhoud-app/`,
+  `${site}/voertuighistorie-bij-verkoop/`,
+  `${site}/onderhoudsboekje-oldtimer/`,
+  `${site}/blog/onderhoudsboekje-oldtimer-onderhoudshistorie/`,
+];
 
 function listFiles(args) {
-  return cp.execFileSync('rg', args, { encoding: 'utf8' })
-    .trim()
+  const output = cp.execFileSync('rg', args, { encoding: 'utf8' }).trim();
+  if (!output) return [];
+  return output
     .split(/\n/)
     .filter(Boolean)
     .filter((file) => !file.startsWith('_oud/') && !file.includes('/_oud/'));
@@ -38,15 +76,87 @@ function pageUrl(file) {
   return `${site}/${file.replace(/index\.html$/, '')}`;
 }
 
+function tagContent(source, tagName) {
+  const match = source.match(new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}>`, 'i'));
+  return match ? match[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
+}
+
+function attr(source, selectorRegex, attrName) {
+  const tag = source.match(selectorRegex)?.[0];
+  if (!tag) return null;
+  return tag.match(new RegExp(`\\b${attrName}=["']([^"']+)["']`, 'i'))?.[1] ?? null;
+}
+
+function jsonLdBlocks(source) {
+  return [...source.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
+}
+
+function collectTypes(value, out = []) {
+  if (!value || typeof value !== 'object') return out;
+  if (Array.isArray(value)) {
+    for (const item of value) collectTypes(item, out);
+    return out;
+  }
+  if (value['@type']) {
+    if (Array.isArray(value['@type'])) out.push(...value['@type']);
+    else out.push(value['@type']);
+  }
+  for (const child of Object.values(value)) collectTypes(child, out);
+  return out;
+}
+
+function cleanInternalPath(href) {
+  if (href.startsWith('http://garagebook.nl/') || href.startsWith('https://garagebook.nl/')) {
+    const url = new URL(href);
+    return { path: url.pathname, search: url.search, hash: url.hash, original: href, absolute: true };
+  }
+
+  if (!href.startsWith('/') || href.startsWith('//')) return null;
+  if (href === '/' || href.startsWith('/#')) return null;
+  const [withoutHash, hash = ''] = href.split('#', 2);
+  const [path, search = ''] = withoutHash.split('?', 2);
+  return { path, search: search ? `?${search}` : '', hash: hash ? `#${hash}` : '', original: href, absolute: false };
+}
+
 const failures = [];
-const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
-const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const passNotes = [];
+
+if (!fs.existsSync('sitemap.xml')) {
+  failures.push('sitemap.xml: missing required sitemap file');
+}
+
+const sitemap = fs.existsSync('sitemap.xml') ? fs.readFileSync('sitemap.xml', 'utf8') : '';
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
 const sitemapSet = new Set(sitemapUrls);
 
-for (const url of sitemapUrls) {
-  if (url.startsWith(`${site}/`) && url !== `${site}/` && !url.endsWith('/')) {
-    failures.push(`sitemap non-slash URL: ${url}`);
+for (const [index, url] of sitemapUrls.entries()) {
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    failures.push(`sitemap.xml: invalid URL in loc ${index + 1}: ${url}`);
+    continue;
   }
+
+  if (parsed.protocol !== 'https:' || parsed.hostname !== host) {
+    failures.push(`sitemap.xml: non-canonical host/protocol in loc: ${url}`);
+  }
+  if (parsed.search) failures.push(`sitemap.xml: querystring not allowed in loc: ${url}`);
+  if (parsed.hash) failures.push(`sitemap.xml: anchor not allowed in loc: ${url}`);
+  if (url !== `${site}/` && !parsed.pathname.endsWith('/')) {
+    failures.push(`sitemap.xml: non-slash URL in loc: ${url}`);
+  }
+}
+
+const seenSitemap = new Map();
+for (const url of sitemapUrls) {
+  seenSitemap.set(url, (seenSitemap.get(url) || 0) + 1);
+}
+for (const [url, count] of seenSitemap.entries()) {
+  if (count > 1) failures.push(`sitemap.xml: duplicate loc (${count}x): ${url}`);
+}
+for (const url of requiredSitemapUrls) {
+  if (!sitemapSet.has(url)) failures.push(`sitemap.xml: required focus URL missing: ${url}`);
 }
 
 const htmlFiles = listFiles(['--files', '-g', '*.html']);
@@ -55,16 +165,64 @@ const canonicalRoutes = new Set(canonicalPages.map((file) => new URL(pageUrl(fil
 
 for (const file of canonicalPages) {
   const source = fs.readFileSync(file, 'utf8');
-  const canonicalMatch = source.match(/<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["'][^>]*>/i);
   const expected = pageUrl(file);
+  const canonical = attr(source, /<link\b[^>]*\brel=["']canonical["'][^>]*>/i, 'href');
 
-  if (!canonicalMatch) {
+  if (!canonical) {
     failures.push(`${file}: missing canonical tag`);
-    continue;
+  } else {
+    let parsed;
+    try {
+      parsed = new URL(canonical);
+    } catch {
+      failures.push(`${file}: canonical is not a valid absolute URL: ${canonical}`);
+      parsed = null;
+    }
+
+    if (parsed) {
+      if (parsed.protocol !== 'https:' || parsed.hostname !== host) {
+        failures.push(`${file}: canonical uses wrong host/protocol: ${canonical}`);
+      }
+      if (canonical !== expected) {
+        failures.push(`${file}: canonical ${canonical} !== expected ${expected}`);
+      }
+      if (canonical !== `${site}/` && !parsed.pathname.endsWith('/')) {
+        failures.push(`${file}: canonical is missing trailing slash: ${canonical}`);
+      }
+      if (parsed.search) failures.push(`${file}: canonical must not contain querystring: ${canonical}`);
+      if (parsed.hash) failures.push(`${file}: canonical must not contain anchor: ${canonical}`);
+    }
   }
 
-  if (canonicalMatch[1] !== expected) {
-    failures.push(`${file}: canonical ${canonicalMatch[1]} !== ${expected}`);
+  const title = tagContent(source, 'title');
+  if (!title) failures.push(`${file}: missing or empty title`);
+
+  const description = attr(source, /<meta\b[^>]*\bname=["']description["'][^>]*>/i, 'content');
+  if (!description || !description.trim()) failures.push(`${file}: missing or empty meta description`);
+
+  const h1Count = [...source.matchAll(/<h1\b[^>]*>/gi)].length;
+  if (h1Count !== 1) failures.push(`${file}: expected exactly one H1, found ${h1Count}`);
+
+  const robots = attr(source, /<meta\b[^>]*\bname=["']robots["'][^>]*>/i, 'content');
+  if (robots && /(^|[,\s])noindex([,\s]|$)/i.test(robots) && !noindexAllowlist.has(file)) {
+    failures.push(`${file}: noindex is not allowed for canonical page`);
+  }
+
+  for (const block of jsonLdBlocks(source)) {
+    let parsed;
+    try {
+      parsed = JSON.parse(block[1].trim());
+    } catch (error) {
+      failures.push(`${file}:${lineNumber(source, block.index)} JSON-LD is not parseable: ${error.message}`);
+      continue;
+    }
+
+    for (const type of collectTypes(parsed)) {
+      if (type === 'Product') failures.push(`${file}:${lineNumber(source, block.index)} Product schema is not allowed on marketing/blog pages`);
+      if (typeof type === 'string' && !allowedJsonLdTypes.has(type)) {
+        passNotes.push(`${file}: JSON-LD type present and not explicitly allowlisted: ${type}`);
+      }
+    }
   }
 }
 
@@ -72,58 +230,34 @@ for (const file of canonicalPages) {
   const source = fs.readFileSync(file, 'utf8');
 
   for (const match of source.matchAll(/\bhref=["']([^"']+)["']/g)) {
-    const href = match[1];
+    const href = match[1].trim();
+    if (!href || href.startsWith('#') || /^(mailto:|tel:|javascript:)/i.test(href)) continue;
+    if (/^https?:\/\//i.test(href) && !href.startsWith('http://garagebook.nl/') && !href.startsWith('https://garagebook.nl/')) continue;
 
-    if (href.startsWith('http://garagebook.nl/') || href.startsWith('https://garagebook.nl/')) {
-      const url = new URL(href);
-      const slashPath = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
-      if (url.pathname !== '/' && canonicalRoutes.has(slashPath) && !url.pathname.endsWith('/')) {
-        failures.push(`${file}:${lineNumber(source, match.index)} internal absolute link without slash: ${href}`);
-      }
-    }
+    const internal = cleanInternalPath(href);
+    if (!internal) continue;
 
-    if (!href.startsWith('/') || href === '/' || href.startsWith('//') || href.startsWith('/#')) {
+    if (internal.path.endsWith('/index.html')) {
+      failures.push(`${file}:${lineNumber(source, match.index)} internal link must not point to index.html: ${href}`);
       continue;
     }
 
-    const cleanPath = href.split(/[?#]/)[0];
-    if (!cleanPath || cleanPath === '/') {
-      continue;
+    const slashPath = internal.path.endsWith('/') ? internal.path : `${internal.path}/`;
+    if (canonicalRoutes.has(slashPath) && !internal.path.endsWith('/')) {
+      failures.push(`${file}:${lineNumber(source, match.index)} internal page link must use trailing slash canonical: ${href}`);
     }
-
-    const slashPath = cleanPath.endsWith('/') ? cleanPath : `${cleanPath}/`;
-    if (canonicalRoutes.has(slashPath) && !cleanPath.endsWith('/')) {
-      failures.push(`${file}:${lineNumber(source, match.index)} internal link without slash: ${href}`);
-    }
-  }
-}
-
-for (const file of canonicalPages) {
-  const source = fs.readFileSync(file, 'utf8');
-  if (/"@type"\s*:\s*"Product"/.test(source) || /@type[^<\n]*Product/.test(source)) {
-    failures.push(`${file}: Product schema found; remove it or document why it is intentional`);
-  }
-}
-
-for (const url of [
-  `${site}/voertuighistorie-bij-verkoop/`,
-  `${site}/blog/onderhoudsboekje-oldtimer-onderhoudshistorie/`,
-]) {
-  if (!sitemapSet.has(url)) {
-    failures.push(`required GSC focus URL missing from sitemap: ${url}`);
   }
 }
 
 console.log(`Checked ${canonicalPages.length} canonical HTML pages.`);
 console.log(`Checked ${sitemapUrls.length} sitemap URLs.`);
+console.log(`Checked ${canonicalPages.length} pages for basic SEO, internal links, and JSON-LD.`);
 
 if (failures.length) {
   console.error('\nSEO check failed:');
-  for (const failure of failures) {
-    console.error(`- ${failure}`);
-  }
+  for (const failure of failures) console.error(`- ${failure}`);
   process.exit(1);
 }
 
-console.log('SEO check passed: slash canonicals, sitemap URLs, internal page links, focus sitemap URLs, and Product schema checks are clean.');
+console.log('SEO check passed: canonicals, sitemap, internal links, structured data, and basic SEO are clean.');
 NODE
