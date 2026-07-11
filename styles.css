@@ -2442,6 +2442,110 @@ figure img,
     }
 }
 
+/* ── Cluster navigatie ─────────────────────────────────────────────────────── */
+
+.clusterNav {
+    background: var(--color-surface-muted);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.clusterNav__label {
+    color: var(--color-text-muted);
+}
+
+.clusterNav__sep {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.clusterNav__current {
+    color: var(--color-text);
+    font-family: 'ZalandoSansBold', sans-serif;
+}
+
+.clusterNav a {
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.clusterNav a:hover {
+    color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+    .clusterNav {
+        padding: 10px 20px;
+    }
+}
+
+@media print {
+    .clusterNav { display: none !important; }
+}
+
+/* ── Maintenance table ─────────────────────────────────────────────────────── */
+
+.maintenanceTableWrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 40px 32px;
+}
+
+.maintenanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.maintenanceTable th,
+.maintenanceTable td {
+    text-align: left;
+    padding: 12px 16px;
+    border: 1px solid var(--color-border);
+    vertical-align: top;
+}
+
+.maintenanceTable thead th {
+    background: var(--color-dark);
+    color: #fff;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+.maintenanceTable tbody tr:nth-child(even) td {
+    background: var(--color-surface-muted);
+}
+
+.maintenanceTable tbody td:first-child {
+    white-space: nowrap;
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .maintenanceTableWrap {
+        padding: 0 0 24px;
+    }
+
+    .maintenanceTable {
+        font-size: 14px;
+    }
+
+    .maintenanceTable th,
+    .maintenanceTable td {
+        padding: 10px 12px;
+    }
+}
+
 /* ── Responsive: resourceGrid ─────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
