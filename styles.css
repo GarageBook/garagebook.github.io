@@ -2567,6 +2567,25 @@ figure img,
 
 /* ── Insights ─────────────────────────────────────────────────────────────── */
 
+.heroThree__intro {
+    color: #fff;
+    max-width: 620px;
+    margin-top: 16px;
+}
+
+.ctaWithSpacing {
+    margin-top: 32px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .ctaWithSpacing {
+        margin-top: 24px;
+    }
+}
+
+
+
 .insightGrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
