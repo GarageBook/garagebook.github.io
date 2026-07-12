@@ -2707,3 +2707,70 @@ figure img,
         padding: 24px 20px;
     }
 }
+
+.statGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 32px auto 0;
+    padding: 0 40px;
+}
+
+.statCard {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.statCard__number {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.statCard__label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.statGrid__note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-top: 12px;
+    padding: 0 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 900px) {
+    .statGrid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 24px;
+    }
+    .statGrid__note {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 540px) {
+    .statGrid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    .statGrid__note {
+        padding: 0 20px;
+    }
+    .statCard__number {
+        font-size: 2rem;
+    }
+}
