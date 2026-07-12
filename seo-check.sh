@@ -250,6 +250,90 @@ for (const file of canonicalPages) {
   }
 }
 
+// ── Nieuwe regressiechecks (Sprint 7) ─────────────────────────────────────────
+
+// 1. Centrale pagina-inventaris moet bestaan
+if (!fs.existsSync('data/seo/pages.json')) {
+  failures.push('data/seo/pages.json: centrale pagina-inventaris ontbreekt (draai: node scripts/build-page-inventory.js)');
+}
+
+// 2. Duplicate titles over alle indexeerbare pagina's
+const seenTitles = new Map();
+for (const file of canonicalPages) {
+  const robots = attr(fs.readFileSync(file, 'utf8'), /<meta\b[^>]*\bname=["']robots["'][^>]*>/i, 'content') || '';
+  if (/(^|[,\s])noindex([,\s]|$)/i.test(robots)) continue; // skip noindex pages
+  const source = fs.readFileSync(file, 'utf8');
+  const title = tagContent(source, 'title').toLowerCase().trim();
+  if (!title) continue;
+  if (seenTitles.has(title)) {
+    failures.push(`duplicate title across pages: "${title}" — ${file} en ${seenTitles.get(title)}`);
+  } else {
+    seenTitles.set(title, file);
+  }
+}
+
+// 3. Sitemap-URL's die niet overeenkomen met bestaande HTML-bestanden
+const sitemapNoIndexAllowlist = new Set([]);
+for (const url of sitemapUrls) {
+  let parsed;
+  try { parsed = new URL(url); } catch (_) { continue; }
+  const pathname = parsed.pathname;
+  const file = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '').replace(/\/$/, '') + '/index.html';
+  if (!fs.existsSync(file)) {
+    failures.push(`sitemap.xml: URL heeft geen bijbehorend HTML-bestand: ${url} (verwacht: ${file})`);
+  }
+}
+
+// 4. Indexeerbare canonieke pagina's die niet in de sitemap staan
+// (noindex-pages worden bewust weggelaten)
+for (const file of canonicalPages) {
+  if (noindexAllowlist.has(file)) continue;
+  const source = fs.readFileSync(file, 'utf8');
+  const robots = attr(source, /<meta\b[^>]*\bname=["']robots["'][^>]*>/i, 'content') || '';
+  if (/(^|[,\s])noindex([,\s]|$)/i.test(robots)) continue;
+  const expectedUrl = pageUrl(file);
+  if (!sitemapSet.has(expectedUrl)) {
+    failures.push(`${file}: indexeerbare pagina ontbreekt in sitemap.xml (verwacht: ${expectedUrl})`);
+  }
+}
+
+// 5. Orphan-check: indexeerbare niet-homepage pagina's zonder inkomende interne links
+// Uitsluitingen: pagina's die bewust alleen via externe links bereikbaar zijn
+const orphanExceptions = new Set([
+  'garage-samenwerking/index.html', // partner-pagina, bereikbaar via contact/pers
+]);
+const allHtmlSources = {};
+for (const file of canonicalPages) {
+  allHtmlSources[file] = fs.readFileSync(file, 'utf8');
+}
+for (const targetFile of canonicalPages) {
+  if (targetFile === 'index.html') continue; // homepage nooit orphan
+  if (orphanExceptions.has(targetFile)) continue;
+  const targetRobots = attr(allHtmlSources[targetFile], /<meta\b[^>]*\bname=["']robots["'][^>]*>/i, 'content') || '';
+  if (/(^|[,\s])noindex([,\s]|$)/i.test(targetRobots)) continue;
+  const targetPath = new URL(pageUrl(targetFile)).pathname;
+  const targetSlash = targetPath.endsWith('/') ? targetPath : `${targetPath}/`;
+  let found = false;
+  for (const [srcFile, srcSource] of Object.entries(allHtmlSources)) {
+    if (srcFile === targetFile) continue;
+    for (const m of srcSource.matchAll(/\bhref=["']([^"'#?]+)['"]/g)) {
+      const href = m[1].trim();
+      let hrefPath;
+      if (href.startsWith('https://garagebook.nl') || href.startsWith('http://garagebook.nl')) {
+        try { hrefPath = new URL(href).pathname; } catch (_) { continue; }
+      } else if (href.startsWith('/')) {
+        hrefPath = href;
+      } else { continue; }
+      const hrefSlash = hrefPath.endsWith('/') ? hrefPath : `${hrefPath}/`;
+      if (hrefSlash === targetSlash) { found = true; break; }
+    }
+    if (found) break;
+  }
+  if (!found) {
+    failures.push(`${targetFile}: indexeerbare pagina heeft geen inkomende interne links (orphan)`);
+  }
+}
+
 console.log(`Checked ${canonicalPages.length} canonical HTML pages.`);
 console.log(`Checked ${sitemapUrls.length} sitemap URLs.`);
 console.log(`Checked ${canonicalPages.length} pages for basic SEO, internal links, and JSON-LD.`);
