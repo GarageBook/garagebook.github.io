@@ -20,6 +20,7 @@ const ignoredHtml = new Set([
   '404.html',
   '__layout_check__.html',
   'motor-onderhoud-bijhouden/alternatief.html',
+  'insights/_template/index.html',
 ]);
 const noindexAllowlist = new Set([
   // Intentional non-indexed pages that are synced but kept out of sitemap.

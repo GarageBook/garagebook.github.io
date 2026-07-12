@@ -2564,3 +2564,127 @@ figure img,
         align-items: flex-start;
     }
 }
+
+/* ── Insights ─────────────────────────────────────────────────────────────── */
+
+.insightGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    padding: 0 40px 64px;
+}
+
+.insightCard {
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: var(--color-text);
+}
+
+.insightCard--soon {
+    opacity: 0.72;
+}
+
+.insightCard__body {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.insightCard__meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.insightCard__category {
+    font-size: 12px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.insightBadge {
+    display: inline-block;
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'ZalandoSansBold', sans-serif;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    padding: 3px 10px;
+}
+
+.insightBadge--new {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.insightCard__title {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 18px;
+    margin: 0 0 12px;
+    line-height: 1.35;
+}
+
+.insightCard__desc {
+    color: var(--color-text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+}
+
+.methodologyBox {
+    background: var(--color-surface-muted);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 0 var(--radius-card) var(--radius-card) 0;
+    padding: 32px 36px;
+    margin: 40px 0 0;
+}
+
+.methodologyBox h3 {
+    font-family: 'ZalandoSansBold', sans-serif;
+    font-size: 16px;
+    margin: 0 0 16px;
+}
+
+.methodologyBox ul {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.methodologyBox li {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+    .insightGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .insightGrid {
+        grid-template-columns: 1fr;
+        padding: 0 20px 40px;
+    }
+
+    .methodologyBox {
+        padding: 24px 20px;
+    }
+}
