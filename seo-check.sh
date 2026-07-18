@@ -168,6 +168,11 @@ for (const file of canonicalPages) {
   const source = fs.readFileSync(file, 'utf8');
   const expected = pageUrl(file);
   const canonical = attr(source, /<link\b[^>]*\brel=["']canonical["'][^>]*>/i, 'href');
+  const canonicalTags = [...source.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)];
+
+  if (canonicalTags.length !== 1) {
+    failures.push(`${file}: expected exactly one canonical tag, found ${canonicalTags.length}`);
+  }
 
   if (!canonical) {
     failures.push(`${file}: missing canonical tag`);
@@ -193,6 +198,13 @@ for (const file of canonicalPages) {
       if (parsed.search) failures.push(`${file}: canonical must not contain querystring: ${canonical}`);
       if (parsed.hash) failures.push(`${file}: canonical must not contain anchor: ${canonical}`);
     }
+  }
+
+  const ogUrl = attr(source, /<meta\b[^>]*\bproperty=["']og:url["'][^>]*>/i, 'content');
+  if (!ogUrl) {
+    failures.push(`${file}: missing og:url`);
+  } else if (canonical && ogUrl !== canonical) {
+    failures.push(`${file}: og:url ${ogUrl} !== canonical ${canonical}`);
   }
 
   const title = tagContent(source, 'title');
