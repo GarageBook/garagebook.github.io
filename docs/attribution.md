@@ -24,11 +24,11 @@ beschikbaar is, worden source en medium als `"direct"` geregistreerd.
 
 ## URL-parameters die app.garagebook.nl ontvangt
 
-Bij elke klik op een CTA naar `https://app.garagebook.nl/start` voegt `analytics-events.js`
+Bij elke klik op een CTA naar `https://app.garagebook.nl/admin/register` voegt `analytics-events.js`
 de opgeslagen attributiewaarden toe als query-parameters aan de redirect-URL.
 De bestaande UTM-parameters (`utm_source`, `utm_medium`, `utm_campaign`) blijven onaangetast.
 
-De vier extra parameters die `app.garagebook.nl/start` kan ontvangen:
+De vier extra parameters die `app.garagebook.nl/admin/register` kan ontvangen:
 
 | Parameter | Waarde |
 |---|---|
@@ -40,7 +40,7 @@ De vier extra parameters die `app.garagebook.nl/start` kan ontvangen:
 Voorbeeld van een volledige CTA-URL na attributie-verrijking:
 
 ```
-https://app.garagebook.nl/start
+https://app.garagebook.nl/admin/register
   ?utm_source=garagebook.nl
   &utm_medium=website
   &utm_campaign=organic_cta

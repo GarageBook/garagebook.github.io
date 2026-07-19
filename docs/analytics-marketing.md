@@ -36,7 +36,7 @@ Deze documentatie beschrijft de centrale GA4 tracking voor de statische marketin
 
 ### `start_click`
 
-Trigger: klik op CTA's die uitkomen op `https://app.garagebook.nl/start`, `app.garagebook.nl/start`, `/start` of het legacy registratiepad dat naar `/start` wordt genormaliseerd.
+Trigger: klik op CTA's die uitkomen op `https://app.garagebook.nl/admin/register`, `app.garagebook.nl/admin/register`, `/start` of het legacy registratiepad dat naar `/start` wordt genormaliseerd.
 
 Parameters:
 
@@ -48,7 +48,7 @@ Parameters:
 
 ### `blog_cta_click`
 
-Trigger: klik vanaf een `/blog/` pagina naar `https://app.garagebook.nl/start`.
+Trigger: klik vanaf een `/blog/` pagina naar `https://app.garagebook.nl/admin/register`.
 
 Parameters:
 
@@ -69,7 +69,7 @@ Parameters:
 
 ## Querystring preservation
 
-CTA-links naar `https://app.garagebook.nl/start` behouden bestaande queryparameters op de link en vullen ontbrekende queryparameters van de huidige pagina aan. Zo blijven UTM's en andere marketingparameters behouden zonder bestaande doel-URL-parameters te overschrijven.
+CTA-links naar `https://app.garagebook.nl/admin/register` behouden bestaande queryparameters op de link en vullen ontbrekende queryparameters van de huidige pagina aan. Zo blijven UTM's en andere marketingparameters behouden zonder bestaande doel-URL-parameters te overschrijven.
 
 ## Privacy
 
@@ -91,7 +91,7 @@ Controleer lokaal in DevTools:
 2. Bevestig dat Consent Mode eerst `analytics_storage: denied` gebruikt.
 3. Accepteer analytics via Klaro.
 4. Controleer dat één `page_view` binnenkomt voor de huidige pagina.
-5. Klik een header-, hero-, footer- en blog-CTA naar `app.garagebook.nl/start`.
+5. Klik een header-, hero-, footer- en blog-CTA naar `app.garagebook.nl/admin/register`.
 6. Controleer dat `start_click` binnenkomt met `link_url`, `link_text`, `page_location`, `page_path` en `cta_location`.
 7. Controleer op een blogartikel dat daarnaast `blog_cta_click` binnenkomt met `blog_slug`.
 8. Klik een externe social link en controleer `outbound_referral_click`.

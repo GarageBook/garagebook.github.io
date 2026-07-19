@@ -2,7 +2,8 @@
     const PRODUCTION_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl"]);
     const APP_HOSTNAME = "app.garagebook.nl";
     const GARAGEBOOK_HOSTNAMES = new Set(["garagebook.nl", "www.garagebook.nl", APP_HOSTNAME]);
-    const START_URL = "https://app.garagebook.nl/start?utm_source=garagebook.nl&utm_medium=website&utm_campaign=organic_cta";
+    const START_URL = "https://app.garagebook.nl/admin/register?utm_source=garagebook.nl&utm_medium=website&utm_campaign=organic_cta";
+    const REGISTRATION_URL = "https://app.garagebook.nl/admin/register";
     const START_PATH = "/start/";
     const LEGACY_REGISTER_PATH = "/admin/register/";
     const TRACKED_EVENT_TIMEOUT_MS = 800;
@@ -81,22 +82,18 @@
         }
     }
 
-    function isAppStartUrl(url) {
-        return url.hostname === APP_HOSTNAME && normalizePath(url.pathname) === START_PATH;
-    }
-
     function isRelevantStartUrl(url) {
         const normalizedPath = normalizePath(url.pathname);
 
-        if (url.hostname === APP_HOSTNAME && normalizedPath === START_PATH) {
-            return true;
+        if (url.hostname === APP_HOSTNAME) {
+            return normalizedPath === START_PATH || normalizedPath === LEGACY_REGISTER_PATH;
         }
 
         if (!GARAGEBOOK_HOSTNAMES.has(url.hostname)) {
             return false;
         }
 
-        return normalizedPath === START_PATH || normalizedPath === LEGACY_REGISTER_PATH;
+        return normalizedPath === START_PATH;
     }
 
     function getNormalizedStartUrl(url) {
@@ -104,7 +101,19 @@
             return null;
         }
 
-        return new URL(START_URL);
+        const normalizedUrl = new URL(url.search ? REGISTRATION_URL : START_URL);
+
+        for (const [key, value] of url.searchParams.entries()) {
+            normalizedUrl.searchParams.append(key, value);
+        }
+
+        for (const [key, value] of new URLSearchParams(window.location.search).entries()) {
+            if (!normalizedUrl.searchParams.has(key)) {
+                normalizedUrl.searchParams.append(key, value);
+            }
+        }
+
+        return normalizedUrl;
     }
 
     function updateLinkHref(link, url) {
@@ -123,13 +132,6 @@
         if (!normalizedStartUrl) {
             return null;
         }
-    }
-
-    function getNormalizedLinkText(link) {
-        return link.textContent.replace(/\s+/g, " ").trim().slice(0, 120);
-    }
-
-    function getCtaLocation(link) {
 
         if (normalizedStartUrl.toString() !== destinationUrl.toString()) {
             updateLinkHref(link, normalizedStartUrl);
@@ -139,37 +141,7 @@
     }
 
     function getNormalizedLinkText(link) {
-        return link.textContent.replace(/s+/g, " ").trim().slice(0, 120);
-    }
-
-    function getCtaLocation(link) {
-        const explicitLocation = link.getAttribute("data-cta-location");
-
-        if (explicitLocation) {
-            return explicitLocation.trim().toLowerCase();
-        }
-
-        if (link.closest(".navigation")) {
-            return "header";
-        }
-
-        if (link.closest(".footer")) {
-            return "footer";
-        }
-
-        if (link.closest(".ctaSection") || link.closest(".ctaBanner")) {
-            return "closing_cta";
-        }
-
-        if (link.closest(".hero") || link.closest(".heroTwo") || link.closest(".heroThree") || link.closest(".heroFour") || link.closest(".blogHero")) {
-            return "hero";
-        }
-
-        if (getPageType() === "blog") {
-            return "blog_body";
-        }
-
-        return "body";
+        return link.textContent.replace(/\s+/g, " ").trim().slice(0, 120);
     }
 
     function isOutboundUrl(url) {

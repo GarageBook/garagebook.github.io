@@ -2,7 +2,7 @@
     var STORAGE_KEY = "gb_first_touch";
     var EXPIRY_MS = 90 * 24 * 60 * 60 * 1000;
     var APP_HOSTNAME = "app.garagebook.nl";
-    var START_PATH_PREFIX = "/start";
+    var REGISTRATION_PATHS = ["/admin/register", "/start"];
 
     function readStored() {
         try {
@@ -79,7 +79,7 @@
     function appendToStartUrl(urlObj) {
         try {
             if (urlObj.hostname !== APP_HOSTNAME) return urlObj;
-            if (urlObj.pathname.indexOf(START_PATH_PREFIX) !== 0) return urlObj;
+            if (REGISTRATION_PATHS.indexOf(urlObj.pathname.replace(/\/$/, "")) === -1) return urlObj;
 
             var attr = getAttribution();
             if (!attr) return urlObj;

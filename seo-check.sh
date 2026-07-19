@@ -122,6 +122,8 @@ function cleanInternalPath(href) {
 const failures = [];
 const passNotes = [];
 
+cp.execFileSync('node', ['scripts/check-start-cta-utm.js'], { stdio: 'inherit' });
+
 if (!fs.existsSync('sitemap.xml')) {
   failures.push('sitemap.xml: missing required sitemap file');
 }

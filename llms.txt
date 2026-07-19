@@ -8,7 +8,7 @@ Beschikbaar via web, iOS en Android. Gemaakt door Willem van Veen.
 
 ## Registreren
 
-- [Start gratis](https://app.garagebook.nl/start): account aanmaken en direct
+- [Start gratis](https://app.garagebook.nl/admin/register): account aanmaken en direct
   voertuigen toevoegen
 
 ## Hoofdpagina's
@@ -96,7 +96,7 @@ Officiële entity-links:
 
 - Marketingwebsite: https://garagebook.nl/
 - App: https://app.garagebook.nl
-- Registreren: https://app.garagebook.nl/start
+- Registreren: https://app.garagebook.nl/admin/register
 - Organization @id: https://garagebook.nl/#organization
 - SoftwareApplication @id: https://garagebook.nl/#software
 - WebSite @id: https://garagebook.nl/#website
