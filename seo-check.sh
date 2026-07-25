@@ -55,6 +55,7 @@ const requiredSitemapUrls = [
   `${site}/motor-onderhoud-app/`,
   `${site}/auto-onderhoud-app/`,
   `${site}/voertuighistorie-bij-verkoop/`,
+  `${site}/openbare-garages/`,
   `${site}/onderhoudsboekje-oldtimer/`,
   `${site}/blog/onderhoudsboekje-oldtimer-onderhoudshistorie/`,
 ];
@@ -123,12 +124,20 @@ const failures = [];
 const passNotes = [];
 
 cp.execFileSync('node', ['scripts/check-start-cta-utm.js'], { stdio: 'inherit' });
+cp.execFileSync('node', ['scripts/check-public-garage-seo.js'], { stdio: 'inherit' });
 
 if (!fs.existsSync('sitemap.xml')) {
   failures.push('sitemap.xml: missing required sitemap file');
 }
 
 const sitemap = fs.existsSync('sitemap.xml') ? fs.readFileSync('sitemap.xml', 'utf8') : '';
+if (sitemap) {
+  if (!sitemap.trim().startsWith('<?xml')) failures.push('sitemap.xml: XML declaration ontbreekt');
+  const sitemapRoot = sitemap.match(/<([a-z][\w:-]*)\b[^>]*>/i)?.[1]?.toLowerCase() || '';
+  if (sitemapRoot !== 'urlset') failures.push(`sitemap.xml: gewone statische sitemap moet <urlset> zijn, gevonden <${sitemapRoot || 'missing'}>`);
+  if (/<sitemapindex\b/i.test(sitemap)) failures.push('sitemap.xml: sitemap-index is niet de huidige productiearchitectuur');
+  if (!/<\/urlset>\s*$/i.test(sitemap)) failures.push('sitemap.xml: urlset-sluiting ontbreekt');
+}
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
 const sitemapSet = new Set(sitemapUrls);
 

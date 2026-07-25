@@ -27,6 +27,7 @@ const PAGE_CONFIG = {
   '/onderhoudshistorie-motor/': { pageType: 'pillar', cluster: 'onderhoudshistorie', role: 'pillar', primaryIntent: 'informational: onderhoudshistorie motor', publishedDate: '2026-07-01' },
   '/resources/': { pageType: 'other-seo', cluster: 'resources', role: 'hub', primaryIntent: 'resources-overzicht navigational', publishedDate: '2026-07-11' },
   '/insights/': { pageType: 'other-seo', cluster: 'insights', role: 'hub', primaryIntent: 'insights-overzicht navigational', publishedDate: '2026-07-12' },
+  '/openbare-garages/': { pageType: 'other-seo', cluster: 'onderhoudshistorie', role: 'support', primaryIntent: 'informational: openbare GarageBook garages', publishedDate: '2026-07-25' },
   // Child pages - motor-onderhoud cluster
   '/motor-onderhoud-app/': { pageType: 'child', cluster: 'motor-onderhoud', role: 'child', primaryIntent: 'commercial: motor onderhoud app', publishedDate: '2026-05-18' },
   '/motor-onderhoud-excel/': { pageType: 'child', cluster: 'motor-onderhoud', role: 'child', primaryIntent: 'informational: motor onderhoud excel', publishedDate: '2026-05-03' },

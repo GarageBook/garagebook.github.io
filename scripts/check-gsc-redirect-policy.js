@@ -51,6 +51,7 @@ const legacyBlogs = [
 ];
 
 const failures = [];
+cp.execFileSync('node', ['scripts/check-public-garage-seo.js'], { stdio: 'inherit' });
 
 function listFiles(args) {
   const output = cp.execFileSync('rg', args, { encoding: 'utf8' }).trim();
@@ -84,6 +85,40 @@ function attr(source, selectorRegex, attrName) {
 const sitemap = fs.readFileSync('sitemap.xml', 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
 const sitemapSet = new Set(sitemapUrls);
+
+function checkOptionalGarageSitemap() {
+  const file = 'sitemap-garages.xml';
+  if (!fs.existsSync(file)) return;
+
+  const source = fs.readFileSync(file, 'utf8');
+  if (!/<urlset\b/i.test(source) || /<sitemapindex\b/i.test(source)) {
+    failures.push(`${file}: optional garage sitemap must be a <urlset>`);
+  }
+  if (/https:\/\/app\.garagebook\.nl\/garage\//i.test(source)) {
+    failures.push(`${file}: public garage URLs must not use the app host`);
+  }
+
+  const locs = [...source.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1].trim());
+  const seen = new Set();
+  for (const loc of locs) {
+    if (seen.has(loc)) failures.push(`${file}: duplicate URL: ${loc}`);
+    seen.add(loc);
+
+    let parsed;
+    try {
+      parsed = new URL(loc);
+    } catch {
+      failures.push(`${file}: invalid URL: ${loc}`);
+      continue;
+    }
+
+    if (parsed.protocol !== 'https:' || parsed.hostname !== HOST || !parsed.pathname.startsWith('/garage/')) {
+      failures.push(`${file}: URL must use https://garagebook.nl/garage/...: ${loc}`);
+    }
+  }
+}
+
+checkOptionalGarageSitemap();
 
 for (const url of sitemapUrls) {
   const parsed = new URL(url);

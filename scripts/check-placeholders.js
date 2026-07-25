@@ -8,7 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 const PATTERNS = [
   /\[GB_DATA:/,
@@ -24,21 +24,31 @@ const EXCLUDED = new Set([
 ]);
 
 function listHtmlFiles() {
+  const root = path.resolve(__dirname, '..');
+  let isGitRepo = false;
+
   try {
-    const out = execSync('git ls-files --others --cached --exclude-standard "*.html"', {
+    isGitRepo = execFileSync('git', ['-C', root, 'rev-parse', '--is-inside-work-tree'], {
       encoding: 'utf8',
-      cwd: path.resolve(__dirname, '..'),
+      stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim() === 'true';
+  } catch (_) {
+    isGitRepo = false;
+  }
+
+  if (isGitRepo) {
+    const out = execFileSync('git', ['-C', root, 'ls-files', '--others', '--cached', '--exclude-standard', '*.html'], {
+      encoding: 'utf8',
     });
     return out.split('\n').filter(Boolean);
-  } catch (_) {
-    const out = execSync('find . -name "*.html" -not -path "*/node_modules/*"', {
-      encoding: 'utf8',
-      cwd: path.resolve(__dirname, '..'),
-    });
-    return out.split('\n').filter(Boolean).map(f => f.replace(/^\.\//, ''));
   }
-}
 
+  const out = execFileSync('find', ['.', '-name', '*.html', '-not', '-path', '*/node_modules/*'], {
+    encoding: 'utf8',
+    cwd: root,
+  });
+  return out.split('\n').filter(Boolean).map((f) => f.replace(/^\.\//, ''));
+}
 const files = listHtmlFiles();
 const failures = [];
 
