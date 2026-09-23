@@ -22,6 +22,7 @@ const PAGE_CONFIG = {
   '/': { pageType: 'homepage', cluster: 'homepage', role: 'pillar', primaryIntent: 'brand / navigational', publishedDate: '2026-05-03' },
   '/blog/': { pageType: 'other-seo', cluster: 'blog', role: 'hub', primaryIntent: 'blog-overzicht navigational', publishedDate: '2026-05-18' },
   '/digitaal-onderhoudsboekje/': { pageType: 'pillar', cluster: 'digitaal-onderhoudsboekje', role: 'pillar', primaryIntent: 'informational / commercial: digitaal onderhoudsboekje', publishedDate: '2026-05-24' },
+  '/onderhoud/': { pageType: 'pillar', cluster: 'onderhoud', role: 'hub', primaryIntent: 'informational: voertuigonderhoud begrijpen en plannen', publishedDate: '2026-09-23' },
   '/motor-onderhoud-bijhouden/': { pageType: 'pillar', cluster: 'motor-onderhoud', role: 'pillar', primaryIntent: 'informational / commercial: motor onderhoud bijhouden', publishedDate: '2026-05-24' },
   '/auto-onderhoud-bijhouden/': { pageType: 'pillar', cluster: 'auto-onderhoud', role: 'pillar', primaryIntent: 'informational / commercial: auto onderhoud bijhouden', publishedDate: '2026-05-18' },
   '/onderhoudshistorie-motor/': { pageType: 'pillar', cluster: 'onderhoudshistorie', role: 'pillar', primaryIntent: 'informational: onderhoudshistorie motor', publishedDate: '2026-07-01' },

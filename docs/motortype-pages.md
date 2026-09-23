@@ -1,6 +1,6 @@
 # Motortype-pagina's: schema en workflow
 
-Laatste bijgewerkt: 2026-07-01.
+Laatste bijgewerkt: 2026-09-23.
 
 ## Wat zijn motortype-pagina's?
 
@@ -16,7 +16,7 @@ data/
 scripts/
   generate-motortype-pages.js  ← generator
 yamaha-mt-07-onderhoud/
-  index.html                   ← gegenereerde pagina (noindex totdat goedgekeurd)
+  index.html                   ← bestaande pagina; indexstatus komt uit de brondata
 bmw-r1250gs-onderhoud/
   index.html
 honda-cbr1000rr-fireblade-onderhoud/
@@ -40,6 +40,7 @@ Het bestand is een JSON-array. Elk object beschrijft één motormodel volledig. 
   "model":     "MT-07",
   "bouwjaren": "2015 tot heden",
   "categorie": "Naked middleweight",
+  "indexable": true,
 
   "meta": {
     "title":       "...",
@@ -144,51 +145,40 @@ De generator:
 
 Bij een ontbrekend verplicht veld wordt het model overgeslagen met een foutmelding en sluit het script met exit code 1.
 
-## Noindex-workflow
+## Indexeerbaarheid en veilige controle
 
-Alle gegenereerde pagina's starten met:
+De indexstatus is expliciet datagedreven via het verplichte booleanveld `indexable` in `data/motortypes.json`. De generator rendert `index, follow` voor `true` en `noindex, follow` voor `false`. Wijzig de robots-tag daarom niet los van deze brondata.
 
-```html
-<meta name="robots" content="noindex, follow" />
+Gebruik voor een veilige, read-only controle:
+
+```bash
+node scripts/generate-motortype-pages.js --check
 ```
 
-Dit is een vangnet tegen dunne content bij een eerste publicatie. Pas een pagina aan naar `index` als:
+Deze controle schrijft geen pagina's en bewaakt onder meer dat de bestaande robots-status overeenkomt met `indexable`.
 
-1. De pagina inhoudelijk voldoende uniek is (differentiatievelden gevuld, FAQ relevant, aandachtspunten specifiek).
-2. Jij expliciet akkoord hebt gegeven voor dat specifieke model.
+> **Waarschuwing:** voer de generator momenteel niet schrijvend uit. De vijf bestaande modelpagina's bevatten handmatige verbeteringen die nog niet volledig door de generator worden gereproduceerd. Een schrijvende run kan die verbeteringen overschrijven. Trek generator en bestaande output eerst in een afzonderlijke, gecontroleerde vervolgstap gelijk.
 
-Om een pagina te indexeren:
-
-1. Pas de meta-tag aan in `{slug}/index.html`:
-   ```html
-   <meta name="robots" content="index, follow, max-image-preview:large" />
-   ```
-2. Voeg de URL toe aan `sitemap.xml`:
-   ```xml
-   <url><loc>https://garagebook.nl/{slug}/</loc><lastmod>YYYY-MM-DD</lastmod></url>
-   ```
-3. Publiceer via `publish-release.sh`.
-
-Pagina's met `noindex` worden niet aan `sitemap.xml` toegevoegd, maar worden wel gewoon meegenomen in de publish-flow zodat ze live zijn (bereikbaar via directe URL, maar niet geindexeerd).
+Pagina's met `indexable: false` worden niet aan `sitemap.xml` toegevoegd, maar worden wel meegenomen in de publish-flow zodat ze via hun directe URL bereikbaar blijven.
 
 ## Een nieuw model toevoegen
 
 1. Voeg een nieuw object toe aan `data/motortypes.json` met alle verplichte velden.
-2. Draai `node scripts/generate-motortype-pages.js`.
+2. Zet `indexable` expliciet op `false` en voer alleen `node scripts/generate-motortype-pages.js --check` uit zolang de bovenstaande waarschuwing geldt.
 3. Voeg de slug toe aan `publish-sync.sh` (PAGE_FILES-array en show_summary).
 4. Voeg de slug toe aan `publish-commit.sh` (git add-lijst).
 5. Publiceer en beoordeel de pagina voor je `noindex` aanpast.
 6. Wanneer je akkoord geeft: pas `noindex` aan en voeg URL toe aan `sitemap.xml`.
 
-## Huidige pilotset (2026-07-01)
+## Huidige pilotset (2026-09-23)
 
 | Model | Slug | Categorie | Status |
 |-------|------|-----------|--------|
-| Yamaha MT-07 | `yamaha-mt-07-onderhoud` | Naked middleweight | noindex (piloot) |
-| BMW R1250GS | `bmw-r1250gs-onderhoud` | Adventure touring | noindex (piloot) |
-| Honda CBR1000RR Fireblade (2017-2019) | `honda-cbr1000rr-fireblade-onderhoud` | Supersport | noindex (piloot) |
-| KTM 390 Duke (2013-2023) | `ktm-390-duke-onderhoud` | Entry naked | noindex (piloot) |
-| Triumph Bonneville T120 (2016-2020) | `triumph-bonneville-t120-onderhoud` | Retro klassiek | noindex (piloot) |
+| Yamaha MT-07 | `yamaha-mt-07-onderhoud` | Naked middleweight | index, follow |
+| BMW R1250GS | `bmw-r1250gs-onderhoud` | Adventure touring | index, follow |
+| Honda CBR1000RR Fireblade (2017-2019) | `honda-cbr1000rr-fireblade-onderhoud` | Supersport | index, follow |
+| KTM 390 Duke (2013-2023) | `ktm-390-duke-onderhoud` | Entry naked | noindex, follow |
+| Triumph Bonneville T120 (2016-2020) | `triumph-bonneville-t120-onderhoud` | Retro klassiek | noindex, follow |
 
 ## Databronnen en verificatie
 

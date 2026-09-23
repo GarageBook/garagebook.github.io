@@ -52,6 +52,7 @@ const requiredSitemapUrls = [
   `${site}/`,
   `${site}/blog/`,
   `${site}/digitaal-onderhoudsboekje/`,
+  `${site}/onderhoud/`,
   `${site}/motor-onderhoud-app/`,
   `${site}/auto-onderhoud-app/`,
   `${site}/voertuighistorie-bij-verkoop/`,
@@ -125,6 +126,41 @@ const passNotes = [];
 
 cp.execFileSync('node', ['scripts/check-start-cta-utm.js'], { stdio: 'inherit' });
 cp.execFileSync('node', ['scripts/check-public-garage-seo.js'], { stdio: 'inherit' });
+cp.execFileSync('node', ['scripts/generate-motortype-pages.js', '--check'], { stdio: 'inherit' });
+
+if (!fs.existsSync('robots.txt')) {
+  failures.push('robots.txt: missing required robots file');
+} else {
+  const robotsTxt = fs.readFileSync('robots.txt', 'utf8');
+  const robotsLines = robotsTxt
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s*#.*$/, '').trim())
+    .filter(Boolean);
+  const userAgents = robotsLines
+    .filter((line) => /^user-agent\s*:/i.test(line))
+    .map((line) => line.replace(/^user-agent\s*:\s*/i, '').trim());
+  const disallows = robotsLines
+    .filter((line) => /^disallow\s*:/i.test(line))
+    .map((line) => line.replace(/^disallow\s*:\s*/i, '').trim());
+  const sitemapDirectives = robotsLines
+    .filter((line) => /^sitemap\s*:/i.test(line))
+    .map((line) => line.replace(/^sitemap\s*:\s*/i, '').trim());
+
+  if (!userAgents.includes('*')) failures.push('robots.txt: User-agent: * is required');
+  if (disallows.includes('/')) failures.push('robots.txt: Disallow: / would block the complete public site');
+  if (sitemapDirectives.length !== 1 || sitemapDirectives[0] !== `${site}/sitemap.xml`) {
+    failures.push(`robots.txt: expected exactly one Sitemap directive with ${site}/sitemap.xml`);
+  }
+  if (/localhost|staging|app\.garagebook\.nl|www\.garagebook\.nl/i.test(robotsTxt)) {
+    failures.push('robots.txt: contains a forbidden localhost, staging, app, or www hostname');
+  }
+
+  for (const rule of disallows) {
+    if (/^\/assets(?:\/|$)/i.test(rule) || /(?:^|[/.*$])(?:css|js)(?:[/.*$]|$)/i.test(rule) || /\.(?:css|js)(?:$|[?*$])/i.test(rule)) {
+      failures.push(`robots.txt: must not block render-critical assets, CSS, or JavaScript: Disallow: ${rule}`);
+    }
+  }
+}
 
 if (!fs.existsSync('sitemap.xml')) {
   failures.push('sitemap.xml: missing required sitemap file');

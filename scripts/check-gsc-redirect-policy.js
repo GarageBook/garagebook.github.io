@@ -16,6 +16,7 @@ const SITE = 'https://garagebook.nl';
 const HOST = 'garagebook.nl';
 
 const sources = [
+  'https://garagebook.nl/onderhoud',
   'https://garagebook.nl/motor-onderhoud-app',
   'https://garagebook.nl/blog/beste-motor-onderhoud-app',
   'https://garagebook.nl/blog/youngtimer-onderhoud-bijhouden-digitaal-onderhoudsboekje',

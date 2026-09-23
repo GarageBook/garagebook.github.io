@@ -26,6 +26,8 @@ Beschikbaar via web, iOS en Android. Gemaakt door Willem van Veen.
   productomschrijvingen
 - [Digitaal onderhoudsboekje](https://garagebook.nl/digitaal-onderhoudsboekje/):
   wat het is, hoe het werkt en waarom het meer bewijskracht heeft dan papier
+- [Voertuigonderhoud](https://garagebook.nl/onderhoud/): onderhoud voor auto en
+  motor begrijpen, plannen, uitvoeren en vastleggen
 - [Motor onderhoud bijhouden](https://garagebook.nl/motor-onderhoud-bijhouden/):
   motoronderhoud registreren met datum, kilometerstand, werkzaamheden en bewijs
 - [Auto onderhoud bijhouden](https://garagebook.nl/auto-onderhoud-bijhouden/):
