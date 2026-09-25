@@ -25,8 +25,6 @@ const ignoredHtml = new Set([
 const noindexAllowlist = new Set([
   // Intentional non-indexed pages that are synced but kept out of sitemap.
   'geratel/index.html',
-  'ktm-390-duke-onderhoud/index.html',
-  'triumph-bonneville-t120-onderhoud/index.html',
 ]);
 const allowedJsonLdTypes = new Set([
   'Article',

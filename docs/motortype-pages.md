@@ -177,8 +177,8 @@ Pagina's met `indexable: false` worden niet aan `sitemap.xml` toegevoegd, maar w
 | Yamaha MT-07 | `yamaha-mt-07-onderhoud` | Naked middleweight | index, follow |
 | BMW R1250GS | `bmw-r1250gs-onderhoud` | Adventure touring | index, follow |
 | Honda CBR1000RR Fireblade (2017-2019) | `honda-cbr1000rr-fireblade-onderhoud` | Supersport | index, follow |
-| KTM 390 Duke (2013-2023) | `ktm-390-duke-onderhoud` | Entry naked | noindex, follow |
-| Triumph Bonneville T120 (2016-2020) | `triumph-bonneville-t120-onderhoud` | Retro klassiek | noindex, follow |
+| KTM 390 Duke (2013-2023) | `ktm-390-duke-onderhoud` | Entry naked | index, follow |
+| Triumph Bonneville T120 (2016-2020) | `triumph-bonneville-t120-onderhoud` | Retro klassiek | index, follow |
 
 ## Databronnen en verificatie
 

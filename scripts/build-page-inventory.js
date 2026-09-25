@@ -109,8 +109,8 @@ const PAGE_CONFIG = {
   '/blog/de-verborgen-waarde-van-een-goed-gedocumenteerde-motor/': { pageType: 'blog', cluster: 'blog', role: 'post', primaryIntent: 'informational: verborgen waarde gedocumenteerde motor', publishedDate: '2026-05-24' },
   // Non-indexed pages (no sitemap entry)
   '/geratel/': { pageType: 'other-seo', cluster: '-', role: '-', primaryIntent: 'partner: geratel', publishedDate: '2026-05-19', indexable: false },
-  '/ktm-390-duke-onderhoud/': { pageType: 'motortype', cluster: 'motortype', role: 'child', primaryIntent: 'informational: KTM 390 Duke onderhoud', publishedDate: '2026-07-02', indexable: false },
-  '/triumph-bonneville-t120-onderhoud/': { pageType: 'motortype', cluster: 'motortype', role: 'child', primaryIntent: 'informational: Triumph Bonneville T120 onderhoud', publishedDate: '2026-07-02', indexable: false },
+  '/ktm-390-duke-onderhoud/': { pageType: 'motortype', cluster: 'motortype', role: 'child', primaryIntent: 'informational: KTM 390 Duke onderhoud', publishedDate: '2026-07-02', indexable: true },
+  '/triumph-bonneville-t120-onderhoud/': { pageType: 'motortype', cluster: 'motortype', role: 'child', primaryIntent: 'informational: Triumph Bonneville T120 onderhoud', publishedDate: '2026-07-02', indexable: true },
 };
 
 // Files to ignore entirely

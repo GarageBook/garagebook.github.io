@@ -85,8 +85,6 @@ Elke canonical HTML-pagina moet hebben:
 De huidige `noindex` allowlist in `seo-check.sh` is bewust beperkt tot bestaande routes die wel gesynct worden maar niet als normale indexeerbare SEO-pagina in de sitemap staan:
 
 - `geratel/index.html`
-- `ktm-390-duke-onderhoud/index.html`
-- `triumph-bonneville-t120-onderhoud/index.html`
 
 Nieuwe pagina's mogen niet op deze allowlist worden gezet zonder expliciet SEO-besluit.
 
