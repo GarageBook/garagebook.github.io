@@ -96,6 +96,22 @@
         return normalizedPath === START_PATH;
     }
 
+    function isAppStartUrl(url) {
+        if (url.hostname !== APP_HOSTNAME) {
+            return false;
+        }
+
+        return [START_PATH, LEGACY_REGISTER_PATH, "/admin/register/geratel/"].includes(normalizePath(url.pathname));
+    }
+
+    function getCtaLocation(link) {
+        if (link.closest("header")) return "header";
+        if (link.closest("main")) return "main";
+        if (link.closest("footer")) return "footer";
+
+        return "other";
+    }
+
     function getNormalizedStartUrl(url) {
         if (!isRelevantStartUrl(url)) {
             return null;
@@ -268,7 +284,7 @@
         return {
             eventName: "start_click",
             params: {
-                link_url: destinationUrl.toString(),
+                link_url: destinationUrl.origin + destinationUrl.pathname,
                 link_text: getNormalizedLinkText(link),
                 page_location: getPageLocation(),
                 page_path: getPagePath(),
@@ -408,7 +424,11 @@
         const links = document.querySelectorAll("a[href]");
 
         for (const link of links) {
-            ensureTrackedLinkDestination(link);
+            const destinationUrl = ensureTrackedLinkDestination(link) || getDestinationUrl(link);
+
+            if (destinationUrl && isAppStartUrl(destinationUrl) && window.garageBookAttribution) {
+                updateLinkHref(link, window.garageBookAttribution.appendToStartUrl(destinationUrl));
+            }
         }
     }
 
