@@ -211,6 +211,10 @@ const canonicalRoutes = new Set(canonicalPages.map((file) => new URL(pageUrl(fil
 
 for (const file of canonicalPages) {
   const source = fs.readFileSync(file, 'utf8');
+  for (const match of source.matchAll(/href=[“”‘’]/g)) {
+    failures.push(`${file}:${lineNumber(source, match.index)}: href uses typographic quotes`);
+  }
+
   const expected = pageUrl(file);
   const canonical = attr(source, /<link\b[^>]*\brel=["']canonical["'][^>]*>/i, 'href');
   const canonicalTags = [...source.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)];
