@@ -4,6 +4,9 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT_DIR"
+if [[ -n "${SITEMAP_GIT_REPO:-}" ]]; then
+  node "$ROOT_DIR/scripts/sync-sitemap-lastmod.js" "$SITEMAP_GIT_REPO" --check
+fi
 
 if ! command -v node >/dev/null 2>&1; then
   echo "ERROR: node is required for seo-check.sh" >&2

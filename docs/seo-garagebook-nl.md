@@ -38,7 +38,7 @@ De marketingsite publiceert op dit moment een sitemap: de statische `sitemap.xml
 
 Individuele publieke garagepagina's staan daarom niet in de statische marketingsitemap. Voeg geen losse `/garage/...` URLs toe aan `sitemap.xml` en selecteer of scrape geen voertuigen vanuit deze codebase.
 
-Wanneer publieke garagepagina's later via een sitemap aangeboden worden, moet `sitemap-garages.xml` als statisch bestand naar GitHub Pages worden gepubliceerd. De privacyveilige bron daarvan moet uit de Laravel-app komen en minimaal expliciet aangeven dat een voertuig publiek, indexeerbaar en geschikt voor opname is. Deze statische codebase mag geen directe databaseverbinding, runtime API-call of eigen voertuigselectie introduceren.
+De Laravel-app publiceert indexeerbare publieke garages via `https://app.garagebook.nl/sitemap-garages.xml` en onderhoudsmodellen via `https://app.garagebook.nl/sitemap-vehicle-authority.xml`. De app bepaalt zichtbaarheid en inhoud rechtstreeks uit de actuele productiedatabase. Deze statische codebase mag geen directe databaseverbinding, runtime API-call of eigen voertuigselectie introduceren.
 
 ## Interne-link regels
 

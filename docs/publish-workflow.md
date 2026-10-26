@@ -98,7 +98,7 @@ Wat dit script doet:
 - gebruikt `/tmp/garagebook.github.io` als `TARGET_DIR`
 - cloneert de GitHub Pages repo als die nog niet bestaat
 - kopieert alleen de curated lijst met toegestane bestanden
-- update `sitemap.xml` `lastmod`
+- kopieert `sitemap.xml`; `publish-commit.sh` bepaalt daarna `lastmod` uit aantoonbare inhoudscommits
 - toont daarna `git status` in `/tmp/garagebook.github.io`
 
 Belangrijk:
@@ -125,6 +125,7 @@ Wat dit script doet:
 - draait eerst `publish-sync.sh`
 - staged alleen de curated lijst met goedgekeurde bestanden
 - maakt daarna de commit in `/tmp/garagebook.github.io`
+- werkt na de inhoudscommit alleen bewezen gewijzigde `lastmod`-datums bij en controleert ze opnieuw
 - pusht nog niet
 
 Belangrijk:
