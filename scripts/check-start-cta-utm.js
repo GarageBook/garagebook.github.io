@@ -105,6 +105,9 @@ function main() {
 
             appHrefCount++;
             appLinks.add(parsed.href);
+            if (parsed.pathname === "/" || parsed.pathname === "/contact") {
+                failures.push(relativePath + ":" + getLineNumber(content, match.index) + " points to a marketing redirect on the app host: " + href);
+            }
 
             if (parsed.pathname === "/start" || parsed.pathname === "/start/") {
                 failures.push(relativePath + ":" + getLineNumber(content, match.index) + " points to broken app start route: " + href);
